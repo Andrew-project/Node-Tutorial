@@ -1,0 +1,27 @@
+.resetController{
+  background: white;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  .inputs{
+    padding-top:remSize(35);
+    padding-bottom:remSize(35);
+  }
+  .logins{
+    margin-right: remSize(30);
+  }
+  .lines{
+    margin-right:remSize(30);
+    position: relative;
+  }
+  .test{
+    width:remSize(175);
+    height:remSize(60);
+    line-height:remSize(63);
+    position: absolute;
+    top:remSize(11);
+    right:0;
+  }
+}

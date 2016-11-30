@@ -1,0 +1,76 @@
+.patientDetailController {
+  .min-height{
+    min-height:remSize(60);
+  }
+  .tag-warp {
+    span {
+      margin-top: remSize(-2);
+      position: relative;
+      padding-bottom: remSize(6);
+      padding-top: remSize(6);
+      padding-right: remSize(13);
+      padding-left: remSize(13);
+    }
+    h3 {
+      position: absolute;
+    }
+  }
+  .more-operate{
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 9000000;
+    height: remSize(100);
+    line-height: remSize(100);
+  }
+  .bottom-btn {
+    a {
+      width: 50%;
+    }
+    position: fixed;
+    bottom:remSize(0);
+    left:remSize(0);
+    right:remSize(0);
+  }
+
+  > a:nth-of-type(1) {
+    p:nth-of-type(1) {
+      height: 1.70667rem;
+      line-height: 1.70667rem;
+    }
+
+    h4 {
+      height: remSize(80);
+      line-height: remSize(80);
+    }
+    //div {
+    //
+    //  //@extend .float-left;
+    //  //span{
+    //  //  @extend .background-color-blue ,.h7,.font-color-white ,.margin-right-sm,.radius-sm;
+    //  //  padding-bottom:remSize(3);
+    //  //  padding-top:remSize(3);
+    //  //  padding-right:remSize(13);
+    //  //  padding-left: remSize(13);
+    //  //}
+    //}
+  }
+
+  > div > section {
+    p {
+      a, span {
+        border: 1px solid #ccc;
+        min-width: 3.72rem;
+      }
+      span {
+        @extend .h3;
+        padding: remSize(16);
+      }
+      a {
+        padding: remSize(9) remSize(16);
+        font-size: 0.9rem;
+      }
+
+    }
+  }
+}

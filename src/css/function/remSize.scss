@@ -1,0 +1,6 @@
+@charset "utf-8";
+//计算rem,以宽度750的ui稿为测量基准
+$remBase: 750;
+@function remSize($size) {
+  @return $size * 16rem * 1.0 / $remBase;
+}

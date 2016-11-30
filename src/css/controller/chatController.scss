@@ -1,0 +1,159 @@
+.chatController {
+  $inputHeight: remSize(130);
+  .return {
+    display: block;
+    width: 4.3rem;
+    height: 2.2rem;
+    position: fixed;
+    z-index: 90005;
+    left: 0;
+    top: 0;
+
+  }
+  .chatMsg {
+    //height: calc(100% - $inputHeight);
+    position: fixed;
+    top: remSize(100);
+    left: 0;
+    right: 0;
+    bottom: $inputHeight;
+    overflow: hidden;
+    > div {
+      position: relative;
+    }
+    .timeStamp {
+      background-color: #CECECE;
+      font-size: remSize(23);
+      margin: 0 auto;
+      display: inline-block;
+    }
+    .text, .ele {
+      p {
+        max-width: remSize(460);
+        line-height: 1.4;
+        position: relative;
+        background-color: #fff;
+        &:after {
+          right: remSize(-15);
+          position: absolute;
+          content: ' ';
+          display: block;
+          width: 0;
+          height: 0;
+          top: remSize(25);
+          border-top: remSize(15) solid transparent;
+          border-bottom: remSize(15) solid transparent;
+        }
+      }
+    }
+    .ele {
+      p {
+        background-color: #fff;
+        .desc {
+          width: 7rem;
+        }
+      }
+    }
+    .ele.myMsg {
+      p:after {
+        border-left: remSize(20) solid #fff;
+      }
+    }
+    .ele.hisMsg {
+      p:after {
+        border-right: remSize(20) solid #fff;
+      }
+    }
+    .text.myMsg {
+      p {
+        background-color: #94E768;
+      }
+      p:after {
+        border-left: remSize(20) solid #94E768;
+      }
+    }
+    .text.hisMsg {
+      p:after {
+        border-right: remSize(20) solid #fff;
+      }
+    }
+    .myMsg {
+      > * {
+        float: right;
+      }
+      .nickName {
+        text-align: right;
+      }
+      p {
+        &:after {
+          right: remSize(-15);
+        }
+      }
+    }
+    .hisMsg {
+      > * {
+        float: left;
+      }
+      p {
+        &:after {
+          left: remSize(-15);
+        }
+      }
+      .nickName {
+        text-align: left;
+      }
+    }
+  }
+  $chatHeightPadding: remSize(30);
+  .chatInput {
+    background-color: #F5F5F5;
+    //height: $inputHeight - $chatHeightPadding*2;
+    padding-top: $chatHeightPadding;
+    padding-bottom: $chatHeightPadding;
+    line-height: $inputHeight -$chatHeightPadding*2;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    > * {
+      float: left;
+      display: inline-block;
+    }
+    .videoInput {
+      opacity: 0;
+    }
+    .addOther {
+      height: $inputHeight - $chatHeightPadding*2;
+      width: $inputHeight - $chatHeightPadding*2;
+      line-height: $inputHeight - $chatHeightPadding*2;
+      font-size: $inputHeight - $chatHeightPadding*2;
+
+    }
+    .msgInput {
+      width: 9.9rem;
+      margin: 0 $chatHeightPadding;
+      input,textarea {
+        line-height: $inputHeight - $chatHeightPadding*2;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 $chatHeightPadding;
+        -webkit-appearance: none !important;
+      }
+      textarea{
+        line-height: 1em!important;
+      }
+    }
+  }
+  .titleArea{
+    //background-color: rgba(100,100,100,0.5);
+    $navbarHeight: remSize(100);
+    $btnWidth: remSize(200);
+    position: fixed;
+    left: $btnWidth;
+    right: $btnWidth;
+    top:0;
+    height: $navbarHeight;
+    line-height: $navbarHeight;
+    z-index: 11000;
+  }
+}

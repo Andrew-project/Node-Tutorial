@@ -1,0 +1,24 @@
+<div class="inviteNurse  padding-width-md full-block background-color-lightGray">
+    <div class="margin-re-width-md background-color-white padding-left-md padding-top-md border-color-global-base border-line-bottom">
+        <div class="border-line-bottom border-color-global-base clear-float padding-bottom-md">
+            <img class="img-width-square-xs img-height-square-xs bred float-left margin-right-md radius-sm" ng-src="{{headImgUrl}}" alt="">
+            <div class="float-left border-color-blue">
+                <h3 class="margin-bottom-sm">通过短信邀请同事</h3>
+                <p class="h6">填写同事的手机号码，给同事发送邀请短信</p>
+            </div>
+        </div>
+        <div class=" phone-warp">
+            <p class="display-inline">
+                <i class="float-left margin-right-md projectIconfont font-color-global-lighter background-color-white iconfont-width-xs iconfont-height-lg">&#xe63e;</i>
+                <label for="invitePhone" class="h3 display-inline">同事手机号：</label>
+                <input class="h3 padding-height-md" id="invitePhone" type="tel" ng-model="nursePhone" placeholder="请输入手机号码">
+            </p>
+        </div>
+    </div>
+
+    <div class="margin-top-xl">
+        <a class="h2 font-color-white background-color-pink text-center padding-height-md radius-md border-color-pink display-block" ng-click="inviteNurse()">发短信邀请</a>
+        <!--<p class="text-center h2 margin-height-md">或者，你也可以</p>-->
+        <!--<a class="weixinBtn h2 text-center padding-height-md radius-md font-color-white display-block"><i class="iconfont margin-right-md font font-color-white">&#xe67c;</i>直接通过微信邀请</a>-->
+    </div>
+</div>

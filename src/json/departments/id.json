@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "tags": [
+    {
+      "tagId": 1,
+      "tagName": "cold",
+      "categoryId": 1,
+      "categoryName": "category name"
+    }, {
+      "tagId": 2,
+      "tagName": "rhinitis",
+      "categoryId": 1,
+      "categoryName": "category name"
+    }, {
+      "tagId": 3,
+      "tagName": "toothache",
+      "categoryId": 1,
+      "categoryName": "category name"
+    }
+  ]
+}

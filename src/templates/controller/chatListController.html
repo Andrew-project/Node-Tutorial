@@ -1,0 +1,23 @@
+<div class="chatListController">
+    <ul class="background-color-white">
+        <li ng-repeat="chat in chatList|orderBy:'-lastMsg.newMsg' track by $index " ng-show="chat.lastMsg.type!='empty'"
+            ng-click="goChat(chat)">
+            <a>
+                <div class="padding-height-sm padding-width-md clear-float  border-line-bottom border-color-global-base">
+                    <div class="float-left iconfont-xl h1 radius-full  font-color-white text-center {{chat.lastMsg.newMsg===true?'new':''}} {{chat.memberNum>0?'GROUPImg':'C2CImg'}}"
+                         style="font-size: 1.2rem!important;">
+                        {{chat.memberNum>0?'群':(chat.name.charAt(chat.name.length - 1))}}
+                    </div>
+                    <div class="float-left margin-left-sm">
+                        <h3>{{chat.name+(chat.memberNum>0?('('+chat.memberNum+')'):'')}}</h3>
+                        <h4 class="font-color-global-lighter margin-top-xs">
+                            {{chat.lastMsg.type=='text'?(chat.lastMsg.msg.length>10?(chat.lastMsg.msg.slice(0,10)+'...'):chat.lastMsg.msg):chat.lastMsg.type}}</h4>
+                    </div>
+                    <div class="float-right padding-top-xs">
+                        <h4 class="float-right font-color-global-lightest" ng-bind="chat.lastMsg.time"></h4>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>

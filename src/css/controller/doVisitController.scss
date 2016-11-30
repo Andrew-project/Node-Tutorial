@@ -1,0 +1,69 @@
+@charset "utf-8";
+.doVisitController{
+  a{
+    @extend .padding-height-sm,.margin-re-width-md ,.padding-width-md;
+    display: block;
+    &.title.more:after {
+      @extend .h5;
+      content: '发起沟通 \e600';
+      @extend .margin-top-sm,.float-right;
+    }
+    img{
+      @extend .img-width-square-xs ,.img-height-square-xs ,.margin-right-md ,.float-left;
+    }
+    div{
+      display: inline-block;
+      font-size:0;
+      border:none;
+
+      .h3{
+        @extend .margin-bottom-sm;
+      }
+      p,.h7{
+        line-height:1;
+      }
+      span{
+        @extend .background-color-blue ,.h7,.font-color-white ,.margin-right-sm,.radius-sm,.float-left;
+        padding-bottom:remSize(3);
+        padding-top:remSize(3);
+        padding-right:remSize(13);
+        padding-left: remSize(13);
+      }
+    }
+
+  }
+  .iconPositions{
+    position: relative;
+  }
+  .iconPosition{
+    position: absolute;
+    right:remSize(30);
+    top:remSize(65);
+  }
+
+  div{
+    @extend .h3,.margin-re-width-md ,.padding-width-md;
+  }
+  .ps {
+    width: remSize(450);
+    span {
+      @extend .font-color-global-lighter, .padding-top-md;
+    }
+  }
+  .widthSpan{
+    width:remSize(460);
+    line-height: 1.28rem;
+  }
+  .height50{
+    padding-top:remSize(10);
+  }
+  .lineheights{
+    line-height: 1.28rem;
+  }
+  .textArea {
+    border-top: 2px;
+    border-left: 2px;
+    border-right:2px;
+    @extend .border-color-green;
+  }
+}

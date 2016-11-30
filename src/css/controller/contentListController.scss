@@ -1,0 +1,54 @@
+.contentListController {
+  top: 2.13333rem;
+  > section {
+    > section {
+
+      > div {
+        .check-style {
+          margin-top: 0.8rem;
+          margin-bottom: 0.77867rem;
+        }
+        a {
+          i {
+            height:remSize(54);
+            width:remSize(54);
+            font-size:remSize(54);
+            line-height: remSize(54);
+          }
+
+          > h3 {
+            height: 1.152rem;
+            line-height: 1.152rem;
+          }
+
+          span {
+
+            height: 1.152rem;
+            line-height: 1.152rem;
+            font-size: remSize(28);
+            width: remSize(28);
+          }
+        }
+
+      }
+      > section {
+        padding-left: remSize(60);
+        > div {
+          > div {
+            border: 2px solid;
+            border-color: #aaa;
+          }
+          p {
+            margin-left: remSize(60);
+          }
+
+        }
+      }
+
+    }
+  }
+}
+
+.select-m-top {
+  margin-top: -0.7rem;
+}

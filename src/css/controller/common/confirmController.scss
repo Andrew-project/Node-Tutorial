@@ -1,0 +1,49 @@
+.confirmController {
+  $animateTime:.25s;
+  animation: blockShow $animateTime 1;
+  background-color: rgba(1, 1, 1, 0.35);
+  &.hideAnimate {
+    animation: blockHide $animateTime 1;
+  }
+  .confirm {
+    background-color: white;
+    width: 11.6rem;
+    display: inline-block;
+    h3{
+      @extend .padding-bottom-md;
+    }
+    h4{
+      @extend .padding-bottom-md;
+      input{
+        height: remSize(70);
+      }
+    }
+    .btnBlock {
+      div {
+        width: 50%;
+        box-sizing: border-box;
+        float: left;
+        &:last-of-type {
+          border-right: 0;
+        }
+      }
+    }
+  }
+}
+@keyframes blockShow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blockHide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

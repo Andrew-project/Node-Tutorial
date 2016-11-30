@@ -1,0 +1,170 @@
+<div class="a">
+
+    <div ng-show="data.user.length == 0 || service == false || data.user == undefined" class="text-center dataNull">
+        <img class="margin-top-xl" src="img/dataNull.png" alt="">
+        <p class="h3 font-color-base text-center margin-top-md">暂无数据</p>
+    </div>
+
+    <div ng-show="isSelect == false && data.user.length > 0 && service == true"
+         class="patientListController margin-width-md padding-top-md">
+        <!--<a class="background-color-white h3 padding-height-sm text-center display-block margin-bottom-md border-radius-6 projectIconfont">&#xe660;&nbsp;根据标签查找</a>-->
+        <div class="patientTagManageController margin-re-width-md">
+            <a ng-show="data.tags.length != 0 && !isSearch" ng-click="onIsSearchStatus(true)"
+               class="background-color-white h3 padding-height-sm text-center display-block  border-radius-6 projectIconfont margin-width-md margin-height-md">
+                &#xe660;&nbsp;输入关键字查找</a>
+            <div ng-show="isSearch" class="margin-width-md clear-float margin-top-md">
+                <div class="float-left position-warp">
+                    <input ng-model="searchKey" type="text"
+                           class="searchInput del-after float-left background-color-white h3 border-radius-6 padding-height-sm  width-540 padding-left-sm padding-right-70"
+                           placeholder="输入关键字查找">
+                    <span ng-show="searchKey.toString().length > 0" ng-click="onClearInput()"
+                          class="del-input-after padding-width-sm"></span>
+                </div>
+                <span class="float-right h2 cancel-text margin-re-right-md padding-right-md"
+                      ng-click="onIsSearchStatus(false)">取消</span>
+            </div>
+
+        </div>
+
+
+        <!--<div class="background-color-white padding-height-md margin-re-width-md padding-width-md">-->
+        <!--<a ui-sref="otherPatientList({isIn:true})" class="align-inline-2 text-center float-left">-->
+        <!--<span class="iconfont-94 display-block background-color-orange">-->
+        <!--<i class="iconfont text-center  font-color-white"> &#xe65e;</i>-->
+        <!--</span>-->
+        <!--<p class="margin-top-md h3 text-center">住院患者（<span ng-bind="inNum"></span>）</p>-->
+
+        <!--</a>-->
+        <!--<a ui-sref="otherPatientList({isIn:false})" class="align-inline-2 text-center inline-block">-->
+        <!--<span class="iconfont-94 display-block background-color-yellow">-->
+        <!--<i class="iconfont text-center  font-color-white" style="font-size:1.5rem;">&#xe65d;</i>-->
+        <!--</span>-->
+        <!--<p class="margin-top-md h3 text-center">已出院患者（<span ng-bind="outNum"></span>）</p>-->
+        <!--</a>-->
+        <!--</div>-->
+
+        <div class="patientList margin-height-md">
+            <h3>全部患者（<span ng-bind="allNum"></span>）</h3>
+            <section ng-if="!isManage && !user.isNull " ng-repeat="user in data.user | andFilter: searchKey">
+
+                <h4 ng-bind="user.title"></h4>
+                <div class="margin-re-width-md padding-width-md">
+                    <a class="display-block background-color-white margin-re-width-md padding-left-md"
+                       ui-sref="patientDetail({patientId:{{member.userId}}})" ng-repeat="member in user.member"
+                       ng-if="!member.isBlack">
+                        <div class="min-height-80 padding-top-sm padding-bottom-sm h0 {{$index == 0 ? '':'border-line-top border-color-global-base'}}">
+                            <img class="img-width-square-xs img-height-82 margin-right-md float-left radius-md"
+                                 ng-src="{{member.avatarUrl}}" alt="">
+                            <div class="display-inline">
+       <span class=" h2  {{member.tag !=undefined && member.tag.length== 1 &&
+                                 member.tag[0].tagType==2 ?
+                            'min-height-80 float-left line-height-80':''}} {{member.tag == undefined ? 'min-height-80 float-left line-height-80': ''}} "
+             ng-bind="member.name"></span>
+                                <span class="h3 {{member.tag !=undefined && member.tag.length== 1 &&
+                                 member.tag[0].tagType==2 ?
+                            'min-height-80 float-left line-height-80':''}} {{member.tag == undefined ? 'padding-top-sm': ''}}"
+                                      ng-repeat="tag in member.tag" ng-show="tag.tagType == 2 && tag.tagName == nurseType"><i
+                                        class="projectIconfont font-color-yellow background-color-white">&#xe695;</i></span>
+                                <p class="h0 margin-top-sm">
+                                <span class="background-color-blue  h7 font-color-white  margin-right-sm radius-md"
+                                      ng-show="tag.tagType != 2 && tag.tagType != 3 && $index < 3"
+                                      ng-repeat="tag in member.tag" ng-bind="tag.tagName"></span>
+                                    <span class="background-color-blue  h7 font-color-white  margin-right-sm radius-md"
+                                          ng-show="member.tag.length > 3">...</span>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+            <section ng-if="isManage" ng-repeat="user in data.user | andFilter: searchKey">
+                <h4 ng-bind="user.title"></h4>
+                <div class="margin-re-width-md padding-width-md">
+                    <a class="display-block background-color-white margin-re-width-md padding-left-md"
+                       ui-sref="patientDetail({patientId:{{member.userId}}})" ng-repeat="member in user.member">
+                        <div class=" padding-top-sm padding-bottom-sm h0 {{$index == 0 ? '':'border-line-top border-color-global-base'}}">
+                            <img class="img-width-square-xs img-height-square-xs margin-right-md float-left radius-md"
+                                 ng-src="{{member.avatarUrl}}" alt="">
+                            <div class="display-inline {{member.tag != undefined && member.tag.length == 1 && member.tag[0].tagType>2 ? 'margin-top-md':''}}">
+                            <span class="h2 inline-block  {{member.tag !=undefined && member.tag.length== 1 &&
+                                 member.tag[0].tagType==2 ?
+                            'min-height-80 float-left line-height-80':''}} {{member.tag == undefined ? 'min-height-80 float-left line-height-80': ''}}" ng-bind="member.name"></span>
+                                <span class="h3 {{member.tag !=undefined && member.tag.length== 1 &&
+                                 member.tag[0].tagType==2 ?
+                            'min-height-80 float-left line-height-80':''}} {{member.tag == undefined ? 'padding-top-sm': ''}}"
+                                      ng-repeat="tag in member.tag" ng-show="tag.tagType == 2 && tag.tagName == nurseType"><i
+                                        class="projectIconfont font-color-yellow background-color-white">&#xe695;</i></span>
+                                <p class="h0 margin-top-sm">
+                                <span class="background-color-blue  h7 font-color-white  margin-right-sm radius-md"
+                                      ng-show="tag.tagType != 2 && tag.tagType != 3 && $index < 3"
+                                      ng-repeat="tag in member.tag" ng-bind="tag.tagName"></span>
+                                    <span class="background-color-blue  h7 font-color-white  margin-right-sm radius-md"
+                                          ng-show="member.tag.length > 3">...</span>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+<!--选择随访对象-->
+    <div class="patientListController margin-width-md" ng-show="isSelect == true && service == true && data.user.length > 0">
+        <div class="patientList">
+            <section ng-if="isManage" ng-repeat="patient in patientData">
+                <h4 ng-bind="patient.title"></h4>
+                <div class="margin-re-width-md padding-width-md">
+                    <a class="display-block background-color-white margin-re-width-md padding-left-md"
+                       ng-repeat="member in patient.member">
+                        <div class="padding-top-sm padding-bottom-sm h0 {{$index == patient.member.length-1? '':'border-line-bottom border-color-global-base'}}"
+                             ng-click=checkPatientSelf(patientData,member) ng-init="member.sel = false">
+                            <img class="img-width-square-xs img-height-square-xs margin-right-md float-left radius-md"
+                                 ng-src="{{member.avatarUrl}}" alt="">
+                            <div class="display-inline {{member.tag != undefined && member.tag.length == 1 && member.tag[0].tagType>2 ? 'margin-top-md':''}}">
+                                <p class="h2 {{member.tag !=undefined && member.tag.length== 1 &&
+                                 member.tag[0].tagType==2 ?
+                            'min-height-80 float-left line-height-80 ':''}} {{member.tag == undefined ? 'min-height-80 float-left line-height-80': ''}}" ng-bind="member.name"></p>
+                                <p class="h0 margin-top-sm">
+                                <span class="background-color-blue  h7 font-color-white  margin-right-sm radius-md"
+                                      ng-if="tag.tagType !=2 && tag.tagType != 3" ng-repeat="tag in member.tag"
+                                      ng-bind="tag.tagName" ng-show="$index < 3"></span>
+                                    <span class="background-color-blue  h7 font-color-white  margin-right-sm radius-md"
+                                          ng-show="member.tag.length > 3">...</span>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+            <section ng-if="!isManage && !patient.isNull" ng-repeat="patient in patientData">
+                <h4 ng-bind="patient.title"></h4>
+                <div class="margin-re-width-md padding-width-md">
+                    <a class="display-block background-color-white margin-re-width-md padding-left-md"
+                       ng-repeat="member in patient.member" ng-if="!member.isBlack">
+                        <div class="padding-top-sm padding-bottom-sm h0 {{$index == patient.member.length-1? '':'border-line-bottom border-color-global-base'}}"
+                             ng-click=checkPatientSelf(patientData,member) ng-init="member.sel = false">
+                            <img class="img-width-square-xs img-height-square-xs margin-right-md float-left radius-md"
+                                 ng-src="{{member.avatarUrl}}" alt="">
+                            <div class="display-inline">
+                                <p class="h2 {{member.tag !=undefined && member.tag.length== 1 &&
+                                 member.tag[0].tagType==2 ?
+                            'min-height-80 float-left line-height-80 ':''}} {{member.tag == undefined ? 'min-height-80 float-left line-height-80': ''}}" ng-bind="member.name"></p>
+                                <p class="h0 margin-top-sm">
+                                <span class="background-color-blue  h7 font-color-white  margin-right-sm radius-md"
+                                      ng-show="$index < 3 && (tag.tagType < 2)" ng-repeat="tag in member.tag"
+                                      ng-bind="tag.tagName"></span>
+                                    <span class="background-color-blue  h7 font-color-white  margin-right-sm radius-md"
+                                          ng-show="member.tag.length > 3">...</span>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+

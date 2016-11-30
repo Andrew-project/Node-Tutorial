@@ -1,0 +1,16 @@
+<div class="patientRelationController">
+    <div class="background-color-white border-color-global-base border-line-bottom">
+        <div class="border-color-global-base padding-right-md margin-left-md h3 padding-height-lg border-line-top" ng-click="onChangeAttentionClick()">
+            <span class="inline-block margin-top-xs">特别关注</span>
+            <span id="f-switch" class="mui-switch mui-switch-mini float-right {{isAttention==true ? 'border-color-pink background-color-pink mui-active':''}}">
+                <span class="mui-switch-handle"></span>
+            </span>
+        </div>
+        <div class="border-color-global-base padding-right-md margin-left-md h3 padding-height-lg border-line-top" ng-click="onChangeStatusClick()">
+            <span class="inline-block margin-top-xs">加入科室黑名单</span>
+            <span id="s-switch" class="mui-switch mui-switch-mini float-right {{isBlackList==true ? 'border-color-pink background-color-pink mui-active':''}}">
+                <span class="mui-switch-handle"></span>
+            </span>
+        </div>
+    </div>
+</div>

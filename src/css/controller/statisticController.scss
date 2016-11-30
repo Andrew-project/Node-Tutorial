@@ -1,0 +1,37 @@
+.statisticStateController {
+  .img-size {
+     width: 1.6rem;
+     height: 1.6rem;
+    }
+    .font-size-sml {
+      font-size: 0.8em;
+    }
+    .user-echart-size {
+      width: 16rem;
+      height: remSize(320);
+    }
+    .box-size-width {
+      width: 50%;
+      box-sizing: border-box;
+    }
+    .statistic-title {
+      color: #333 !important;
+      display: block;
+      line-height: 0.64rem;
+      position: relative;
+      padding-left: 1.28rem;
+      border-bottom: 1px solid;
+      font-size: 0.704rem !important;
+      font-weight: normal;
+        &:before {
+          position: absolute;
+          left: 0.64rem;
+          width: 2px;
+          background-color: #ff8080;
+          content: ' ';
+          height: 0.64rem;
+          display: block;
+          margin-right: 0.42667rem;
+        }
+    }
+}

@@ -1,0 +1,71 @@
+.dutyChangeController{
+  .dutyButton{
+    width:remSize(60);
+    height:remSize(68);
+  }
+  .iconSize{
+      @extend .inline-block;
+      width:remSize(60);
+      height:remSize(68);
+      line-height:remSize(68);
+  }
+  .many-duty{
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 900000;
+    height: remSize(100);
+    line-height: remSize(100);
+  }
+  .btn-back{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9000000;
+    height: remSize(100);
+    line-height: remSize(100);
+    width: 4.26667rem;
+  }
+  ul{
+    height:remSize(140);
+    li{
+      width:remSize(630);
+      height:remSize(68);
+      line-height:remSize(70);
+      span{
+        width:remSize(90);
+        height:remSize(68);
+      }
+    }
+  }
+  table{
+    tr{
+      td{
+        width:remSize(90);
+        border-right:1px solid #e8e8e8;
+        border-top:1px solid #e8e8e8;
+      }
+      td:nth-of-type(1){
+        width:remSize(125) !important;
+      }
+    }
+  }
+  .widthButton{
+    width:remSize(60);
+  }
+  .pWidth{
+    width:remSize(90);
+    @extend .text-center;
+  }
+  .iconColors{
+    color: #b7b7b7;
+  }
+  @for $i from 1 to 20 {
+    @for $j from 1 to 20 {
+      .height-#{$i}-#{$j} {
+        height: remSize($i / $j * 70);
+        line-height: remSize($i / $j * 70);
+      }
+    }
+  }
+}

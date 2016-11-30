@@ -1,0 +1,19 @@
+
+.submitController{
+  .submitLine{
+    line-height:remSize(45);
+  }
+  .inputs{
+    padding-top:remSize(35);
+    padding-bottom:remSize(35);
+  }
+  .logins{
+    margin-right: remSize(30);
+  }
+  .lines{
+    margin-right:remSize(30);
+  }
+  img{
+    width:remSize(580);
+  }
+}

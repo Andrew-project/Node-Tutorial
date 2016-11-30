@@ -1,0 +1,20 @@
+.toolListController {
+  a {
+    .title.more:after {
+      margin-top: 0.2rem;
+    }
+    i{
+      font-size: remSize(50);
+      height: remSize(50);
+      line-height: remSize(50);
+      width: remSize(50);
+    }
+
+    p {
+      span {
+        height: 1.152rem;
+        line-height: 1.152rem;
+      }
+    }
+  }
+}

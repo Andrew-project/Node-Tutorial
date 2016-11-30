@@ -1,0 +1,23 @@
+<div class="loginController" id="triggerInputWarp">
+
+    <div class="text-center login-logo"><img src="img/logo.png"></div>
+
+    <div class="margin-left-md triggerInput lines border-line-bottom border-color-global-base text-left h3 inputs font-color-global-lightest">
+        <!--<label for="phone" class="iconfont font-color-global-lightest label ">&#xe63e;</label>-->
+        <!--<span class="font-color-global-lightest"></span>-->
+        <input class="h3 font-color-global-lighter full-input" type="number" id="phone" ng-model="phone" placeholder="请输入您的手机号" >
+    </div>
+
+    <div class="margin-left-md triggerInput lines h3 inputs border-line-bottom border-color-global-base">
+        <!--<label for="identifyCode" class="iconfont font-color-global-lightest label ">&#xe61d;</label>-->
+        <input id="identifyCode" ng-model="identifyCode" class="h3 font-color-global-lighter identify-input" placeholder="请输入您的验证码">
+        <div class="fix-width test text-center h3 border-line-left border-color-global-base margin-top-xs"
+             ng-click="getIdentifyCode()">
+            <span ng-show="count > 0" class="padding-width-md ">重新获取(<i ng-show="count >0" ng-bind="count"></i>)</span>
+            <span ng-show="count == 0" class="padding-width-md" ng-click="checkPhone()">获取验证码</span>
+        </div>
+    </div>
+
+    <div class="CommonButtonRed margin-height-xl margin-right-md"
+         ng-click="nextUser()">登录</div>
+</div>

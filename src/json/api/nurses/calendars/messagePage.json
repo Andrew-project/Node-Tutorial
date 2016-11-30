@@ -1,0 +1,99 @@
+{
+  "today": [
+    {
+      "eventId": 234,
+      "type": 1,
+      "title": "张秋丽 第1次随访第1次随访第1次随访",
+      "status": 1,
+      "startTime": 1475769600000,
+      "endTime": 1475855999000
+    },
+    {
+      "eventId": 236,
+      "type": 2,
+      "title": "早班",
+      "status": 1,
+      "startTime": 1475856000000,
+      "endTime": 1475900399000,
+      "content": "{\"rosterId\":32,\"rosterName\":\"早班\"}"
+    }
+  ],
+  "future": [
+    {
+      "eventId": 236,
+      "type": 2,
+      "title": "早班",
+      "status": 1,
+      "startTime": 1475856000000,
+      "endTime": 1475942399000,
+      "content": "{\"rosterId\":32,\"rosterName\":\"早班\"}"
+    },
+    {
+      "eventId": 234,
+      "type": 1,
+      "title": "张秋丽 第1次随访第1次随访第1次随访",
+      "status": 1,
+      "startTime": 1475769600000,
+      "endTime": 1475855999000
+    },
+    {
+      "eventId": 236,
+      "type": 2,
+      "title": "早班",
+      "status": 1,
+      "startTime": 1475856000000,
+      "endTime": 1475942399000,
+      "content": "{\"rosterId\":32,\"rosterName\":\"早班\"}"
+    }
+  ],
+  "expire": [
+    {
+      "eventId": 23,
+      "type": 1,
+      "title": "张秋丽 第1次随访第1次随访第1次随访",
+      "status": 1,
+      "startTime": 1475251200000,
+      "endTime": 1475337599000
+    },
+    {
+      "eventId": 23,
+      "type": 1,
+      "title": "橘子 第10次随访",
+      "status": 1,
+      "startTime": 1475251200000,
+      "endTime": 1475337599000
+    },
+    {
+      "eventId": 236,
+      "type": 2,
+      "title": "早班",
+      "status": 1,
+      "startTime": 1475856000000,
+      "endTime": 1475942399000,
+      "content": "{\"rosterId\":32,\"rosterName\":\"早班\"}"
+    },
+    {
+      "eventId": 236,
+      "type": 2,
+      "title": "早班",
+      "status": 1,
+      "startTime": 1475856000000,
+      "endTime": 1475942399000,
+      "content": "{\"rosterId\":32,\"rosterName\":\"早班\"}"
+    }
+  ],
+  "roster": [
+    {
+      "rosterId": 1,
+      "startTime": 1475769600000,
+      "endTime": 1475820000000,
+      "title": "早中班"
+    },
+    {
+      "rosterId": 2,
+      "startTime": 1475820000,
+      "endTime": 1475838000000,
+      "title": "中班"
+    }
+  ]
+}

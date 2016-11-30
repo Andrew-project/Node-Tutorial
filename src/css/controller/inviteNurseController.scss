@@ -1,0 +1,193 @@
+
+.result-list {
+
+  a {
+    .h2 {
+      line-height: 1;
+    }
+    > div {
+      div {
+        span {
+          padding-bottom: remSize(3);
+          padding-top: remSize(3);
+          padding-right: remSize(13);
+          padding-left: remSize(13);
+        }
+      }
+    }
+  }
+  > a:last-child {
+    > div {
+      border: 0;
+    }
+  }
+}
+
+
+i {
+  font-style: normal;
+}
+
+.hide {
+  display: none;
+}
+
+.check-style {
+  @extend .border-line, .radius-sm;
+  height: remSize(28);
+  width: remSize(28);
+}
+.check-style.allCheck{
+  position: absolute;
+
+}
+
+.check-click {
+  border: 2px solid;
+  border-color: #aaa;
+}
+
+.active-check {
+  @extend .font-color-white, .text-center, .background-color-pink, .border-color-pink;
+  border: 2px solid;
+  width: remSize(28);
+  height: remSize(28);
+  &:after {
+    content: '\e686';
+    font-family: projectIconfont;
+    font-size: 0.5rem !important;
+    font-weight: normal;
+    display: inline-block;
+    width: remSize(28);
+    height: remSize(28);
+    float:right;
+  }
+}
+
+.not-choose-all {
+  @extend .font-color-white, .text-center, .background-color-pink, .border-color-pink;
+  border: 2px solid;
+  width: remSize(28);
+  height: remSize(28);
+  &:after {
+    content: '\e68d';
+    font-family: projectIconfont;
+    font-size: 0.5rem !important;
+    font-weight: normal;
+    display: inline-block;
+    width: remSize(28);
+    height: remSize(28);
+  }
+}
+
+.active-check-all {
+    @extend .font-color-white, .text-center, .background-color-pink, .border-color-pink;
+    border: 2px solid;
+    width: remSize(28);
+    height: remSize(28);
+    &:after {
+      content: '\e686';
+      font-family: projectIconfont;
+      font-size: 0.5rem !important;
+      font-weight: normal;
+      display: inline-block;
+      width: remSize(28);
+      height: remSize(28);
+      float: left;
+    }
+}
+
+.bottom-btn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.tagNurseList {
+
+  &> section {
+    section {
+      &.check-list {
+        > div {
+          position: relative;
+        }
+        a {
+          h2 {
+            line-height: 1;
+          }
+          > div {
+            div {
+              span {
+                padding-bottom: remSize(3);
+                padding-top: remSize(3);
+                padding-right: remSize(13);
+                padding-left: remSize(13);
+              }
+            }
+          }
+
+        }
+
+      }
+
+
+    }
+
+  }
+  &>section:last-child{
+    //&>section>a>div{
+    //  background-color: red;
+    //  border:0;
+    //}
+  }
+//
+
+}
+
+.inviteNurse {
+
+  top: 2.13333rem;
+  .phone-warp {
+    i {
+      height: 1.152rem;
+      line-height: 1.152rem;
+      font-size: 0.9216rem;
+      margin-top: remSize(22);
+
+
+    }
+    label {
+      height: 1.152rem;
+      line-height: 1.152rem;
+    }
+  }
+  .weixinBtn {
+    background-color: #2da243;
+    i {
+      height: 1rem;
+      line-height: 1rem;
+      font-size: 1rem;
+    }
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

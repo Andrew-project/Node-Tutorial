@@ -1,0 +1,39 @@
+<div class="dutyChangeController">
+    <a ng-click="routerToMessageTag()" class="h2 font-color-global-base btn-back"></a>
+    <a ui-sref="dutyList({weekOffset: 0})" class="h2 margin-right-md font-color-global-base many-duty">批量排班</a>
+    <div class="positionFix">
+    <div class="h3 clear-float background-color-darkGreen padding-width-md">
+        <span class="float-left font-color-white padding-height-md" ng-bind="data.scheduleByRoster[0].data[0].date | date: 'yyyy年MM月'"></span>
+        <a ui-sref="dutyCalendar" class="font-color-white float-right padding-height-md h3">切换视图<span class="projectIconfont padding-left-sm font-color-white h4">&#xe670;</span></a>
+    </div>
+    <div class="clear-float background-color-global-base" ng-hide="data.scheduleByRoster == undefined || data.scheduleByRoster.length <= 0">
+        <div class="float-left dutyButton padding-width-md">
+            <p class="h4 font-color-global-lighter" ng-click="prevWeek()"><span class="iconSize text-center projectIconfont font-color-darkGreen">&#xe68a;</span></p>
+            <p class="h4 font-color-global-lighter" ng-click="nextWeek()"><span class="iconSize text-center projectIconfont font-color-darkGreen">&#xe68b;</span></p>
+        </div>
+        <ul class="float-right">
+            <li class="h3"><span ng-repeat="i in dateNum" ng-bind="i.displayDate.split('')[1]" class="{{i.isToday==true?'font-color-pink':''}} inline-block text-center"></span></li>
+            <li class="h3"><span ng-repeat='d in dateNum' ng-bind="d.date | date:'d'" class="{{(d.date | date:'dd') == nowTimeDay && (d.date | date:'MM') == nowTimeMonth ?'border-color-pink border-line-bottom font-color-pink':''}} text-center inline-block"></span></li>
+        </ul>
+    </div>
+    </div>
+    <table class="background-color-lightGray marginTop h3" cellpadding="0" cellspacing="0">
+        <tr ng-repeat="(i,list) in data.scheduleByRoster" class="{{i%2==0?'background-color-white':'background-color-lightGray'}}">
+            <td class="h4 {{i!=0?'border-line-top border-color-global-base':''}}">
+                <p class="text-center font-color-{{list.rosterColorClass}}" ng-bind="list.name>=4?list.name.slice(0,3):list.name"></p>
+            </td>
+            <td class="h4 text-center {{i!=0?'border-line-top border-color-global-base':''}}" ng-repeat="row in list.data" ng-click="setShedules(list , row)">
+                <p ng-repeat="rows in row.executors track by $index">
+                    <span class="height-{{row.executors.length<nums[i] && row.executors.length >= 1 ? (nums[i]):row.executors.length}}-{{row.executors.length}} {{row.executors.length>1 && $index!=row.executors.length-1?'border-line-bottom border-color-global-base':''}} display-block text-center h5" ng-bind="rows.name.length>=4?rows.name.slice(0,3):rows.name" ng-hide="row.executors.length<=0"></span>
+                </p>
+                <!--<p class="h5 projectIconfont padding-height-md iconColors text-center" ng-show="row.executors.length<=0">&#xe650;</p>-->
+                <p class="h5 projectIconfont padding-height-md iconColors text-center" ng-show="row.executors.length<=0">无</p>
+
+            </td>
+        </tr>
+    </table>
+    <div class="text-center dataNull" ng-show="data.scheduleByRoster == undefined || data.scheduleByRoster.length <= 0">
+        <img class="margin-top-xl" src="img/dataNull.png" alt="">
+        <p class="h3 font-color-base text-center margin-top-md">暂无数据</p>
+    </div>
+</div>

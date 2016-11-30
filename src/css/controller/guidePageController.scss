@@ -1,0 +1,45 @@
+.guidePageController {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  .swiper-pagination-bullets {
+    bottom: 1rem !important;
+  }
+  .swiper-pagination-bullet-active {
+    background-color: map_get($baseColorMap, 'main');
+  }
+  .swiper-pagination-bullet {
+    //width: remSize(20);
+    //height: remSize(20);
+    height: 0.4rem;
+    width: 0.4rem;
+    margin: 0 0.34rem !important;
+  }
+  .swiper-slide {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+
+  }
+  .s1 {
+    background-size: 16rem auto;
+    width: 100%;
+    height: 60%;
+    top: 0;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
+  .s2 {
+    background-size: 16rem auto;
+    width: 100%;
+    height: 40%;
+    bottom: 0;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+
+  }
+}

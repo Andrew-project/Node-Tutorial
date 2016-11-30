@@ -1,0 +1,136 @@
+{
+  "target": {
+    "personId": 2,
+    "avatar": "//cdn.v2ex.co/avatar/58d8/26fa/155738_large.png?m=1453173948",
+    "name": "Lee",
+    "tag": [
+      {
+        "tagId": 1,
+        "tagName": "重症"
+      }
+    ]
+  },
+  "title": "张三的随访",
+  "event": [
+    {
+      "id": 324,
+      "title": "第1次",
+      "startTime": 1475769600000,
+      "endTime": 1475855999000,
+      "alertTime": 1475769600000,
+      "executorName": "张三",
+      "purpose": "Check Check Check",
+      "status": 1,
+      "brief": {
+        "actionId": 34,
+        "content": "病情很稳定，按时吃药就能康复。"
+      },
+      "wechat": {
+        "actionId": 2,
+        "status":1,
+        "content": {
+          "article": [
+            {
+              "id": 1,
+              "title": "术后并发症知多少",
+              "read": true
+            },
+            {
+              "id": 2,
+              "title": "优护家，你值得拥有",
+              "read": false
+            }
+          ],
+          "tool": [
+            {
+              "id": 3,
+              "title": "术后第一天的自我检查",
+              "summary": "fancy"
+            },
+            {
+              "id": 2,
+              "title": "术后第二天的自我检查",
+              "summary": "spirit cool"
+            }
+          ],
+          "msg": {
+            "url": "http://yhj.com/event/xx",
+            "WXTemplateMsg": {
+              "templateId": 1,
+              "content": {
+                "welcome": "309牙科护士站向您推送了新的随访任务",
+                "title": "Lee的第1次随访",
+                "purpose": "Check Check Check",
+                "content": "3篇康复宣教，2个康复工具",
+                "date": "2016-10-7",
+                "detailDesc": "请您点击查看本次随访的内容详情"
+              },
+              "from": 0,
+              "to": 323
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 35,
+      "title": "第2次",
+      "startTime": 1475769600000,
+      "endTime": 1475855999000,
+      "alertTime": 1475769600000,
+      "executorName": "张三",
+      "purpose": "Check Check Check",
+      "status": 2,
+      "brief": {
+        "actionId": 34,
+        "content": "病情很稳定，按时吃药就能康复。"
+      },
+      "wechat": {
+        "actionId": 2,
+        "status": 2,
+        "content": {
+          "article": [
+            {
+              "id": 1,
+              "title": "术后并发症知多少",
+              "read": true
+            },
+            {
+              "id": 2,
+              "title": "优护家，你值得拥有",
+              "read": false
+            }
+          ],
+          "tool": [
+            {
+              "id": 3,
+              "title": "术后第一天的自我检查",
+              "summary": "fancy"
+            },
+            {
+              "id": 2,
+              "title": "术后第二天的自我检查",
+              "summary": "spirit cool"
+            }
+          ],
+          "msg": {
+            "url": "http://yhj.com/event/xx",
+            "WXTemplateMsg": {
+              "templateId": 1,
+              "content": {
+                "welcome": "309牙科护士站向您推送了新的随访任务",
+                "title": "Lee的第2次随访",
+                "purpose": "Check Check Check",
+                "content": "3篇康复宣教，2个康复工具",
+                "date": "2016-10-7",
+                "detailDesc": "请您点击查看本次随访的内容详情"
+              },
+              "from": 0,
+              "to": 323
+            }
+          }
+        }
+      }
+    }
+  ]
+}

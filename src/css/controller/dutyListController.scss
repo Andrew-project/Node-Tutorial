@@ -1,0 +1,75 @@
+.dutyListController{
+  .dutyButton{
+    width:remSize(60);
+  }
+  .iconSize{
+    @extend .inline-block;
+    width:remSize(60);
+    height:remSize(68);
+    line-height:remSize(68);
+  }
+  .btn-back{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 90000000;
+    height: remSize(100);
+    line-height: remSize(100);
+    width: 4.26667rem;
+  }
+  .many-duty {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 900000;
+    height: remSize(100);
+    line-height: remSize(100);
+  }
+  ol{
+    li{
+      width:remSize(150);
+    }
+  }
+  ul{
+    height:remSize(140);
+    li{
+      width:remSize(630);
+      height:remSize(68);
+      line-height:remSize(70);
+      span{
+        width:remSize(90);
+        height:remSize(68);
+      }
+    }
+  }
+  table{
+    overflow-y: scroll;
+
+    tr{
+      td{
+        width:remSize(90);
+          border-right:1px solid #e8e8e8;
+          border-top:1px solid #e8e8e8;
+        span{
+          display:block;
+          @extend .padding-height-sm;
+        }
+        vertical-align: middle;
+        text-align: center;
+      }
+      td:nth-of-type(1){
+        width:remSize(125) !important;
+      }
+    }
+  }
+  .borderClass{
+    @extend .border-line,.border-color-green,.radius-md,.inline-block,.text-center;
+    width:remSize(48);
+    height:remSize(48);
+    line-height:remSize(48);
+  }
+
+  .iconColors{
+     color: #b7b7b7;
+   }
+}

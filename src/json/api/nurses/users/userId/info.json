@@ -1,0 +1,42 @@
+{
+  "userId": 100002,
+  "name": "丰乐山",
+  "status": 0,
+  "statusName": "未入院",
+  "identifier": "U-100002",
+  "patientRecord": {
+    "admissionAt": "TODO",
+    "dischargeAt": "TODO",
+    "room": "TODO",
+    "bed": "TODO"
+  },
+  "tag": [
+    {
+      "tagId": 4,
+      "tagName": "口齿不清",
+      "tagType": 1,
+      "tagCategoryId": 4,
+      "tagCategoryName": "default user tag"
+    }
+  ],
+  "departmentTag": {
+    "tag": [
+      {
+        "tagCategoryId": 4,
+        "tagCategoryName": "default user tag",
+        "tag": [
+          {
+            "tagId": 4,
+            "tagName": "口齿不清",
+            "tagType": 1,
+            "tagCategoryId": 4,
+            "tagCategoryName": "default user tag"
+          }
+        ]
+      }
+    ]
+  },
+  "result": {
+    "success": true
+  }
+}

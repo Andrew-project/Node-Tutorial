@@ -1,0 +1,117 @@
+<div class="aletrNurseInfoStateController">
+    <div class="basicInfoController">
+        <div class="alterNurseInfoController">
+            <div class="padding-height-md text-center header-warp">
+                <img  id="id-0-img" class="img-square-lg radius-full " ng-src="{{basic.avatarUrl}}"  alt="">
+                <div id="id-0">
+                    <p ng-show="isPass == false" class="h3 text-center margin-top-md margin-bottom-xs">设置头像</p>
+                </div>
+                <input type="file"  style="display: none;" id="id-0-file" onchange="angular.element(this).scope().putCertificate(this)" ng-model="filePath" accept="image/*" >
+            </div>
+        </div>
+
+        <div class="background-color-white padding-left-md">
+            <p class="border-line-bottom border-color-global-base background-color-white h0 padding-right-md padding-height-md">
+                <i class="icon projectIconfont font-color-global-lightest margin-right-md">&#xe659;</i>
+                <span class="h3 padding-right-md">真实姓名</span>
+                <input ng-readonly="isPass == true"  type="text" id="name" class="h3 font-color-global-lightest" ng-model="basic.name">
+            </p>
+        </div>
+        <!--<div class="padding-left-md background-color-white">-->
+            <!--<p class="border-line-bottom border-color-global-base background-color-white h0 padding-right-md padding-height-md">-->
+                <!--<i class="icon projectIconfont font-color-global-lightest margin-right-md" >&#xe63e;</i>-->
+                <!--<span class="h3 padding-right-md display-inline">手机号码 </span>-->
+                <!--<input placeholder="请输入手机号码" type="text" class="font-color-global-lightest h3" style="width: 6.4rem;" ng-model="basic.phone" ng-readonly="isAlert? false:true">-->
+                <!--<text ng-show="isPass == false" ng-click="setIsAlert()" class="top-down title more float-right font-color-global-lighter paddings h4">修改</text>-->
+            <!--</p>-->
+        <!--</div>-->
+
+        <!--<div ng-show="isAlert" class=" h0  background-color-white padding-left-md">-->
+            <!--<div class="border-line-bottom border-color-global-base padding-height-md padding-right-md">-->
+                <!--<i style=" font-size: 0.93867rem;height: 0.93867rem; width: 0.93867rem; line-height: 0.93867rem;" class="projectIconfont font-color-global-lightest  padding-right-md"></i>-->
+                <!--<input id="identifyCode" ng-model="identifyCode" class="h3 font-color-global-base ng-pristine ng-untouched ng-valid ng-empty" placeholder="请输入您的验证码">-->
+                <!--<div class="fix-width test h0 padding-right-md text-center h3 radius-sm border-line-left border-color-global-base margin-top-xs btn-identifyCode"-->
+                     <!--ng-click="getIdentifyCode()">-->
+                    <!--<span ng-show="count > 0" class="padding-left-md">重新获取(<i class="h3" ng-show="count >0" ng-bind="count"></i>)</span>-->
+                    <!--<span ng-show="count == 0" class="padding-left-md" ng-click="checkPhone()">获取验证码</span>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="padding-left-md h0  background-color-white">
+            <p class="padding-height-md border-color-global-base border-line-bottom background-color-white h0 padding-right-md">
+                <i class="icon projectIconfont font-color-global-lightest margin-right-md">&#xe630;</i>
+                <span class="h3 padding-right-md">身份职称</span>
+                <input ng-readonly="isPass == true" class="font-color-global-lightest h3" type="text" id="professionalTitle" class="h3" placeholder="" ng-model="basic.professionalTitle">
+            </p>
+        </div>
+        <div class="padding-left-md background-color-white" ng-click="goChoiceHospital()">
+            <p  class="float-height padding-height-md border-color-global-base h0 border-color-global-base border-line-bottom">
+                <i class="float-left projectIconfont font-color-global-lightest margin-right-md">&#xe63f;</i>
+                <span class="float-left padding-right-md font-color-global-base h3 display-inline">所在医院 </span>
+                <span class="float-left font-color-global-lightest h3 display-inline overflow-text" ng-bind="basic.organizationName"></span>
+                <text ng-show="isPass == false" class="title more float-right font-color-global-lighter paddings h4 padding-right-md">请选择</text>
+            </p>
+        </div>
+
+        <div class="padding-left-md h0 background-color-white" ng-click="goChoiceDepartment()">
+                <p class="float-height padding-height-md h0 border-color-global-base h0 border-color-global-base border-line-bottom">
+                    <i class=" float-left projectIconfont font-color-global-lightest margin-right-md">&#xe63d;</i>
+                    <span class="float-left padding-right-md h3 font-color-global-base">所在科室 </span>
+                    <span class="float-left font-color-global-lightest h3 display-inline overflow-text" ng-bind="basic.departmentName"></span>
+                    <text ng-show="isPass == false" class="title more float-right font-color-global-lighter paddings h4 padding-right-md">请选择</text>
+                </p>
+        </div>
+    </div>
+
+
+    <div class="submitController professionInfoController">
+        <div class="padding-top-md background-color-white padding-left-md h0">
+            <span  class="h3 padding-right-md">身份证号码</span>
+            <input ng-readonly="isPass == true" type="text" name="IDNumber" ng-model="occupation.IDNumber" placeholder="请输入身份证号码" class="h3 input padding-height-md border-line-bottom border-color-global-base font-color-global-lightest">
+        </div>
+
+        <div ng-repeat="cert in occupation.certs track by $index" ng-show="$index < 2" class="h3 padding-top-md background-color-white padding-left-md" >
+            <span ng-bind="cert.certName == '' ?($index == 0 ? '护士执业证书管理号':'护士专业技术资格证书管理号') :cert.certName "></span><input ng-readonly="isPass == true" type="text" name="practiceNum" ng-model="cert.certNo" placeholder="请输入管理号" class="padding-height-md h3 border-line-bottom border-color-global-base input font-color-global-lightest">
+        </div>
+
+
+
+        <div class="h3 background-color-white padding-left-md ">
+            <p class="background-color-white h3 padding-height-md">其他需要补充的证书</p>
+        </div>
+        <div ng-repeat="cert in occupation.certs track by $index" ng-show="$index > 1">
+            <div class="h3 background-color-white padding-left-md">
+                <div class=" padding-bottom-sm padding-height-md border-line-bottom border-color-global-base">
+                    <span class="padding-right-md">证书名称</span>
+                    <input ng-readonly="isPass == true" type="text" name="otherName" ng-model="cert.certName" class="h3 font-color-global-lightest" placeholder="如工卡">
+                </div>
+            </div>
+            <div class="h3 background-color-white padding-left-md">
+                <div class=" padding-bottom-sm padding-height-md border-line-bottom border-color-global-base">
+                    <span class="padding-right-md">证书编号</span>
+                    <input ng-readonly="isPass == true" type="text" name="otherNum" ng-model="cert.certNo" class="h3 font-color-global-lightest" placeholder="如工卡编号">
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center background-color-white">
+            <img class="margin-height-md" ng-repeat="url in occupation.photocopy track by $index " ng-click="delUrl(url)" ng-src="{{url}}" alt="">
+        </div>
+        <div ng-show="isPass == false" id="fristImg" class=" background-color-white">
+            <section class="padding-height-md">
+                <div id="id-1" class="radius-md border-line border-color-global-base margin-width-xl">
+                    <p id="id-1-text" class="h3 padding-height-md text-center">+上传证书或工卡照片<br>（请保持正面拍摄，要求清晰）</p>
+                    <p style="display:none;" id="id-2-text" class="h3 padding-height-md border-color-global-base border-line-top text-center">+继续上传证书或工卡照片</p>
+                </div>
+                <input onchange="angular.element(this).scope().putCertificate(this)" type="file" style="display: none;"
+                       id="id-1-file" accept="image/*">
+            </section>
+        </div>
+
+    </div>
+    <div ng-show="isPass == false " class="CommonButtonRed margin-top-xl margin-bottom-md"
+         ng-click="register()">
+        提交
+    </div>
+</div>

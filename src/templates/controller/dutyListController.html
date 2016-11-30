@@ -1,0 +1,45 @@
+<div class="dutyListController">
+    <a ng-click="routerToMessageTag()" class="h1 font-color-global-base btn-back"></a>
+    <a ui-sref="setOrder({operateType:'new'})" class="h2 margin-right-md font-color-global-base many-duty">添加班次</a>
+    <div class="positionFix">
+        <ol class="h3 clear-float background-color-lightGray">
+           <li ng-repeat="roster in data.rosters" class="{{roster.rosterId==selRoster?'font-color-pink background-color-white':''}} float-left text-center padding-height-sm h3" ng-click="changeSelRoster(roster.rosterId)" ng-bind="roster.name">
+               <!--<span ng-if="roster.name.length <= 4" ng-bind="roster.name"></span>-->
+               <!--<span ng-if="roster.name.length > 4" ng-bind="roster.name.slice(0,4)+'...'"></span>-->
+           </li>
+           <!--<a>-->
+               <!--<li class="float-left text-center padding-height-md h3"><span class="projectIconfont h4">&#xe650;</span>新班次</li>-->
+            <!--</a>-->
+        </ol>
+         <div class="clear-float padding-left-md background-color-white border-line-bottom border-color-global-base" ng-hide="data.scheduleByPerson ==undefined || data.scheduleByPerson.length <= 0">
+             <div class="float-left dutyButton padding-right-md">
+                <p class="iconfont h4 font-color-global-lighter" ng-click="prevWeek()"><span class="iconSize text-center projectIconfont font-color-darkGreen">&#xe68a;</span></p>
+                 <p class="iconfont h4 font-color-global-lighter" ng-click="nextWeek()"><span class="iconSize text-center projectIconfont font-color-darkGreen">&#xe68b;</span></p>
+              </div>
+               <ul class="float-right">
+                  <li class="h3 text-center"><span ng-repeat="i in dateNum" ng-bind="i.displayDate.split('')[1]" class="{{i.isToday==true?'font-color-pink':''}} display-inline"></span></li>
+                   <li class="h3 text-center"><span ng-repeat='d in dateNum' ng-bind="d.date | date:'d'" class="{{(d.date | date:'dd')==nowTimeDay && (d.date | date:'MM') == nowTimeMonth ?'border-color-pink border-line-bottom font-color-pink':''}} display-inline"></span></li>
+               </ul>
+         </div>
+    </div>
+    <table class="h3 background-color-white background-color-lightGray" cellpadding="0" cellspacing="0">
+        <tr ng-repeat="(i,list) in data.scheduleByPerson">
+            <td class="h4">
+                <p class="text-center" ng-if="list.name.length < 4" ng-bind="list.name"></p>
+                <p class="text-center" ng-if="list.name.length >= 4" ng-bind="list.name.slice(0,3)+'...'"></p>
+            </td>
+           <td ng-repeat="(j,row) in list.data"  ng-click="changeShedule(list,i,j)">
+               <!--<span ng-repeat="roster in data.rosters" ng-bind="roster.name" class="display-block h5 background-color-{{selRoster==roster.rosterId ?roster.colorClass:''}} {{selRoster==roster.rosterId?'font-color-white':''}}" ng-show="row.rosterIds.indexOf(roster.rosterId)>=0"></span>-->
+               <p class="text-center" ng-repeat="roster in data.rosters">
+                   <span class="display-block h5 text-center background-color-{{selRoster==roster.rosterId ?roster.colorClass:''}} {{selRoster==roster.rosterId?'font-color-white':''}}"  ng-if="roster.name.length>3" ng-bind="roster.name.slice(0,3)" ng-show="row.rosterIds.indexOf(roster.rosterId)>=0"></span>
+                   <span class="display-block h5 text-center background-color-{{selRoster==roster.rosterId ?roster.colorClass:''}} {{selRoster==roster.rosterId?'font-color-white':''}}" ng-if="roster.name.length<=3" ng-bind="roster.name" ng-show="row.rosterIds.indexOf(roster.rosterId)>=0"></span>
+               </p>
+               <p class="projectIconfont iconColors h5 padding-height-sm text-center" ng-show="row.rosterIds.length<=0">&#xe650;</p>
+            </td>
+        </tr>
+    </table>
+    <div class="text-center dataNull margin-top-xl" ng-show="data.scheduleByPerson ==undefined || data.scheduleByPerson.length <= 0">
+        <img class="margin-top-xxl" src="img/dataNull.png" alt="">
+        <p class="h3 font-color-base text-center margin-top-md">暂无数据</p>
+    </div>
+</div>

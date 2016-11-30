@@ -1,0 +1,39 @@
+.messageTagStateController {
+  .add {
+    position: fixed;
+    right: remSize(24);
+    top: remSize(24);
+    z-index: 90001;
+    .iconfont {
+    }
+    &:hover {
+      ul {
+        display: block;
+      }
+    }
+    ul {
+      display: none;
+      //width: remSize(280);
+      width: 5.9rem;
+      position: relative;
+      background-color: #383838;
+      top: 2rem;
+      &:after {
+        top: remSize(-15);
+        position: absolute;
+        content: ' ';
+        display: block;
+        width: 0;
+        height: 0;
+        right: remSize(25);
+        border-left: remSize(15) solid transparent;
+        border-right: remSize(15) solid transparent;
+        border-bottom: remSize(20) solid #383838;
+
+      }
+      li {
+        border-color: #5d5d5d;
+      }
+    }
+  }
+}

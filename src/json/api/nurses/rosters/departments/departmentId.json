@@ -1,0 +1,180 @@
+{
+  "success": true,
+  "scheduleByRoster": [
+    {
+      "name" : "早班",
+      "rosterId" : 1,
+      "colorClass" : "green",
+      "data" : [
+        {
+          "date": "1485769600000",
+          "isToday" : true,
+          "notifyId" : 1,
+          "notifyTitle" : "当前时间",
+          "watchers" : [
+            { "name" : "lilei", "id" : 2}
+          ],
+          "displayDate" : "周一",
+          "executors" : [
+            {
+              "name":"易欢",
+              "id":1,
+              "rosterScheduleId": 1
+            },
+            {
+              "name":"苗苗",
+              "id":1,
+              "rosterScheduleId": 3
+            },
+            {
+              "name":"韩梅梅",
+              "id":1,"rosterScheduleId": 3
+            }
+          ]
+        },{
+          "date": "2485769600000",
+          "isToday" : false,
+          "notifyId" : 1,
+          "notifyTitle" : "当前时间",
+          "watchers" : [
+            { "name" : "lilei", "id" : 2}
+          ],
+          "displayDate" : "周二",
+          "executors" : [
+            {
+              "name":"李旭",
+              "id":1,
+              "rosterScheduleId": 1
+
+            }
+          ]
+        },{
+          "date": "2115769600000",
+          "isToday" : false,
+          "notifyId" : 1,
+          "notifyTitle" : "当前时间",
+          "watchers" : [
+            { "name" : "lilei", "id" : 2}
+          ],
+          "displayDate" : "周三",
+          "executors" : [
+            {
+              "name":"韩梅梅",
+              "id":1,
+              "rosterScheduleId": 2
+            }
+          ]
+        },{
+          "date": "2315769600000",
+          "isToday" : false,
+          "notifyId" : 1,
+          "notifyTitle" : "当前时间",
+          "watchers" : [
+            { "name" : "lilei", "id" : 2}
+          ],
+          "displayDate" : "周四",
+          "executors" : [
+            {
+              "name":"董少杰",
+              "id":1,
+              "rosterScheduleId": 2
+            }
+          ]
+        },{
+          "date": "2325769600000",
+          "isToday" : false,
+          "notifyId" : 1,
+          "notifyTitle" : "当前时间",
+          "watchers" : [
+            { "name" : "lilei", "id" : 2}
+          ],
+          "displayDate" : "周五",
+          "executors" : [
+            {
+              "name":"苗苗",
+              "id":1,
+              "rosterScheduleId": 2
+            }
+          ]
+        },{
+          "date": "2765769600000",
+          "isToday" : false,
+          "notifyId" : 1,
+          "notifyTitle" : "当前时间",
+          "watchers" : [
+            { "name" : "lilei", "id" : 2}
+          ],
+          "displayDate" : "周六",
+          "executors" : [
+            {
+              "name":"韩梅梅",
+              "id":1,
+              "rosterScheduleId": 1
+            }
+          ]
+        },{
+          "date": "1476072732000",
+          "isToday" : false,
+          "notifyId" : 1,
+          "notifyTitle" : "当前时间",
+          "watchers" : [
+            { "name" : "lilei", "id" : 2}
+          ],
+          "displayDate" : "周日",
+          "executors" : [
+          ]
+        }
+      ]
+    },{
+      "name" : "晚班",
+      "colorClass" : "pink",
+      "data" : [
+        {
+          "date": "2016-10-1",
+          "isToday" : true,
+          "notifyId" : 1,
+          "notifyTitle" : "当前时间",
+          "watchers" : [
+            { "name" : "lilei", "id" : 2}
+          ],
+          "displayDate" : "周二",
+          "executors" : [
+
+          ]
+        },{
+          "date": "2016-10-1",
+          "isToday" : true,
+          "notifyId" : 1,
+          "notifyTitle" : "当前时间",
+          "watchers" : [
+            { "name" : "lilei", "id" : 2}
+          ],
+          "displayDate" : "周二",
+          "executors" : [
+            {
+              "name":"韩梅梅",
+              "id":1,
+              "rosterScheduleId": 3
+            }
+          ]
+        },{
+          "date": "2016-10-1",
+          "isToday" : true,
+          "notifyId" : 1,
+          "notifyTitle" : "当前时间",
+          "watchers" : [
+            { "name" : "lilei", "id" : 2}
+          ],
+          "displayDate" : "周二",
+          "executors" : [
+            {
+              "name":"韩梅梅",
+              "id":1,
+              "rosterScheduleId": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

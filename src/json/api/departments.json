@@ -1,0 +1,89 @@
+{
+  "organization": [
+    {
+      "organizationId": 1,
+      "organizationName": "Sample Organization",
+      "department": [
+        {
+          "departmentId": 1,
+          "departmentName": "Sample Department"
+        },
+        {
+          "departmentId": 2,
+          "departmentName": "The Department Name"
+        },
+        {
+          "departmentId": 3,
+          "departmentName": "The Department Name"
+        },
+        {
+          "departmentId": 4,
+          "departmentName": "The Department Name"
+        },
+        {
+          "departmentId": 6,
+          "departmentName": "The Department Name"
+        },
+        {
+          "departmentId": 7,
+          "departmentName": "The Department Name"
+        },
+        {
+          "departmentId": 8,
+          "departmentName": "The Department Name"
+        },
+        {
+          "departmentId": 9,
+          "departmentName": "The Department Name"
+        },
+        {
+          "departmentId": 10,
+          "departmentName": "The Department Name"
+        },
+        {
+          "departmentId": 11,
+          "departmentName": "The Department Name"
+        }
+      ]
+    },
+    {
+      "organizationId": 2,
+      "organizationName": "The Org. Name"
+    },
+    {
+      "organizationId": 3,
+      "organizationName": "The Org. Name"
+    },
+    {
+      "organizationId": 4,
+      "organizationName": "The Org. Name"
+    },
+    {
+      "organizationId": 5,
+      "organizationName": "The Org. Name"
+    },
+    {
+      "organizationId": 6,
+      "organizationName": "The Org. Name"
+    },
+    {
+      "organizationId": 7,
+      "organizationName": "The Org. Name"
+    },
+    {
+      "organizationId": 8,
+      "organizationName": "The Org. Name"
+    },
+    {
+      "organizationId": 9,
+      "organizationName": "The Org. Name"
+    },
+    {
+      "organizationId": 10,
+      "organizationName": "The Org. Name"
+    }
+  ],
+  "result": {
+    "success": true
+  }
+}

@@ -1,0 +1,158 @@
+.patientTag {
+
+  .search-icon {
+    width: remSize(500);
+  }
+  .add-icon {
+    position: absolute;
+    margin-top: -.2rem;
+    right: .3rem;
+    width: remSize(40);
+    height: remSize(40);
+    line-height: remSize(40);
+    font-size: remSize(40);
+    color: #8e8e93;
+    text-align: center;
+    background-color: #fff;
+  }
+  .scroll-y {
+    width: remSize(540);
+    height: remSize(59);
+    overflow: hidden;
+    overflow-x: scroll;
+    > div {
+      width: 100000px;
+      height: remSize(59);
+    }
+  }
+  .tag-del {
+    span {
+      background-color: #aaaaaa;
+      &:after {
+        content: '\e65a';
+        font-family: projectIconfont;
+        font-size: remSize(18) !important;
+        font-weight: normal;
+        float: right;
+        height: remSize(38);
+        line-height: remSize(38);
+        margin-left: remSize(16);
+
+      }
+      i {
+        min-width: remSize(58);
+      }
+
+    }
+  }
+  .search-bar {
+
+    > div {
+      width: remSize(540);
+    }
+    a {
+      height: remSize(78);
+      line-height: remSize(78);
+    }
+  }
+  .search-term {
+    > section {
+      top: 5.1rem;
+    }
+    .tag-list {
+      overflow-y: auto;
+
+      p {
+        span {
+          padding: remSize(16) remSize(15);
+        }
+        .active-tag {
+          @extend .font-color-pink, .border-color-pink;
+        }
+      }
+    }
+  }
+  .search-result {
+    top: 2rem;
+    .search-bar {
+      height: remSize(79);
+    }
+  }
+
+  .check-list{
+
+    > div {
+      position: relative;
+    }
+
+    a {
+      //padding-left:remSize(60);
+      h2 {
+        line-height: 1;
+      }
+
+      > div {
+        div {
+          span {
+            padding-bottom: remSize(3);
+            padding-top: remSize(3);
+            padding-right: remSize(13);
+            padding-left: remSize(13);
+          }
+        }
+      }
+
+    }
+    //> div:last-child {
+    //  a {
+    //    div {
+    //      border: 0;
+    //    }
+    //  }
+    //}
+
+  }
+  .active-check {
+    @extend .background-color-pink;
+    &:after {
+      @extend .text-center;
+      content: '\e686';
+      font-family: projectIconfont;
+      font-size: 0.5rem !important;
+      font-weight: normal;
+      display: inline-block;
+      width: remSize(28);
+      height: remSize(28);
+      float: right;
+    }
+  }
+  .check-warp{
+    @extend .padding-width-md;
+    position:absolute;
+    z-index:1;
+    padding-top: 0.8rem;
+    padding-bottom: 0.77867rem;
+
+  }
+
+  .push_btn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 0;
+    &:before {
+      @extend .font-color-white, .display-inline;
+      content: '\e682';
+      font-family: projectIconfont;
+      font-size: remSize(20) !important;
+      font-weight: normal;
+      height: remSize(26);
+      line-height: remSize(26);
+    }
+  }
+  .allCheck:after{
+    float: right;
+  }
+
+}

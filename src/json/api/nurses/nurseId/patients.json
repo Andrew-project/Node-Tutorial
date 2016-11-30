@@ -1,0 +1,69 @@
+{
+  "user": [
+    {
+      "title": "m",
+      "member": [
+        {
+          "userId": 1,
+          "name": "马赛",
+          "status": 0,
+          "statusName": "未入院",
+          "avatarUrl": "",
+          "identiier": "sample identity",
+          "signature": "sample signature",
+          "patientRecord": {
+            "admissionAt": "TODO",
+            "dischargeAt": "TODO",
+            "room": "TODO",
+            "bed": "TODO"
+          },
+          "tag": [
+            {
+              "tagId": 40,
+              "tagName": "a tbg",
+              "tagCategoryId": 34,
+              "tagCategoryName": "tag category"
+            },
+            {
+              "tagId": 41,
+              "tagName": "b tag",
+              "tagCategoryId": 35,
+              "tagCategoryName": "tag category"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "n",
+      "member": [
+        {
+          "userId": 7,
+          "name": "new user name",
+          "status": 0,
+          "statusName": "未入院",
+          "avatarUrl": "",
+          "identiier": "sample identity",
+          "signature": "sample signature",
+          "patientRecord": {
+            "admissionAt": "TODO",
+            "dischargeAt": "TODO",
+            "room": "TODO",
+            "bed": "TODO"
+          },
+          "tag": [
+            {
+              "tagId": 41,
+              "tagName": "a tag",
+              "tagCategoryId": 35,
+              "tagCategoryName": "tag category"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "result": {
+    "success": true
+  }
+}

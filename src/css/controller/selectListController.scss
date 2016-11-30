@@ -1,0 +1,218 @@
+.selectListController {
+  .selAllPatientSection{
+    display: none;
+  }
+  .patientSection+.selAllPatientSection{
+    display: block;
+  }
+  .min-height-80{
+    min-height:remSize(80);
+  }
+  .line-height-80{
+    line-height: remSize(80);
+  }
+  .img-height-square-xs{
+    line-height: 1;
+  }
+  .re-line-height-1 {
+    line-height: 1;
+  }
+  .nurseList {
+    .float-right-all:after{
+      float:right;
+
+    }
+    .title.more:after {
+      @extend .margin-left-xs;
+      font-size: remSize(26) !important;
+      margin-top: 0.09rem;
+    }
+    > section {
+      > div:nth-of-type(1) {
+        p {
+          line-height: 1.5;
+        }
+      }
+      section {
+        &.check-list{
+
+          > div {
+            position: relative;
+          }
+
+          a {
+            padding-left:remSize(60);
+
+            > div {
+              div {
+                span {
+                  padding-bottom: remSize(3);
+                  padding-top: remSize(3);
+                  padding-right: remSize(13);
+                  padding-left: remSize(13);
+                }
+              }
+            }
+
+          }
+          > div:last-child {
+            a {
+              div {
+                border: 0;
+              }
+            }
+          }
+
+        }
+      }
+
+    }
+    >section {
+      &>div:nth-of-type(1) {
+        p {
+          line-height: 1.5;
+        }
+      }
+      section {
+        //@extend .;
+        &.check-list {
+          .active-check {
+            @extend .background-color-pink;
+            &:after {
+              @extend .text-center;
+              content: '\e686';
+              font-family: projectIconfont;
+              font-size: 0.5rem !important;
+              font-weight: normal;
+              display: inline-block;
+              width: remSize(28);
+              height: remSize(28);
+              float: right;
+            }
+          }
+          .check-warp{
+            @extend .padding-width-md;
+            position:absolute;
+            z-index:1;
+            padding-top: 0.8rem;
+            padding-bottom: 0.77867rem;
+
+          }
+          > div {
+            position: relative;
+          }
+          a {
+            h2 {
+              line-height: 1;
+            }
+
+            > div {
+              div {
+                span {
+                  padding-bottom: remSize(3);
+                  padding-top: remSize(3);
+                  padding-right: remSize(13);
+                  padding-left: remSize(13);
+                }
+              }
+            }
+
+          }
+          > div:last-child {
+            a {
+              div {
+                border: 0;
+              }
+            }
+          }
+
+        }
+      }
+
+    }
+  }
+
+  .s-patientList {
+    .title.more:after {
+      @extend .margin-left-xs;
+      font-size: remSize(26) !important;
+      margin-top: 0.09rem;
+    }
+    .all-check:after{
+      float:right;
+
+    }
+    > section {
+
+      section {
+        padding-right: 0 !important;
+        &.check-list {
+          .active-check {
+            @extend .background-color-pink;
+            &:after {
+              @extend .text-center;
+              content: '\e686';
+              font-family: projectIconfont;
+              font-size: 0.5rem !important;
+              font-weight: normal;
+              display: inline-block;
+              width: remSize(28);
+              height: remSize(28);
+              float: right;
+            }
+
+          }
+
+          .check-warp{
+            @extend .padding-width-md;
+            position:absolute;
+            z-index:1;
+            padding-top: 0.8rem;
+            padding-bottom: 0.77867rem;
+
+          }
+          > div {
+            position: relative;
+            padding-left: 0 !important;
+          }
+          a{
+            padding-left:remSize(60);
+            //h2 {
+            //  line-height: 1;
+            //}
+            > div {
+              div {
+                span {
+                  padding-bottom: remSize(3);
+                  padding-top: remSize(3);
+                  padding-right: remSize(13);
+                  padding-left: remSize(13);
+                }
+              }
+            }
+
+          }
+          > div:last-child {
+            a {
+              div {
+                border: 0;
+              }
+            }
+          }
+
+        }
+
+      }
+
+    }
+  }
+
+  .listBorder {
+    height: remSize(40);
+  }
+
+}
+
+.font-size-height {
+  font-size: .64rem;
+}

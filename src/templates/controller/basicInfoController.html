@@ -1,0 +1,51 @@
+<div class=" basicInfoController">
+
+    <div class="alterNurseInfoController">
+        <div  class="padding-top-md text-center header-warp">
+            <img  id="id-1-img" class="img-square-lg radius-full " src="http://yhjstatic.oss-cn-shanghai.aliyuncs.com/avatar/bd143049-fb2e-4eef-80b3-9a7f24f07b1b.png"  alt="">
+            <div>
+                <p id="id-1" class="h3 text-center padding-top-md padding-bottom-md margin-bottom-xs">设置头像</p>
+            </div>
+            <input type="file"  style="display: none;" id="id-1-file" onchange="angular.element(this).scope().changeUserHead(this)" ng-model="filePath" accept="image/*" class="h4">
+        </div>
+    </div>
+
+    <div class="padding-left-md background-color-white">
+        <p class="padding-height-md background-color-white border-color-global-base h0 border-color-global-base border-line-bottom">
+            <i class="margin-right-md background-color-white float-left projectIconfont font-color-global-lightest">&#xe659;</i>
+            <span class="display-inline padding-right-md h3">真实姓名</span>
+            <input class="display-inline h3 font-color-global-lighter" type="text" id="name"  placeholder="请输入真实姓名" ng-model="name">
+        </p>
+    </div>
+
+    <div class="padding-left-md background-color-white ">
+        <p  class="padding-height-md background-color-white border-color-global-base h0 border-color-global-base border-line-bottom">
+            <i class="margin-right-md background-color-white float-left projectIconfont font-color-global-lightest">&#xe630;</i>
+            <span class="display-inline padding-right-md h3">身份职称</span>
+            <input class="display-inline h3 font-color-global-lighter" type="text" id="professionalTitle"  placeholder=" 请输入身份职称" ng-model="professionalTitle">
+        </p>
+    </div>
+    <div class="padding-left-md background-color-white" ng-click="goChoiceHospital()">
+        <p class="float-height padding-height-md background-color-white border-color-global-base h0 border-color-global-base border-line-bottom">
+            <i class="margin-right-md background-color-white float-left projectIconfont font-color-global-lightest">&#xe63f;</i>
+            <span class="float-left display-inline padding-right-md font-color-global-base h3">所在医院 </span>
+            <span class="float-left font-color-global-lightest h3 display-inline overflow-text" ng-bind="hospitalName"></span>
+            <!--<input  class="display-inline h3 font-color-global-lighter" type="text" class="font-color-global-lightest h3" ng-model="hospitalName" readonly>-->
+            <text class="display-inline font-color-global-lighter title more float-right font-color-global-lighter paddings h4 padding-right-md">请选择</text>
+        </p>
+    </div>
+
+    <div class="padding-left-md h0 background-color-white  border-color-global-base  border-line-bottom" ng-click="goChoiceDepartment()">
+        <p class="float-height padding-height-md background-color-white h0">
+            <i class="margin-right-md background-color-white float-left projectIconfont font-color-global-lightest">&#xe63d;</i>
+            <span class="float-left display-inline padding-right-md h3 font-color-global-base">所在科室 </span>
+            <!--<input class="font-color-global-lighter display-inline h3" type="text" ng-model="departmentName" readonly>-->
+            <span class="float-left font-color-global-lightest h3 display-inline overflow-text" ng-bind="departmentName"></span>
+            <text class="font-color-global-lighter display-inline title more float-right font-color-global-lighter paddings h4 padding-right-md">请选择</text>
+        </p>
+    </div>
+
+    <div class="CommonButtonRed margin-height-xl margin-width-md" ng-click="nextTwoUser()">
+        下一步
+    </div>
+</div>

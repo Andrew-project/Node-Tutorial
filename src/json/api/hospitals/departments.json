@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "hospitals": [
+    {
+      "id": 1,
+      "name": "解放军309医院",
+      "departments": [
+        {
+          "id": 1,
+          "name": "神经内科"
+        }, {
+          "id": 1,
+          "name": "神经外科"
+        }
+      ]
+    }, {
+      "id": 2,
+      "name": "解放军301医院",
+      "departments": [
+        {
+          "id": 3,
+          "name": "神经内科"
+        }, {
+          "id": 4,
+          "name": "神经外科"
+        }
+      ]
+    }
+  ]
+}

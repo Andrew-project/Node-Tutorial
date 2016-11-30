@@ -1,0 +1,43 @@
+<div class="userCenter full-block background-color-lightGray">
+    <a ui-sref="aletrNurseInfo" class="title more background-color-white padding-width-md padding-height-md ">
+        <img  class="img-height-square-lg img-width-square-lg bred radius-sm float-left margin-right-md" ng-src="{{data.basic.avatarUrl}}"  alt="">
+
+        <div class="display-inline">
+            <p class="margin-bottom-xs user-info">
+                <span class="display-inline h3" ng-bind="data.basic.name">名称</span>
+
+                <span class="h3 font-color-red" ng-show="data.basic.authorizedStatus == 0">未认证 <i class="projectIconfont font-color-red background-color-white">&#xe65c;</i></span>
+                <span class="h3 font-color-darkGreen" ng-show="data.basic.authorizedStatus == 3" >已认证 <i class="projectIconfont font-color-darkGreen background-color-white">&#xe65b;</i></span>
+                <span class="h3 font-color-darkGreen" ng-show="data.basic.authorizedStatus == 4 || data.basic.authorizedStatus == 5" ><span ng-bind="data.basic.authorizedName"></span><i class="projectIconfont font-color-darkGreen background-color-white">&#xe65b;</i></span>
+                <span class="h3 font-color-darkGreen" ng-show="data.basic.authorizedStatus == 1">认证中 <i class="projectIconfont font-color-darkGreen background-color-white">&#xe65c;</i></span>
+                <span class="h3 font-color-red" ng-show="data.basic.authorizedStatus == 2" >认证未通过 <i class="projectIconfont font-color-red background-color-white">&#xe65b;</i></span>
+            </p>
+            <p class="h4 margin-bottom-xs font-color-lighter">
+                手机号：<span ng-bind="data.basic.phone"></span>
+            </p>
+            <p class="h4 font-color-lighter">
+                <span ng-bind="(data.basic.organizationName.length>8?(data.basic.organizationName.substring(0,8)+'...'):data.basic.organizationName)"></span><i ng-show="data.basic.professionalTitle != undefined && data.basic.organizationName != undefined">，</i><span ng-bind="(data.basic.professionalTitle.length>6?(data.basic.professionalTitle.substring(0,6)+'...'):data.basic.professionalTitle)"></span>
+                <span ng-show="data.basic.professionalTitle == undefined && data.basic.organizationName == undefined">还没有你的医院单位信息，快去完善吧！</span>
+            </p>
+        </div>
+    </a>
+    <!--<div class="margin-top-sm margin-bottom-xs background-color-white skip-a">-->
+        <!--<a  ui-sref="inviteNurse" class="padding-left-md background-color-white padding-top-md display-block h0">-->
+            <!--<p class="padding-bottom-md padding-right-md title more">-->
+                <!--<i class=" projectIconfont  font-color-yellow text-center inviteNurse margin-right-md background-color-white float-left">&#xe658;</i>-->
+                <!--<span class="h3 display-inline">邀请同事</span>-->
+            <!--</p>-->
+        <!--</a>-->
+    <!--</div>-->
+
+    <div class="margin-top-sm margin-bottom-xl background-color-white skip-a">
+        <a  ui-sref="setting" class="padding-left-md background-color-white padding-top-md display-block h0">
+            <p class="padding-bottom-md padding-right-md title more">
+                <i class=" projectIconfont  font-color-blue text-center inviteNurse margin-right-md background-color-white float-left">&#xe779;</i>
+                <span class="h3 display-inline">设置</span>
+            </p>
+        </a>
+    </div>
+
+    <!--<a ng-click="exitSign()" class=" margin-top-lg h2 text-center background-color-white padding-height-md radius-md margin-width-md display-block">退出登录</a>-->
+</div>

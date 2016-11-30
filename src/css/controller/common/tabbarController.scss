@@ -1,0 +1,66 @@
+$tbHeight: (64rem/30);
+.tabbarController {
+
+  //-------------yih
+  height: $tbHeight;
+  //-------------yih
+
+  .tabbarContainer {
+    * {
+      color: map_get($fontColorMap, 'lighter');
+    }
+    border-top: #eaeaea 1px solid;
+    position: fixed;
+    z-index: 9000;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: $tbHeight;
+    //height: remSize(99);
+
+    width: 100%;
+    background-color: rgba(250, 250, 250, 0.93);
+    .new {
+      position: relative;
+      &:after {
+        content: ' ';
+        position: absolute;
+        right: 1.2rem;
+        top: 0.2rem;
+        width: 0.5rem;;
+        height: 0.5rem;;
+        border-radius: 1rem;
+        display: block;
+        background-color: map_get($baseColorMap, 'red');
+      }
+    }
+    .item {
+      @extend .padding-height-xs;
+      &.active {
+        i, h4 {
+          color: map_get($baseColorMap, 'main') !important;
+        }
+      }
+      height: $tbHeight;
+      //height:2.33333rem;
+      float: left;
+      text-align: center;
+      font-size: (13rem/30);
+      i {
+        @extend .text-center,.margin-bottom-xs;
+        color:#999;
+        display: block;
+        font-size: (30rem/30);
+        height: (30rem/30);
+        //line-height: (30em/30) !important;
+        font-style: normal;
+      }
+      h4 {
+        display: block;
+        line-height: 0.7rem;
+        height: 0.7rem;
+        //font-size: 0.45rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  'result':{
+      'success':true
+  },
+  "tags": [
+    {
+      "tagId": 1,
+      "tagName": "name",
+      "tagCategoryId": 1,
+      "tagCategoryName": "tag category name"
+    }
+  ]
+}

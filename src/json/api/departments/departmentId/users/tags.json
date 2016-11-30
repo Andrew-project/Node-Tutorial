@@ -1,0 +1,22 @@
+{
+  "tags": [
+    {
+       "tagCategoryId": 1,
+       "tagCategoryName": "体质",
+       "tags": [
+            {
+                "tagId": 1,
+                "tagName": "tag 1"
+            },
+             {
+                "tagId": 2,
+                "tagName": "tag 2"
+             },
+             {
+                "tagId": 3,
+                "tagName": "tag 3"
+             }
+       ]
+    }
+  ]
+}

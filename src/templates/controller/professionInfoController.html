@@ -1,0 +1,50 @@
+<div class="submitController professionInfoController">
+    <div ng-show="showTitle == true" class="submitLine text-center h3 padding-height-sm">以下为身份认证所需材料<br>完成身份认证，您将可以完整使用优护助手所有功能
+    </div>
+    <div class="h3 padding-top-md background-color-white padding-left-md ">
+        <span>身份证号码</span><input class="font-color-global-lighter h3  input padding-height-md border-line-bottom border-color-global-base" type="text" name="IDNumber" ng-model="IDNumber"
+                                placeholder="请输入身份证号">
+    </div>
+    <div class="h3 padding-top-md background-color-white padding-left-md ">
+        <span>护士执业证书管理号</span><input class="font-color-global-lighter h3 input padding-height-md border-line-bottom border-color-global-base" type="text" name="practiceNum" ng-model="practiceNum"
+                                      placeholder="请输入护士执业证书管理号">
+    </div>
+    <div class="h3 padding-top-md background-color-white padding-left-md">
+        <span>护士专业技术资格证书管理号</span><input class="font-color-global-lighter input h3 padding-height-md border-line-bottom border-color-global-base" type="text" name="technologyNum" ng-model="technologyNum"
+                                         placeholder="请输入护士专业技术资格证书管理号">
+    </div>
+    <div class="h3 background-color-white padding-left-md ">
+        <p class="background-color-white h3 padding-height-md">其他需要补充的证书</p>
+        <div class=" padding-bottom-sm padding-height-md border-line-bottom border-color-global-base"><span class="padding-right-md">证书名称</span><input class="font-color-global-lighter h3" type="text" name="otherName" ng-model="otherName" placeholder="如工卡" style="width:70%;"/>
+        </div>
+    </div>
+    <div class="h3 background-color-white padding-left-md ">
+        <div class=" padding-bottom-sm padding-height-md border-line-bottom border-color-global-base"><span class="padding-right-md">证书编号</span><input class="font-color-global-lighter h3" type="text" name="otherNum" ng-model="otherNum" placeholder="如工卡编号" style="width:70%;"/>
+        </div>
+    </div>
+
+    <div ng-repeat="img in imgArray" class="padding-height-md background-color-white">
+        <img ng-show="img.isShow" ng-click="delImg(img)" ng-src="{{img.url}}" class="radius-md border-line border-color-global-base margin-width-xl"/>
+    </div>
+
+    <div id="fristImg" class=" background-color-white">
+        <section class="padding-height-md">
+            <div id="id-1" class="radius-md border-line border-color-global-base margin-width-xl">
+                <p id="id-1-text" class="h3 padding-height-md text-center">+上传证书或工卡照片<br>（请保持正面拍摄，要求清晰）</p>
+                <p  style="display:none;" id="id-2-text" class="h3 padding-height-md border-color-global-base border-line-top text-center">+继续上传证书或工卡照片</p>
+            </div>
+            <input onchange="angular.element(this).scope().changeUserHead(this)" type="file" style="display: none;"
+                   id="id-1-file" accept="image/*">
+        </section>
+    </div>
+
+    <!--<div id="getImg" style="display:none;" class="background-color-white margin-top-sm">-->
+        <!--<div class="text-center radius-md"><img src="" id="id-1-img" class=" padding-height-md radius-md"></div>-->
+    <!--</div>-->
+
+
+    <div class="CommonButtonRed margin-height-xl margin-width-md"
+         ng-click="register()">
+        提交
+    </div>
+</div>

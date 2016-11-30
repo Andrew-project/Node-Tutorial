@@ -1,0 +1,17 @@
+{
+    "success": true,
+    "IDNumber": "64xxxxxxxxxxxxxx",
+    "certs": [
+        {
+            "certNo": "3243434",
+            "certName": "护士执业证书管理号"
+        }, {
+            "certNo": "234343",
+            "certName": "护士专业技术资格证书管理号"
+        }
+    ],
+    "photocopy":[
+        "http://www.youhujia.com/img/home_icon.png",
+        "http://www.youhujia.com/img/home_icon.png"
+    ]
+}

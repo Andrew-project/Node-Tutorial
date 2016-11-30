@@ -1,0 +1,13 @@
+{
+  "from" : {
+    "identifier" : "1",
+    "signature" : "my-sig",
+    "avatarUrl" : "http://img.com/me.jpg",
+    "nickname" : "Jason Marz"
+  },
+  "to": {
+    "identifier" : "2",
+    "avatarUrl" : "http://img.com/u.jpg",
+    "nickname" : "Tom Cruz"
+  }
+}

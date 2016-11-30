@@ -1,0 +1,100 @@
+<div class="patientTag padding-bottom-xxl">
+
+    <section ng-show="!showResult" class="search-term padding-width-md">
+        <div class="search-bar margin-height-md">
+            <span ng-show="seacheArr.length == 0"
+                  class="background-color-white h3 padding-height-sm padding-width-sm search-icon text-left display-inline border-radius-6  projectIconfont">&#xe660;&nbsp;选择标签</span>
+            <div ng-show="seacheArr.length > 0"
+                 class="background-color-white scroll-y padding-height-xs tag-del radius-md display-inline">
+                <div class="clear-float">
+                    <span class="float-left radius-md h2 float-left text-center font-color-white padding-height-xs padding-width-sm margin-left-sm"
+                          ng-if="seacheArr" ng-repeat="seaTag in seacheArr track by $index"
+                          ng-click="delSeaTag(seaTag)"><i class="font-color-white display-inline"
+                                                          ng-bind="seaTag.tagMember.tagName"></i></span>
+                </div>
+            </div>
+            <a ng-click="tagSeacher()"
+               class="h2 radius-md float-right background-color-pink font-color-white text-center padding-width-md">查找</a>
+        </div>
+
+        <section class="full-block background-color-white padding-width-md tag-list">
+            <div ng-repeat="tag in dataArr.t帊tientTagag">
+                <h2 class="padding-height-md" ng-bind="tag.tagCategoryName">类名</h2>
+                <p class="h3 clear-float">
+                    <span class="margin-right-md margin-bottom-md border-color-global-base border-line text-center float-left radius-md {{tagMember.isActive == true ? 'active-tag' : ''}}"
+                          ng-repeat="tagMember in tag.tag" ng-bind="tagMember.tagName"
+                          ng-click="alertSeach(tag,tagMember)" ng-init="tagMember.isActive == false"></span>
+                </p>
+            </div>
+        </section>
+    </section>
+
+    <seciton ng-show="showResult" class="search-result full-block background-color-lightGray padding-width-md"
+             style="overflow-x: hidden;">
+
+        <div class="search-bar margin-height-md h0">
+            <div class="background-color-white scroll-y padding-height-xs tag-del float-left clear-float"
+                 style="width: 100%;">
+                <div>
+                    <span class="float-left radius-md h2 float-left text-center font-color-white padding-height-xs padding-width-sm margin-left-sm radius-sm"
+                          ng-if="seacheArr" ng-repeat="seaTag in seacheArr track by $index"
+                          ng-click="delSeaTag(seaTag)">
+                        <i class="font-color-white display-inline"
+                           ng-bind="seaTag.tagMember.tagName"></i></span>
+                    <i ng-click="returnAddTag()"
+                       class="background-color-white padding-height-sm padding-width-sm display-inline border-radius-6 icon projectIconfont add-icon">
+                        &#xe669;</i>
+                </div>
+            </div>
+        </div>
+
+        <div class="margin-re-width-md tagNurseList background-color-white">
+            <section ng-repeat="user in userData" ng-init="userData.sel = 0;">
+                <section class="background-color-white margin-re-width-md padding-width-md check-list">
+                    <!--<div ng-click="checkSelf(member)" class="" ng-repeat="member in user.member">-->
+                    <div class="" ng-repeat="member in user.member">
+
+                        <!--<div ng-click="checkSelf(member)"  class="check-warp">-->
+                        <!--<div class="float-left icon-float {{member.sel == true ? 'active-check ': 'check-click'}} check-style" ng-init="member.sel = false"></div>-->
+                        <!--</div>-->
+
+                        <a ui-sref="patientDetail({patientId:{{member.userId}}})"
+                           class=" display-block padding-top-sm clear-float re-padding margin-left-md">
+                            <!--<a class=" display-block padding-top-sm clear-float re-padding margin-left-md">-->
+                            <img class="radius-md img-width-square-xs img-height-square-xs margin-right-md float-left"
+                                 ng-src="{{member.avatarUrl}}">
+                            <div class="padding-bottom-sm h0  border-color-global-base border-line-bottom">
+                                <h2 class="margin-bottom-sm" ng-bind="member.name">名字</h2>
+                                <div class="display-inline">
+                                    <span class="h7 font-color-white  margin-right-sm radius-md"
+                                          ng-show="member.tag == undefined"></span>
+                                    <span class="background-color-blue h7 font-color-white margin-right-sm radius-md"
+                                          ng-repeat="tag in member.tag" ng-bind="tag.tagName"
+                                          ng-show="$index < 3">标签</span>
+                                    <span class="background-color-blue h7 font-color-white margin-right-sm radius-md"
+                                          ng-show="member.tag.length > 3">...</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </section>
+        </div>
+
+
+        <!--<div class="margin-height-md" ng-click="allCheck(userData)">-->
+        <!--<div class=" allCheck check-style {{userData.sel == 2 ? 'active-check' : 'check-click'}} " style="margin-top:0; padding-top:0;"></div>-->
+        <!--<p class="h3 margin-left-md padding-left-md ">全选</p>-->
+        <!--</div>-->
+
+        <!--<a ng-click="pushPatient()" ng-show="show == 'push'"-->
+        <!--class="background-color-pink font-color-white text-center push_btn margin-re-width-md padding-height-xs">-->
+        <!--<h2 class="margin-top-xs background-color-pink font-color-white">向所有人推送患教</h2>-->
+        <!--</a>-->
+        <a ng-show="show == 'communicate'" ng-click="setCommunicate()"
+           class="background-color-pink font-color-white text-center push_btn margin-re-width-md padding-height-xs">
+            <h2 class="margin-top-xs background-color-pink font-color-white">发起沟通</h2>
+        </a>
+    </seciton>
+
+</div>

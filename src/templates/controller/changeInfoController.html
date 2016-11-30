@@ -1,0 +1,63 @@
+
+<div class="changeInfoController">
+    <div class="padding-left-md h3 padding-height-lg text-left background-color-white border-line-bottom border-color-global-base">
+        <label for="name" class="iconfont font-color-global-lightest padding-right-md">&#xe659;</label>
+        <span>真实姓名：</span>
+        <input type="text" id="name" class="h3" placeholder=""
+               ng-model="Name">
+    </div>
+    <div class="padding-left-md h3 padding-height-lg text-left background-color-white border-line-bottom border-color-global-base">
+        <label for="phone" class="iconfont font-color-global-lightest padding-right-md">&#xe659;</label>
+        <span>手机号码：</span>
+        <input type="text" id="phone" class="h3" placeholder="154223434221"
+               ng-model="phone">
+
+    </div>
+    <div class="padding-left-md h3 padding-height-lg text-left background-color-white border-line-bottom border-color-global-base">
+        <label for="identity" class="iconfont font-color-global-lightest padding-right-md">&#xe630;</label>
+        <span>身份职称：</span>
+        <input type="text" id="identity" class="h3" placeholder=""
+               ng-model="identity">
+    </div>
+    <div class="padding-left-md h3 padding-height-lg text-left background-color-white border-line-bottom border-color-global-base">
+        <label for="hospital" class="iconfont font-color-global-lightest padding-right-md">&#xe630;</label>
+        <span>所在医院：</span>
+        <input type="text" id="hospital" class="h3" placeholder=""
+               ng-model="hospital">
+    </div>
+    <div class="padding-left-md h3 padding-height-lg text-left background-color-white border-line-bottom border-color-global-base">
+        <label for="office" class="iconfont font-color-global-lightest padding-right-md">&#xe63d;</label>
+        <span>所在科室：</span>
+        <input type="text" id="office" class="h3" placeholder=""
+               ng-model="office">
+    </div>
+
+
+    <div class="h3 padding-top-md margin-top-sm background-color-white padding-left-md border-line-bottom border-color-global-base">
+        <span>身份证号码：</span><input type="number" name="name" ng-model="name" class="h3 overflow-line-2 padding-height-md">
+    </div>
+    <div class="h3 padding-top-md background-color-white padding-left-md border-line-bottom border-color-global-base">
+        <span>护士执业证书管理号：</span><input type="number" name="control" ng-model="control" class="padding-height-md h3 overflow-line-2">
+    </div>
+    <div class="h3 padding-top-md background-color-white padding-left-md border-line-bottom border-color-global-base">
+        <span>护士专业技术资格证书管理号：</span><input type="number" name="nurseControl" ng-model="nurseControl" class="padding-height-md h3 overflow-line-2">
+    </div>
+
+    <div class="h3 padding-top-md background-color-white padding-left-md border-line-bottom border-color-global-base">
+        <p class="background-color-white h3 padding-height-md">其他需要补充的证书</p>
+        <div class=" padding-bottom-sm padding-height-md"><span>证书名称：</span><input type="text" name="phoneName" ng-model="phoneName" class="h3"></div>
+    </div>
+    <div class="h3 background-color-white padding-left-md border-line-bottom border-color-global-base">
+        <div class=" padding-bottom-sm padding-height-md"><span>证书编号：</span><input type="number" name="phoneNumber" ng-model="phoneNumber" class="h3"></div>
+    </div>
+
+
+    <div class="margin-top-sm background-color-white">
+        <img src="" alt="" class="padding-height-md padding-width-xl radius-md confirm" ng-click="ImgClick()">
+        <!--<div class=""></div>-->
+        <!--<input type="number" >-->
+    </div>
+    <div class="CommonButtonRed margin-height-xl" ng-click="successUser()">
+        完成
+    </div>
+</div>

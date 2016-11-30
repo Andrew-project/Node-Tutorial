@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "rosters": [
+    {
+      "rosterId": 1,
+      "title": "早中班",
+      "description": "This is updating description",
+      "from":"1476072732000",
+      "to": "1476022732000",
+      "gaps": 0,
+      "colorClass": "red"
+    }, {
+      "rosterId": 2,
+      "title": "早中班",
+      "description": "This is updating description",
+      "from":"1476072732000",
+      "to": "147607273222200",
+      "gaps": 0
+    }
+  ]
+}

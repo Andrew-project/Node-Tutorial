@@ -1,0 +1,89 @@
+.patientTagManageController{
+  .fix-warp{
+    position: fixed;
+    bottom:remSize(0);
+    left:remSize(0);
+    right:remSize(0);
+  }
+  .tag-span{
+    a, span {
+      border: 1px solid #ccc;
+      min-width: 3.72rem;
+    }
+    span {
+      position: relative;
+      padding: remSize(16);
+    }
+    a {
+      padding: remSize(9) remSize(16);
+      font-size: 0.9rem;
+    }
+  }
+  .radius-right-none{
+    border-top-right-radius:0;
+    border-bottom-right-radius: 0;
+  }
+  .radius-left-none{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .padding-right-70{
+    padding-right: remSize(77);
+  }
+  .border-radius-6{
+    border-radius: remSize(6);
+  }
+  .width-540{
+    width:remSize(503);
+  }
+  .cancel-text{
+    height: remSize(76);
+    line-height: remSize(76);
+  }
+ .del-tag-after:after{
+    @extend .projectIconfont,.text-center;
+
+    width:remSize(30);
+    height:remSize(30);
+    line-height: remSize(30);
+    content: '\e65a';
+    background-color:#999999;
+    color:#ffffff;
+    border-radius: 50%;
+    font-size: remSize(14);
+  }
+  .position-warp{
+    position: relative;
+  }
+
+  .del-input-after{
+    @extend .padding-width-sm;
+    position: absolute;
+    left:remSize(525);
+    top:remSize(20);
+    background-color: #ffffff;
+    height:remSize(30);
+    line-height: remSize(30);
+
+  }
+  .del-input-after:after{
+    @extend .projectIconfont,.text-center;
+    line-height: remSize(30);
+    height: remSize(30);
+    width:remSize(30);
+    content: '\e65a';
+    background-color:#999999;
+    color:#ffffff;
+    border-radius: 50%;
+    font-size: remSize(14);
+    float: left;
+    margin-top:2px;
+  }
+
+  .del-tag-after:after{
+    top:remSize(-15);
+    right:remSize(-15);
+    position: absolute;
+
+  }
+}

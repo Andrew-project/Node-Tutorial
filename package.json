@@ -1,0 +1,65 @@
+{
+  "name": "nodetest",
+  "version": "0.0.0",
+  "author": "gaoqz",
+  "private": true,
+  "scripts": {
+    "start": "run dev",
+    "pro": "pm2 kill && pm2 start ./bin/www",
+    "dev": "rm -rf pro && rm -rf test && gulp & pm2 kill && pm2 start ./bin/www",
+    "test": "pm2 kill && pm2 start ./bin/www"
+  },
+  "watch": [
+    "src",
+    "bin"
+  ],
+  "ignore_watch" : [
+    "node_modules",
+    "logs",
+    "views"
+  ],
+  "error_file" : "./logs/app-err.log",
+  "out_file"   : "./logs/app-out.log",
+  "dependencies": {
+    "body-parser": "~1.15.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "ejs": "~2.5.2",
+    "express": "~4.14.0",
+    "file-stream-rotator": "0.0.7",
+    "fs": "0.0.1-security",
+    "morgan": "~1.7.0",
+    "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-clean-css": "^2.0.10",
+    "gulp-concat": "^2.6.0",
+    "gulp-css-spriter": "^0.3.3",
+    "gulp-htmlmin": "^2.0.0",
+    "gulp-imagemin": "^3.0.1",
+    "gulp-jshint": "^2.0.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-ngmin": "^0.3.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-rev-append": "^0.1.6",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^1.5.4",
+    "gulp-strip-css-comments": "^1.2.0",
+    "imagemin-pngcrush": "^5.0.0",
+    "jshint": "^2.9.2"
+  },
+  "os": [
+    "darwin",
+    "Linux"
+  ],
+  "bugs": {
+    "email": "qingzu@youhujia.com"
+  }
+}

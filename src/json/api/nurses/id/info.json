@@ -1,0 +1,22 @@
+{
+  "basic": {
+    "id": 7,
+    "name": "nurse name",
+    "avatarUrl": "http://yhjstatic.com",
+    "phone": "18600000",
+    "authorizedName": "未认证",
+    "authorizedStatus": 0,
+    "organizationId": 1,
+    "organizationName": "神经病科",
+    "departmentId": 1,
+    "professionalTitle": "护士"
+  },
+  "occupation": {
+    "IDNumber": "6239493483",
+    "certs": [{"certNo":"21","certName":"护士执业证书管理号"},{"certNo":"21","certName":"护士专业技术资格证书管理号"},{"certNo":"12","certName":"2121"}],
+    "photocopy": ["http://yhjstatic.oss-cn-shanghai.aliyuncs.com/avatar/bc5f7d61-833e-95b9-2300-1fb13725fe05.jpg"]
+  },
+  "result": {
+    "success": true
+  }
+}

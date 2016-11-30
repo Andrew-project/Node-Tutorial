@@ -1,0 +1,15 @@
+$spaceSizeMap: (
+        "xs":remSize(10),
+        "sm":remSize(20),
+        "md":remSize(30),
+        "lg":remSize(40),
+        "xl":remSize(80),
+        'xxl':remSize(120)
+) !global;
+$spaceSizeDebugColorMap: (
+        "xs":#25ca6a,
+        "sm":#ff5865,
+        "md":#ff8a51,
+        "lg":#82bdf2,
+        "xl":#1DBC8E
+) !global;

@@ -1,0 +1,32 @@
+.setTemplateController{
+  .ps{
+    width:remSize(450);
+  }
+  .input{
+    width:remSize(100);
+  }
+  .inputOrder{
+    width:remSize(460);
+    height: remSize(40);
+    margin-right:remSize(60);
+    opacity:1;
+    position:absolute;
+    right:0;
+  }
+  .widthRead{
+    width: remSize(450);
+    //min-height: remSize(40);
+    //line-height: 1rem;
+  }
+  .contentCenterTable{
+    display: table;
+  }
+  .contentCenter{
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .contentspan{
+    line-height: remSize(60);
+  }
+  .content{outline:none;}
+}

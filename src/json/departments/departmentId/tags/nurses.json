@@ -1,0 +1,25 @@
+{
+  "tag": [
+    {
+      "tagId": 1,
+      "tagName": "fat tag",
+      "tagType": 0,
+      "tagCategoryId": 1,
+      "tagCategoryName": "sample category"
+    },
+    {
+      "tagId": 2,
+      "tagName": "fat tag 2",
+      "tagType": 0,
+      "tagCategoryId": 1,
+      "tagCategoryName": "sample category"
+    },
+    {
+      "tagId": 3,
+      "tagName": "fat tag 3",
+      "tagType": 0,
+      "tagCategoryId": 1,
+      "tagCategoryName": "sample category"
+    }
+  ]
+}

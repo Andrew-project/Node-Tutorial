@@ -1,0 +1,22 @@
+<div class="background-color-white nursePlanController">
+    <div class="tltles h3 margin-width-md padding-left-sm padding-height-md border-line-bottom border-color-global-base">
+        康复工具使用情况
+    </div>
+    <ul>
+        <li class="padding-width-md clearFloat" ng-repeat="content in data.content">
+            <div class="h1 margin-height-xs iconfont-height-lg iconfont-width-lg counterDiv float-left padding-height-sm">
+                <div class="iconfont-height-lg iconfont-width-md projectIcon text-center {{$index==0?'font-color-red':''}}{{$index==1?'font-color-orange':''}}{{$index==2?'font-color-yellow':''}}{{$index>2?'font-color-white':''}}">
+                    &#xe61a;</div>
+                <div class="iconfont-height-lg iconfont-width-md counter text-center h4 {{$index<=2?'font-color-white':'font-color-global-base'}}"
+                     ng-bind="$index+1"></div>
+            </div>
+            <div class="info float-right padding-height-sm {{$index!=0?'border-line-top':''}} border-color-global-base with-iconfont-md-sm">
+                <h4 class="font-color-global-lighter" ng-bind="content.name"></h4>
+                <h5 class="font-color-global-lightest">
+                    <span>使用{{content.sumTimes||'0'}}次</span>
+                    <span class="margin-left-md">{{content.uniqueTimes||'0'}}人已使用</span>
+                </h5>
+            </div>
+        </li>
+    </ul>
+</div>

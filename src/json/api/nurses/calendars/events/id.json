@@ -1,0 +1,101 @@
+{
+  "target": {
+    "personId": 2,
+    "avatar": "//cdn.v2ex.co/avatar/58d8/26fa/155738_large.png?m=1453173948",
+    "name": "Lee",
+    "tags": [
+      {
+        "tagId": 1,
+        "tagName": "重症"
+      }
+    ]
+  },
+  "title": "张三的随访",
+  "events": [
+    {
+      "id": 324,
+      "title": "第一次",
+      "startTime": "2016-09-19 20:34:54",
+      "endTime": "2016-09-19 20:35:32",
+      "alertTime": "2016-09-18 20:34:32",
+      "executorName": "张三",
+      "purpose": "Check Check Check",
+      "status": 1,
+      "actions": [
+        {
+          "id": 2,
+          "status": 1,
+          "type": 1,
+          "content": {
+            "brief": {
+              "content": "病情很稳定，按时吃药就能康复。"
+            }
+          }
+        },
+        {
+          "id": 2,
+          "status": 1,
+          "type": 2,
+          "content": {
+            "articles": [
+              {
+                "id": 1,
+                "title": "术后并发症知多少",
+                "read": true
+              },
+              {
+                "id": 2,
+                "title": "优护家，你值得拥有",
+                "read": false
+              }
+            ],
+            "titleools": [
+              {
+                "id": 3,
+                "title": "术后第一天的自我检查",
+                "summary": true
+              },
+              {
+                "id": 2,
+                "title": "术后第二天的自我检查",
+                "summary": false
+              }
+            ],
+            "msg": {
+              "url": "http://yhj.com/event/xx",
+              "wxTemplateMsg": {
+                "templateId": 1,
+                "content": {
+
+                },
+                "from": 0,
+                "to": 323
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 324,
+      "title": "第二次",
+      "startTime": "2016-09-20 20:34:54",
+      "endTime": "2016-09-21 20:35:32",
+      "alertTime": "2016-09-20 20:34:32",
+      "executorName": "张四",
+      "purpose": "Check Check Check",
+      "status": 2,
+      "actions": [
+        {
+          "id": 2,
+          "type": 1,
+          "content": {
+            "brief": {
+              "content": "这个病人病情很稳定，按时吃药就能康复。"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+.blackListController {
+  .edit-black-list {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 9000000;
+    height: remSize(100);
+    line-height: remSize(100);
+  }
+  .bottom-btn {
+    a {
+      width: 50%;
+    }
+  }
+
+  div > section {
+    section {
+      &.check-list {
+        .active-check {
+          @extend .background-color-pink;
+          &:after {
+            @extend .text-center;
+            content: '\e686';
+            font-family: projectIconfont;
+            font-size: 0.5rem !important;
+            font-weight: normal;
+            display: inline-block;
+            width: remSize(28);
+            height: remSize(28);
+            float: right;
+          }
+        }
+
+        .check-click {
+          border: 2px solid;
+          border-color: #aaa;
+        }
+
+        .check-style {
+          @extend .margin-right-md;
+          margin-top: 0.8rem;
+          margin-bottom: 0.77867rem;
+          position: absolute;
+        }
+
+        > div {
+          //@extend ;
+          position: relative;
+        }
+        a {
+          h2 {
+            line-height: 1;
+          }
+
+          > div {
+            div {
+              span {
+                padding-bottom: remSize(3);
+                padding-top: remSize(3);
+                padding-right: remSize(13);
+                padding-left: remSize(13);
+              }
+            }
+          }
+
+        }
+        > div:last-child {
+          a {
+            div {
+              border: 0;
+            }
+          }
+        }
+
+      }
+    }
+
+  }
+  p:nth-of-type(1) {
+    line-height: 1;
+  }
+  h4 {
+    height: remSize(80);
+    line-height: remSize(80);
+  }
+  padding-bottom: remSize(90);
+}

@@ -1,0 +1,74 @@
+
+.nurseListController {
+  .title.more:after {
+    @extend .margin-left-xs;
+    font-size: remSize(26) !important;
+    margin-top: 0.09rem;
+  }
+
+  div > section {
+    section {
+      &.check-list {
+        .active-check {
+          @extend .background-color-pink;
+          &:after {
+            @extend .text-center;
+            content: '\e686';
+            font-family: projectIconfont;
+            font-size: 0.5rem !important;
+            font-weight: normal;
+            display: inline-block;
+            width: remSize(28);
+            height: remSize(28);
+            float: right;
+          }
+        }
+        .check-style {
+          @extend .margin-right-md;
+          margin-top: 0.8rem;
+          margin-bottom: 0.77867rem;
+          position: absolute;
+        }
+        > div {
+          //@extend ;
+          position: relative;
+        }
+        a {
+          h2 {
+            line-height: 1;
+          }
+
+          > div {
+            div {
+              span {
+                padding-bottom: remSize(3);
+                padding-top: remSize(3);
+                padding-right: remSize(13);
+                padding-left: remSize(13);
+              }
+            }
+          }
+
+        }
+        > div:last-child {
+          a {
+            div {
+              border: 0;
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
+
+.btn-m-t {
+  margin-top: -.7rem;
+}
+
+.pos-right {
+  position: absolute;
+  top: .8rem;
+  right: .64rem;
+}

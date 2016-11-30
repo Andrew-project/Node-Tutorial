@@ -1,0 +1,59 @@
+<div class="doVisitController padding-width-md">
+    <a ui-sref="" class="title more background-color-white">
+        <img src="" alt="" ng-src="{{data.target.avatar}}">
+        <div>
+            <p class="h3" ng-bind="data.target.name"></p>
+            <p>
+                <span ng-repeat="tags in data.target.tags">{{tags.tagName}}</span>
+            </p>
+        </div>
+    </a>
+    <div ng-repeat="target in data.events" class="margin-top-sm">
+        <div class="padding-height-lg border-color-global-base border-line-bottom background-color-white">
+            <span class="inline-block setTemplateSpan" ng-bind="target.title"></span>
+            <span class="font-color-global-lighter" ng-bind="target.startTime.split(' ')[0]"></span>
+            <p class="float-right h4">
+                <span class="font-color-green h4" ng-if="target.status == 1">已完成</span>
+                <span class="font-color-pink h4" ng-if="target.status == 2">未完成</span>
+            </p>
+        </div>
+        <div>
+            <div class="padding-height-lg border-color-global-base border-line-bottom clear-float background-color-white">
+                <p class="setTemplateSpan float-left lineheights">随访目的</p>
+                <textarea name="comment" class="font-color-global-lighter float-left widthSpan h4 textArea" ng-bind="target.purpose" ng-readonly="true">请在此处输入文本...</textarea>
+            </div>
+            <div class="iconPositions clear-float background-color-white padding-height-lg border-color-global-base border-line-bottom" ng-repeat="actions in target.actions" ng-show="actions.type == 2">
+                <span class="setTemplateSpan float-left lineheights">推送给患者</span>
+                <div class="float-left">
+                    <p class="lineheights widthSpan">康复宣教</p>
+                    <p class="lineheights widthSpan" ng-repeat="article in actions.content.articles">
+                        <span class="widthRead h4" ng-bind="article.title"></span>
+                        <span class="font-color-green float-right lineheights inline-block h4" ng-if="article.read == true">已读</span>
+                        <span class="font-color-pink float-right lineheights inline-block h4" ng-if="article.read == false">未读</span>
+                    </p>
+                    <div>
+                        <div>
+                            <div class="lineheights widthSpan">康复工具</div>
+                            <p class="h4 lineheights" ng-repeat="article in actions.content.titleools">
+                                <span class="widthRead lineheights h4" ng-bind="article.title"></span>
+                                <span class="font-color-green lineheights float-right inline-block h4" ng-if="article.summary == true">已完成</span>
+                                <span class="font-color-pink lineheights float-right inline-block h4" ng-if="article.summary == false">未完成</span>
+                            </p>
+                        </div>
+                        <p class="padding-height-xs font-color-white inline-block background-color-green radius-md padding-width-xl margin-left-sm h5" ng-click="push()">推送<span class="iconfont font-color-white padding-left-sm">&#xe683;</span></p>
+                        <p class="padding-height-sm  font-color-pink h4 float-left" ng-if="actions.status==1">推送成功</p>
+                        <label class="padding-height-sm  font-color-pink h4 float-right" ng-if="actions.status==2">尚未推送</label>
+                    </div>
+                </div>
+            </div>
+            <div class="padding-height-lg clear-float border-color-global-base border-line-bottom background-color-white"  ng-repeat="actions in target.actions" ng-show="actions.type == 1">
+                <span class="float-left inline-block setTemplateSpan lineheights">随访记要</span>
+                <textarea name="comment" class="font-color-global-lighter float-left widthSpan textArea h4" ng-bind="actions.content.brief.content">请在此处输入文本...</textarea>
+            </div>
+        </div>
+    </div>
+    <p class="confirm radius-md h2 text-center font-color-white background-color-pink padding-height-md margin-top-xl"
+         ng-click="registerUser()">
+        完成本次随访
+    </p>
+</div>

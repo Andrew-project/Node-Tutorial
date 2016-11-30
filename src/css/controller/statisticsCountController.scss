@@ -1,0 +1,33 @@
+.statisticsCountController {
+    .statistic-title {
+      color: #333 !important;
+      display: block;
+      line-height: 0.64rem;
+      position: relative;
+      padding-left: 1.28rem;
+      border-bottom: 1px solid;
+      font-size: 0.704rem !important;
+      font-weight: normal;
+        &:before {
+          position: absolute;
+          left: 0.64rem;
+          width: 2px;
+          background-color: #ff8080;
+          content: ' ';
+          height: 0.64rem;
+          display: block;
+          margin-right: 0.42667rem;
+        }
+    }
+    .with-iconfont-md-sm {
+      width: 13.216rem;
+    }
+   .position-left-right {
+     position: absolute;
+     left: 0;
+     right: 0;
+   }
+    .position-relative {
+      position: relative;
+    }
+}

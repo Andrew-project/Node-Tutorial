@@ -1,0 +1,22 @@
+.chatListController {
+  .C2CImg{
+    background-color: #a5dbfd;
+  }
+  .GROUPImg{
+    background-color: #7ad9c1;
+  }
+  .new {
+    position: relative;
+    &:after {
+      content: ' ';
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 0.5rem;;
+      height: 0.5rem;;
+      border-radius: 1rem;
+      display: block;
+      background-color: map_get($baseColorMap, 'red');
+    }
+  }
+}

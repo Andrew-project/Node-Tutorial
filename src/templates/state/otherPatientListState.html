@@ -1,0 +1,33 @@
+<div class="patientListController margin-width-md">
+    <div class="patientList">
+        <div ng-show="  inLength == 0 && isIn == 1 " class="text-center dataNull">
+            <img class="margin-top-xl" src="img/dataNull.png" alt="">
+            <p class="h3 font-color-base text-center margin-top-md">暂无数据</p>
+        </div>
+        <div ng-show="outLength == 0 && isIn == 0" class="text-center dataNull">
+            <img class="margin-top-xl" src="img/dataNull.png" alt="">
+            <p class="h3 font-color-base text-center margin-top-md">暂无数据</p>
+        </div>
+
+        <section ng-repeat="user in data.user">
+            <h4 ng-bind="user.title" ng-show="(user.member | filter:{status:isIn}).length>0"></h4>
+            <div class="margin-re-width-md padding-width-md">
+                <a class="display-block background-color-white margin-re-width-md padding-left-md"  ng-repeat="member in user.member | filter:{ status:isIn}" ui-sref="patientDetail({patientId:{{member.userId}}})">
+                    <div class="padding-top-sm padding-bottom-sm h0 {{ $index == 0 ? '':'border-line-top border-color-global-base'}}">
+                        <img class="img-width-square-xs img-height-square-xs margin-right-md float-left radius-md" ng-src="{{member.avatarUrl}}" alt="">
+                        <div class="display-inline">
+                            <p class="h2 margin-bottom-sm" ng-bind="member.name"></p>
+                            <p class="h0">
+                                <span class="h7 font-color-white  margin-right-sm radius-md" ng-show="member.tag == undefined"></span>
+                                <span class="background-color-blue  h7 font-color-white  margin-right-sm radius-md" ng-repeat="tag in member.tag" ng-bind="tag.tagName" ng-show="$index < 3"></span>
+                                <span  class="background-color-blue  h7 font-color-white  margin-right-sm radius-md" ng-show="member.tag.length > 3">...</span>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+</div>

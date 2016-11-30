@@ -1,0 +1,23 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "name",
+      "avatarUrl": "http://xxx",
+      "occupation": {
+        "title": "护士"
+      },
+      "identifier": "1",
+      "signature": "I3JK384MDFD",
+      "tags": [
+        {
+          "id": 1,
+          "name": "tag name",
+          "categoryId": 1,
+          "categoryName": "category name"
+        }
+      ],
+
+    }
+  ]
+}

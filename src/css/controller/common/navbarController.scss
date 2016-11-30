@@ -1,0 +1,59 @@
+.navbarController {
+  $navbarHeight: remSize(100);
+  $navbarBackgroundColor: map_get($baseColorMap, 'main');
+  //$navbarFontColor: white;
+
+  $navbarFontColor: #333333;
+  $navbarBackgroundColor:rgba(250, 250, 250, 0.93);
+
+  height: $navbarHeight;
+
+  //background-color: $navbarBackgroundColor;
+  background-color:#f8f8f8;
+  .navbarContent {
+    background-color: $navbarBackgroundColor;
+    border-bottom: #eaeaea 1px solid;
+    height: $navbarHeight;
+    line-height: $navbarHeight;
+    position: fixed;
+    z-index: 9000;
+    left: 0;
+    top: 0;
+    right: 0;
+    > * {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      color: $navbarFontColor;
+    }
+
+    $btnWidth: remSize(200);
+    $btnPadding: remSize(30);
+    .returnBtn {
+      left: 0;
+      width: $btnWidth;
+      padding-left: $btnPadding;
+      //line-height: inherit;
+      height: $navbarHeight;
+      line-height: $navbarHeight;
+    }
+    .customBtn {
+      right: 0;
+      width: $btnWidth;
+      padding-right: $btnPadding;
+      height: $navbarHeight;
+      line-height: $navbarHeight;
+      p{
+        height: $navbarHeight;
+        line-height: $navbarHeight;
+      }
+
+    }
+    .titleContent {
+      left: $btnWidth;
+      right: $btnWidth;
+      height: $navbarHeight;
+      line-height: $navbarHeight;
+    }
+  }
+}

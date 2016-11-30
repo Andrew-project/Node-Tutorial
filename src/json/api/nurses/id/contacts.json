@@ -1,0 +1,128 @@
+{
+  "success": true,
+  "nurses": [
+    {
+      "tagId": 1,
+      "tagName": "tag 1",
+      "members": [
+        {
+          "id": 1,
+          "name": "name",
+          "avatarUrl": "http://xxx",
+          "identifier": "test1",
+          "signature": "xxxxxxxx",
+          "occupation": {
+            "title": "护士"
+          },
+          "tags": [
+            {
+              "id": 1,
+              "name": "tag 1",
+              "categoryId": 1,
+              "categoryName": "category name"
+            }
+          ]
+        },{
+          "id": 2,
+          "name": "name",
+          "avatarUrl": "http://xxx",
+          "identifier": "test1",
+          "signature": "xxxxxxxx",
+          "occupation": {
+            "title": "护士"
+          },
+          "tags": [
+            {
+              "id": 1,
+              "name": "tag 1",
+              "categoryId": 1,
+              "categoryName": "category name"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tagId": 2,
+      "tagName": "tag 1",
+      "members": [
+        {
+          "id": 1,
+          "name": "name",
+          "avatarUrl": "http://xxx",
+          "identifier": "1",
+          "signature": "xxxxxxxx",
+          "occupation": {
+            "title": "护士"
+          },
+          "tags": [
+            {
+              "id": 1,
+              "name": "tag 1",
+              "categoryId": 1,
+              "categoryName": "category name"
+            }
+          ]
+        },{
+          "id": 2,
+          "name": "name",
+          "avatarUrl": "http://xxx",
+          "identifier": "1",
+          "signature": "xxxxxxxx",
+          "occupation": {
+            "title": "护士"
+          },
+          "tags": [
+            {
+              "id": 1,
+              "name": "tag 1",
+              "categoryId": 1,
+              "categoryName": "category name"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tagId": 3,
+      "tagName": "tag 1",
+      "members": [
+        {
+          "id": 1,
+          "name": "name",
+          "avatarUrl": "http://xxx",
+          "identifier": "1",
+          "signature": "xxxxxxxx",
+          "occupation": {
+            "title": "护士"
+          },
+          "tags": [
+            {
+              "id": 1,
+              "name": "tag 1",
+              "categoryId": 1,
+              "categoryName": "category name"
+            }
+          ]
+        },{
+          "id": 2,
+          "name": "name",
+          "avatarUrl": "http://xxx",
+          "identifier": "1",
+          "signature": "xxxxxxxx",
+          "occupation": {
+            "title": "护士"
+          },
+          "tags": [
+            {
+              "id": 1,
+              "name": "tag 1",
+              "categoryId": 1,
+              "categoryName": "category name"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+
+.loginController{
+  background: white;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  .inputs{
+    padding-top:remSize(35);
+    padding-bottom:remSize(35);
+  }
+  .full-input{
+    width:100%;
+  }
+  .identify-input{
+    width:60%;
+  }
+
+  .logins{
+    margin-right: remSize(30);
+  }
+  .lines{
+    margin-right:remSize(30);
+    position: relative;
+  }
+  .test{
+    height:remSize(60);
+    line-height:remSize(63);
+    position: absolute;
+    top:remSize(11);
+    right:0;
+  }
+  div{
+    .label{
+      display: inline-block;
+      width:remSize(36);
+      height:remSize(50);
+      padding-right:remSize(30);
+    }
+  }
+  .label-icon{
+
+    font-size: remSize(46);
+
+
+  }
+  .label-icon-1{
+
+    font-size:remSize(46);
+  }
+  .login-logo{
+    img{
+      width:remSize(372);
+      margin-top:remSize(50);
+      margin-bottom: remSize(50);
+    }
+  }
+  .fix-width{
+    width:6rem;
+  }
+}

@@ -1,0 +1,33 @@
+.nursePlanController{
+  .tltles{
+    &:before {
+      position: absolute;
+      left: 0.64rem;
+      width: 2px;
+      background-color: #00BD8F;
+      content: ' ';
+      height: 0.64rem;
+      display: block;
+    }
+  }
+  .counterDiv {
+    position: relative;
+    > div {
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+  }
+  .title{
+  color: #333 !important;
+  display: block;
+  line-height: 0.64rem;
+  position: relative;
+  padding-left: 1.28rem;
+  border-bottom: 1px solid;
+  }
+  .with-iconfont-md-sm {
+    width: 13.216rem;
+  }
+  .content{outline:none;}
+}

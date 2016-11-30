@@ -1,0 +1,31 @@
+.nurseDetailController {
+  > .nurseDetail {
+    a {
+      .title.more:after {
+        margin-top: 0.2rem;
+      }
+      i {
+        width: remSize(38);
+        height: remSize(38);
+        font-size: remSize(38);
+        line-height: remSize(38);
+      }
+      p {
+        span {
+          height: 1.152rem;
+          line-height: 1.152rem;
+        }
+      }
+    }
+  }
+  .bottom-btn {
+    a {
+      width: 50%;
+    }
+  }
+
+}
+.a-width {
+  width: 100% !important;
+
+}

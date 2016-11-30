@@ -1,0 +1,131 @@
+{
+  "success": true,
+  "users": [
+    {
+      "title": "A",
+      "members": [
+        {
+          "id": 1,
+          "name": "name",
+          "status": 1,
+          "statusName": "入院",
+          "avatarUrl": "http://xxx",
+          "identifier": "1",
+          "signature": "xxxxxxxx",
+          "patientRecord": {
+            "admissionAt": "2016-01-01 11:11:11",
+            "dischargeAt": "2016-01-01 12:12:12",
+            "room": "101",
+            "bed": "5"
+          },
+          "tags": [
+            {
+              "id": 3,
+              "name": "tag 3",
+              "categoryId": 3,
+              "categoryName": "category 3"
+            },
+            {
+              "id": 3,
+              "name": "tag 3",
+              "categoryId": 3,
+              "categoryName": "category 3"
+            },
+            {
+              "id": 3,
+              "name": "tag 3",
+              "categoryId": 3,
+              "categoryName": "category 3"
+            },
+            {
+              "id": 3,
+              "name": "tag 3",
+              "categoryId": 3,
+              "categoryName": "category 3"
+            },
+            {
+              "id": 3,
+              "name": "tag 3",
+              "categoryId": 3,
+              "categoryName": "category 3"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "name": "name",
+          "status": 1,
+          "statusName": "入院",
+          "avatarUrl": "http://xxx",
+          "identifier": "1",
+          "signature": "xxxxxxxx",
+          "patientRecord": {
+            "admissionAt": "2016-01-01 11:11:11",
+            "dischargeAt": "2016-01-01 12:12:12",
+            "room": "101",
+            "bed": "5"
+          },
+          "tags": [
+            {
+              "id": 3,
+              "name": "tag 3",
+              "categoryId": 3,
+              "categoryName": "category 3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "B",
+      "members": [
+        {
+          "id": 1,
+          "name": "name",
+          "status": 1,
+          "statusName": "入院",
+          "avatarUrl": "http://xxx",
+          "identifier": "1",
+          "signature": "xxxxxxxx",
+          "patientRecord": {
+            "admissionAt": "2016-01-01 11:11:11",
+            "dischargeAt": "2016-01-01 12:12:12",
+            "room": "101",
+            "bed": "5"
+          },
+          "tags": [
+            {
+              "id": 3,
+              "name": "tag 3",
+              "categoryId": 3,
+              "categoryName": "category 3"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "name": "name",
+          "status": 1,
+          "statusName": "入院",
+          "avatarUrl": "http://xxx",
+          "identifier": "1",
+          "signature": "xxxxxxxx",
+          "patientRecord": {
+            "admissionAt": "2016-01-01 11:11:11",
+            "dischargeAt": "2016-01-01 12:12:12",
+            "room": "101",
+            "bed": "5"
+          },
+          "tags": [
+            {
+              "id": 3,
+              "name": "tag 3",
+              "categoryId": 3,
+              "categoryName": "category 3"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

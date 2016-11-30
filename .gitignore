@@ -1,0 +1,11 @@
+node_modules
+logs
+pro
+.idea
+main.css
+main.min.css
+src/css/*.css
+src/css/*.css.map
+all.js
+all.min.js
+.DS_Store

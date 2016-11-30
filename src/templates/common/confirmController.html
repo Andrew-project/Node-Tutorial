@@ -1,0 +1,12 @@
+<div class="confirmController {{hideAnimate?'hideAnimate':''}} ng-hide" ng-show="showBlock" style="z-index: 11000">
+    <div class="content">
+        <div class="confirm radius-md padding-top-sm">
+            <h3 ng-bind="title" class="padding-bottom-sm font-color-global-base"></h3>
+            <h4 ng-bind-html="msg" class="padding-bottom-sm font-color-global-lighter"></h4>
+            <div class="btnBlock clearFloat border-line-top border-color-global-base font-color-global-lighter">
+                <div ng-click="btnCancel()" class="padding-sm h5"  ng-bind="cancelText"></div>
+                <div ng-click="btnConfirm()" class="background-color-main padding-sm h5 font-color-white" ng-bind="confirmText"></div>
+            </div>
+        </div>
+    </div>
+</div>

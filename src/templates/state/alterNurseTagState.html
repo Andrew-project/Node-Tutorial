@@ -1,0 +1,25 @@
+<div class="choiceClassController padding-width-md padding-bottom-xl">
+
+    <div ng-repeat="tag in dataArr.tag" class="margin-re-width-md background-color-white padding-left-md h3  divPartent" ng-click="checkTag(tag)">
+        <div class="padding-height-lg {{$index == 0 ? '' : 'border-color-global-base border-line-top'}}">
+            <span class="margin-right-md inline-block" ng-bind="tag.tagName"></span>
+            <span class="projectIconfont float-right h4 {{tag.checked ?'active-check check-style ' :'check-click check-style' }} font-color-pink  positionRight margin-right-md"></span>
+        </div>
+    </div>
+
+
+    <div class=" CommonButtonWrite margin-top-xl" ng-click="newNurseTag()">
+        新建标签
+    </div>
+    <div class=" CommonButtonRed margin-top-xl" ng-click="submitNurseTags()">
+        完成
+    </div>
+    <div class="toastController ng-hide" ng-show="showBlock">
+        <div class="content">
+            <div class="toast radius-md">
+                <p ng-bind-html="msg" class="h4 font-color-white">
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

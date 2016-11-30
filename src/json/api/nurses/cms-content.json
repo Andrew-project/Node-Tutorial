@@ -1,0 +1,61 @@
+{
+  "success": true,
+  "articleGroups": {
+    "name": "文章",
+    "content": [
+      {
+        "id": 1,
+        "name": "Recover Plans",
+        "icon": "&#65473658",
+        "iconColor": "green",
+        "articles": [
+          {
+            "id": 1,
+            "name": "This is an article",
+            "brief": "这是一篇文章",
+            "iconUrl": "http://404.com"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Diet Plans",
+        "icon": "",
+        "iconColor": "red",
+        "articles": [
+          {
+            "id": 2,
+            "name": "This is an article",
+            "brief": "这是一篇文章",
+            "iconUrl": "http://404.com"
+          },
+          {
+            "id": 3,
+            "name": "This is an article",
+            "brief": "这是一篇文章",
+            "iconUrl": "http://404.com"
+          }
+        ]
+      }
+    ]
+  },
+  "toolGroups" : {
+      "name" : "工具",
+      "content" : [
+        {
+          "id" : 1,
+          "name" : "情绪健康",
+          "icon" : "",
+          "iconColor" : "green",
+          "tools" : [
+            {
+              "id" : 1,
+              "name" : "青少年情绪自评工具",
+              "brief": "这是一篇tool",
+              "iconUrl" : "http://505.com"
+            }
+          ]
+        }
+      ]
+  }
+}

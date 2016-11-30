@@ -1,0 +1,16 @@
+.scheduleController{
+  .icons{
+    width:remSize(100);
+    height:remSize(100);
+  }
+  .margin-height-35{
+    margin-top:remSize(35);
+    margin-bottom:remSize(35);
+  }
+  ul{
+    @extend .h3,.background-color-white,.margin-re-width-md,.padding-width-md,.clear-float;
+    li{
+      @extend .padding-height-lg ,.border-line-bottom ,.border-color-global-base ,.padding-width-md ,.margin-re-width-md ,.clear-float;
+    }
+  }
+}

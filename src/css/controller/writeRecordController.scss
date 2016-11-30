@@ -1,0 +1,75 @@
+@charset "utf-8";
+.writeRecordController{
+  a{
+    @extend .background-color-white;
+    div{
+        p{
+          &.title.more:after {
+            @extend .h4;
+            content: '发起沟通  \e600';
+            @extend .float-right;
+          }
+        }
+
+    }
+
+    div{
+      width: 9.2rem;
+      display: inline-block;
+      font-size:0;
+      border:none;
+      p,.h7{
+        line-height:1;
+      }
+      span{
+        @extend .background-color-blue ,.h7,.font-color-white ,.margin-right-sm,.radius-sm,.float-left;
+        padding-bottom:remSize(3);
+        //margin-bottom:remSize(10);
+        padding-top:remSize(3);
+        padding-right:remSize(13);
+        padding-left: remSize(13);
+      }
+    }
+
+  }
+  div{
+    @extend .h3,.background-color-white;
+  }
+  .ps{
+    width: remSize(450);
+    span {
+      @extend .float-left,.font-color-global-lighter, .padding-top-md;
+    }
+  }
+  .widthSpan{
+    width:remSize(460);
+  }
+  .widthRead{
+    width: remSize(450);
+  }
+  .height50{
+    padding-top:remSize(10);
+  }
+  .contentspan{
+    line-height: remSize(60);
+  }
+  .contentCenterTable{
+    display: table;
+  }
+  .contentCenter{
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .content{outline:none;}
+  .record-input {
+    width:remSize(460);
+    float: left;
+    vertical-align: center;
+    line-height: remSize(60);
+    word-break: break-all;
+    //text-decoration: underline;
+  }
+  .record-input:empty::before {
+    content: attr(placeholder);
+  }
+}

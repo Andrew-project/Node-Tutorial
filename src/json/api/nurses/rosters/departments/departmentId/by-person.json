@@ -1,0 +1,139 @@
+
+{
+  "success": true,
+  "rosters" : [
+    {
+      "name" : "早班",
+      "colorClass" : "green",
+      "rosterId" : 1
+    },{
+      "name" : "中班",
+      "colorClass" : "blue",
+      "rosterId" : 2
+    },{
+      "name" : "晚班",
+      "colorClass" : "red",
+      "rosterId" : 3
+    },{
+      "name" : "4班",
+      "colorClass" : "green",
+      "rosterId" : 4
+    },{
+      "name" : "5班",
+      "colorClass" : "green",
+      "rosterId" : 5
+    }
+  ],
+  "scheduleByPerson" : [
+    {
+      "personId" : 2,
+      "name" : "hanmeimei",
+      "data" : [
+        {
+          "rosterIds" : [1,3,5],
+          "rosterScheduleIds" : [1, 4, 9],
+          "isToday": false,
+          "date" : "1476065411000",
+          "displayDate" : "周一"
+        },
+        {
+          "rosterIds" : [],
+          "rosterScheduleIds" : [21, 24, 29],
+          "date" : "1476065411000",
+          "isToday": false,
+          "displayDate" : "周二"
+        },
+        {
+          "rosterIds" : [],
+          "rosterScheduleIds" : [21, 2, 29],
+          "date" : "1476065411000",
+          "isToday": false,
+          "displayDate" : "周三"
+        },
+        {
+          "rosterIds" : [3, 1, 15],
+          "rosterScheduleIds" : [1, 24, 29],
+          "date" : "1476065411000",
+          "isToday": false,
+          "displayDate" : "周四"
+        },
+        {
+          "rosterIds" : [4, 3, 15],
+          "rosterScheduleIds" : [21, 24, 29],
+          "date" : "1476065411000",
+          "isToday": true,
+          "displayDate" : "周五"
+        },
+        {
+          "rosterIds" : [1,3,5],
+          "rosterScheduleIds" : [1, 4, 9],
+          "isToday": false,
+          "date" : "1476065411000",
+          "displayDate" : "周六"
+        },
+        {
+          "rosterIds" : [1,3,5],
+          "rosterScheduleIds" : [1, 4, 9],
+          "isToday": false,
+          "date" : "1476065411000",
+          "displayDate" : "周日"
+        }
+      ]
+    },
+    {
+      "personId" : 3,
+      "name" : "hanhehe",
+      "data" : [
+        {
+          "rosterIds" : [1,3,5],
+          "rosterScheduleIds" : [1, 4, 9],
+          "isToday": false,
+          "date" : "2016-10-1",
+          "displayDate" : "周一"
+        },
+        {
+          "rosterIds" : [],
+          "rosterScheduleIds" : [21, 2, 29],
+          "date" : "2016-10-2",
+          "isToday": true,
+          "displayDate" : "周二"
+        },
+        {
+          "rosterIds" : [],
+          "rosterScheduleIds" : [3, 2, 29],
+          "date" : "2016-10-2",
+          "isToday": true,
+          "displayDate" : "周二"
+        },
+        {
+          "rosterIds" : [11, 3, 15],
+          "rosterScheduleIds" : [21, 24, 29],
+          "date" : "2016-10-2",
+          "isToday": true,
+          "displayDate" : "周二"
+        },
+        {
+          "rosterIds" : [1, 13, 15],
+          "rosterScheduleIds" : [21, 24, 29],
+          "date" : "2016-10-2",
+          "isToday": true,
+          "displayDate" : "周二"
+        },
+        {
+          "rosterIds" : [1,3,5],
+          "rosterScheduleIds" : [1, 4, 9],
+          "isToday": false,
+          "date" : "2016-10-1",
+          "displayDate" : "周一"
+        },
+        {
+          "rosterIds" : [1,3,5],
+          "rosterScheduleIds" : [1, 4, 9],
+          "isToday": false,
+          "date" : "2016-10-1",
+          "displayDate" : "周一"
+        }
+      ]
+    }
+  ]
+}

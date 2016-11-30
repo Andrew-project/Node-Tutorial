@@ -1,0 +1,99 @@
+{
+  "nurse": [
+    {
+      "tagId": 1,
+      "tagName": "fat tag",
+      "member": [
+        {
+          "nurseId": 1,
+          "name": "new nurse name",
+          "avatarUrl": "",
+          "identiier": "",
+          "signature": "",
+          "occupation": {
+            "IDNumber": "2394384394839",
+            "certs": "{}",
+            "photocopy": "{}"
+          },
+          "tag": [
+            {
+              "tagId": 1,
+              "tagName": "fat tag",
+              "tagCategoryId": 1,
+              "tagCategoryName": "Fat category"
+            },
+            {
+              "tagId": 2,
+              "tagName": "fat tag 2",
+              "tagCategoryId": 1,
+              "tagCategoryName": "Fat category"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tagId": 2,
+      "tagName": "fat tag 2",
+      "member": [
+        {
+          "nurseId": 1,
+          "name": "new nurse name",
+          "avatarUrl": "",
+          "identifier": "",
+          "signature": "",
+          "occupation": {
+            "IDNumber": "2394384394839",
+            "certs": "{}",
+            "photocopy": "{}"
+          },
+          "tag": [
+            {
+              "tagId": 1,
+              "tagName": "fat tag",
+              "tagCategoryId": 1,
+              "tagCategoryName": "Fat category"
+            },
+            {
+              "tagId": 2,
+              "tagName": "fat tag 2",
+              "tagCategoryId": 1,
+              "tagCategoryName": "Fat category"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "all": [
+    {
+      "nurseId": 1,
+      "name": "new nurse name",
+      "avatarUrl": "",
+      "identifier": "",
+      "signature": "",
+      "occupation": {
+        "IDNumber": "2394384394839",
+        "certs": "{}",
+        "photocopy": "{}"
+      },
+      "tag": [
+        {
+          "tagId": 1,
+          "tagName": "fat tag",
+          "tagCategoryId": 1,
+          "tagCategoryName": "Fat category"
+        },
+        {
+          "tagId": 2,
+          "tagName": "fat tag 2",
+          "tagCategoryId": 1,
+          "tagCategoryName": "Fat category"
+        }
+      ]
+    }
+  ],
+  "result": {
+    "success": true
+  }
+}

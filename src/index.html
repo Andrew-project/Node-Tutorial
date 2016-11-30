@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="YHZS">
+<head>
+    <meta charset="UTF-8">
+    <title>优护家</title>
+    <meta name="format-detection" content= "telephone=no"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"
+          id="viewport">
+    <script src="js/lib/zepto.min.js"></script>
+    <script src="js/lib/Aliyun-OSS.js"></script>
+    <script src="js/lib/angular.js"></script>
+    <script src="js/lib/angular-ui-router.min.js"></script>
+    <script src="js/lib/swiper.js"></script>
+    <script src="js/lib/echarts.simple.min.js"></script>
+    <script src="js/lib/iscroll.js"></script>
+    <script src="js/lib/json2.js"></script>
+    <script src="js/lib/webim.js"></script>
+    <script src="js/lib/mui.min.js"></script>
+    <script src="js/all.js?rev=@@hash"></script>
+    <link href="iconfont/commonIconfont/iconfont.css?rev=@@hash" rel="stylesheet">
+    <link href="iconfont/projectIconfont/iconfont.css?rev=@@hash" rel="stylesheet">
+    <link href="css/lib/swiper.css" rel="stylesheet">
+    <!--<link href="css/lib/mui.css" rel="stylesheet">-->
+    <link href="css/main.css?rev=@@hash" rel="stylesheet">
+    <!--<link href="css/YHZS.css?rev=@@hash" rel="stylesheet">-->
+</head>
+<body>
+<navbar-controller></navbar-controller>
+<confirm-controller></confirm-controller>
+<loading-controller></loading-controller>
+<toast-controller></toast-controller>
+<ui-view style="width: 16rem;overflow-x: hidden;"></ui-view>
+<tabbar-controller></tabbar-controller>
+</body>
+</html>

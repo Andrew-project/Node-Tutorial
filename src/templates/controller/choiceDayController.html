@@ -1,0 +1,12 @@
+<div class="choiceDayController">
+    <div class="background-color-white border-color-global-base border-line-bottom">
+        <div ng-repeat="alert in data.alert" class="border-color-global-base {{$index!=0?'border-line-top':''}} padding-right-md margin-left-md h3 padding-height-lg"  ng-click="alertClick(alert)">
+            <span class="margin-right-md inline-block" ng-bind="alert.title"></span>
+        </div>
+    </div>
+    <!--<a href="#">-->
+        <!--<div class=" border-color-global-base border-line-bottom background-color-white padding-width-md h3 padding-height-lg">-->
+            <!--<span class="margin-right-md inline-block">后一天</span>-->
+        <!--</div>-->
+    <!--</a>-->
+</div>

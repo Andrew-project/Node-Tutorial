@@ -1,0 +1,10 @@
+<div class="choiceHospital padding-width-md padding-bottom-md">
+    <div ng-click="selHospital(organization)" ng-repeat="organization in dataArr" class="margin-re-width-md  background-color-white padding-left-md h3">
+        <p class="{{organization.$index ==0 ? '' :'border-color-global-base border-line-top'}} padding-height-lg ">
+            <span class="margin-right-md inline-block font-color-global-lighter" ng-bind="organization.organizationName"></span>
+        </p>
+    </div>
+    <!--<div class="CommonButtonWrite margin-top-xl font-color-global-lighter" ng-click="addHospital()">-->
+        <!--没有自己的医院 ？手动添加-->
+    <!--</div>-->
+</div>

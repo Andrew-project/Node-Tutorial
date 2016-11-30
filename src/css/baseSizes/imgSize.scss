@@ -1,0 +1,25 @@
+$imgSizeMap: (
+        "xs":remSize(80),
+        "sm":remSize(90),
+        "md":remSize(100),
+        "lg":remSize(120)
+  //"full":remSize(750)
+)!global;
+$square: (
+        "square":1,
+        "oblong":3.0/2
+        //"banner":75.0/26
+) !global;
+$imgSizeDebugMap: (
+        "xs":remSize(80),
+        "sm":remSize(90),
+        "md":remSize(100),
+        "lg":remSize(120)
+  //"full":remSize(750)
+)!global;
+
+$squareDebug: (
+        "square":1,
+        "oblong":3.0/2
+  //"banner":75.0/26
+) !global;

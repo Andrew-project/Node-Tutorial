@@ -1,0 +1,40 @@
+{
+  "content": [
+    {
+      "id": 1,
+      "name": "1",
+      "uniqueTimes": null,
+      "sumTimes": null
+    },
+    {
+      "id": 2,
+      "name": "2",
+      "uniqueTimes": null,
+      "sumTimes": null
+    },
+    {
+      "id": 34,
+      "name": "234",
+      "uniqueTimes": 1,
+      "sumTimes": 1
+    },
+    {
+      "id": 3,
+      "name": "3",
+      "uniqueTimes": null,
+      "sumTimes": null
+    },
+    {
+      "id": 35,
+      "name": "45",
+      "uniqueTimes": 1,
+      "sumTimes": 1
+    },
+    {
+      "id": 68,
+      "name": "1233",
+      "uniqueTimes": 1,
+      "sumTimes": 1
+    }
+  ]
+}

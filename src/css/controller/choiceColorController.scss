@@ -1,0 +1,59 @@
+.green {
+  background-color: #32c86e;
+}
+.orange {
+  background-color: #fd8a58;
+}
+.red {
+  background-color: #f25d5d;
+}
+.yellow {
+  background-color: #fec24b;
+}
+.blue {
+  background-color: #529eff;
+}
+.pink {
+  background-color: #ff8080;
+}
+.purple {
+  background-color: #8a8ae7;
+}
+.cyan {
+  background-color: #64c1d5;
+}
+.gray {
+  background-color: #999999;
+}
+.light{
+  background-color: #0480ac;
+}
+.lights{
+  background-color: #28275e;
+}
+.purples{
+  background-color: #6a1b9a;
+}
+.greens{
+  background-color: #018765;
+}
+.reddish{
+  background-color: #ec440e;
+}
+
+.choiceColorController {
+  div{
+    p{
+      height:remSize(40);
+      line-height:remSize(40);
+      &:nth-of-type(1){
+        width:remSize(40);
+        height:remSize(40);
+      }
+    }
+  }
+  .pos{
+    position: relative;
+    top: 0.18533rem;
+  }
+}

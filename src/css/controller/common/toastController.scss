@@ -1,0 +1,36 @@
+.toastController {
+  $showTime:2s;
+  opacity: 0;
+  animation: toastShow $showTime 1;
+  .content {
+    display: table-cell;
+    vertical-align: middle;
+    .toast {
+      text-align: center;
+      background-color: rgba(1, 1, 1, 0.8);
+      padding: 0.5rem 0.8rem;
+      color: white;
+      width: 8.2rem;
+      display: inline-block;
+      p {
+        word-break: break-all;
+        line-height: 1.7;
+        text-align: center;
+      }
+    }
+  }
+}
+@keyframes toastShow {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

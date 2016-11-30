@@ -1,0 +1,120 @@
+@charset "utf-8";
+//@import "baseSizes/_main";
+//
+//.debug {
+//  .debugBlock {
+//    position: relative;
+//  }
+//  .debugAfterT {
+//    position: absolute;
+//    left: -1* map_get($spaceSizeMap, 'xl');
+//    right: -1* map_get($spaceSizeMap, 'xl');
+//    top: -1* map_get($spaceSizeMap, 'xl');
+//    background-size: (map_get($spaceSizeMap,'xl')*3) (map_get($spaceSizeMap,'xl')*3);
+//    background-repeat: no-repeat;
+//    background-position: left top;
+//    height: map_get($spaceSizeMap,'xl')*3;
+//  }
+//  .debugAfterB {
+//    position: absolute;
+//    left: -1* map_get($spaceSizeMap, 'xl');
+//    right: -1* map_get($spaceSizeMap, 'xl');
+//    bottom: -1*map_get($spaceSizeMap, 'xl');
+//    background-size: (map_get($spaceSizeMap,'xl')*3) (map_get($spaceSizeMap,'xl')*3);
+//    background-repeat: no-repeat;
+//    background-position: right bottom;
+//    height: map_get($spaceSizeMap,'xl')*3;
+//  }
+//  //字号
+//  @each $name, $size in $hMap {
+//    .#{$name}, #{$name} {
+//      @extend .debugBlock;
+//      .#{$name}-debug {
+//        @extend .debugAfterT;
+//        background-image: url('../public/img/debug/#{$name}.png');
+//      }
+//    }
+//  }
+//
+//  //iconfont size
+//  @each $iconName, $iconSize in $iconSizeMap {
+//    .iconfont-height-#{$iconName}, .iconfont-#{$iconName} {
+//    }
+//    .iconfont-width-#{$iconName}, .iconfont-#{$iconName} {
+//    }
+//  }
+//
+//  //img size
+//  @each $name2, $imgSize in $imgSizeMap {
+//    @each $name1, $sqSize in $square {
+//      .img-width-#{$name1}-#{$name2}, .img-#{$name1}-#{$name2} {
+//      }
+//      .img-height-#{$name1}-#{$name2}, .img-#{$name1}-#{$name2} {
+//      }
+//    }
+//  }
+//
+//  //margin size
+//  @each $name, $size in $spaceSizeMap {
+//    .margin-top-#{$name}, .margin-height-#{$name}, .margin-#{$name} {
+//      @extend .debugBlock;
+//      .margin-top-#{$name}-debug {
+//        @extend .debugAfterT;
+//        background-image: url('../public/img/debug/m-#{$name}-top.png');
+//      }
+//    }
+//    .margin-bottom-#{$name}, .margin-height-#{$name}, .margin-#{$name} {
+//      @extend .debugBlock;
+//      .margin-bottom-#{$name}-debug {
+//        @extend .debugAfterB;
+//        background-image: url('../public/img/debug/m-#{$name}-bottom.png');
+//      }
+//    }
+//    .margin-left-#{$name}, .margin-width-#{$name}, .margin-#{$name} {
+//      @extend .debugBlock;
+//      .margin-left-#{$name}-debug {
+//        @extend .debugAfterT;
+//        background-image: url('../public/img/debug/m-#{$name}-left.png');
+//      }
+//    }
+//    .margin-right-#{$name}, .margin-width-#{$name}, .margin-#{$name} {
+//      @extend .debugBlock;
+//      .margin-right-#{$name}-debug {
+//        @extend .debugAfterB;
+//        background-image: url('../public/img/debug/m-#{$name}-right.png');
+//      }
+//    }
+//  }
+//
+//  //padding size
+//  @each $name, $size in $spaceSizeMap {
+//    .padding-top-#{$name}, .padding-height-#{$name}, .padding-#{$name} {
+//      @extend .debugBlock;
+//      .padding-top-#{$name}-debug {
+//        @extend .debugAfterT;
+//        background-image: url('../public/img/debug/p-#{$name}-top.png');
+//      }
+//    }
+//    .padding-bottom-#{$name}, .padding-height-#{$name}, .padding-#{$name} {
+//      @extend .debugBlock;
+//      .padding-bottom-#{$name}-debug {
+//        @extend .debugAfterB;
+//        background-image: url('../public/img/debug/p-#{$name}-bottom.png');
+//      }
+//    }
+//    .padding-left-#{$name}, .padding-width-#{$name}, .padding-#{$name} {
+//      @extend .debugBlock;
+//      .padding-left-#{$name}-debug {
+//        @extend .debugAfterT;
+//        background-image: url('../public/img/debug/p-#{$name}-left.png');
+//      }
+//    }
+//    .padding-right-#{$name}, .padding-width-#{$name}, .padding-#{$name} {
+//      @extend .debugBlock;
+//      .padding-right-#{$name}-debug {
+//        @extend .debugAfterB;
+//        background-image: url('../public/img/debug/p-#{$name}-right.png');
+//      }
+//    }
+//  }
+//}

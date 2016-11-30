@@ -1,0 +1,495 @@
+@charset "utf-8";
+//@import "function/_main";
+//@import "baseSizes/_main";
+//通用字体颜色／边框色／背景色
+//--------lix
+//paiban__________
+.positionFix{
+  position: fixed;
+  top:2.13333rem;
+  left:remSize(0);
+  right:remSize(0);
+}
+.marginTop{
+  margin-top:remSize(237);
+}
+//input__________
+.minWidth{
+  width:remSize(460)!important;
+}
+//textArea_______
+//textarea::-webkit-input-placeholder {
+//  /*text-decoration: underline;*/
+//  color: #666;
+//}
+//textarea:-moz-placeholder {
+//  color: #666;
+//}
+//textarea::-moz-placeholder {
+//  color: #666;
+//}
+//textarea:-ms-input-placeholder {
+//  color: #666;
+//}
+//input,textarea {
+//  -webkit-appearance: none;
+//}
+.textarea {
+  border: none;
+  resize: none;
+  background-color: white;
+  font-size: 20px;
+  border-bottom:1px solid #32c86e;
+}
+//textArea___________
+.spans{
+  width:18%;
+}
+.maxHeight{
+  right:remSize(40);
+}
+.pos{
+  position: relative;
+  top: 0.18533rem;
+}
+.setTemplateSpan{
+  width:remSize(210);
+}
+.CommonButtonRed{
+  @extend .confirm ,.radius-md ,.h2 ,.background-color-pink ,.text-center ,.padding-height-md ,.font-color-white,.margin-width-md;
+
+}
+.CommonButtonWrite{
+  @extend .confirm ,.radius-md,.h2 ,.background-color-white ,.text-center ,.padding-height-md,.padding-width-md,.margin-width-md;
+}
+
+.CommonButtonFix{
+  @extend .confirm ,.h2 ,.background-color-pink ,.text-center ,.padding-height-md ,.font-color-white;
+  position: fixed;
+  bottom:remSize(0);
+  left:remSize(0);
+  right:remSize(0);
+}
+.title.open:after{
+  content: '\e632';
+  font-family: projectIconfont;
+  font-size: 0.5rem !important;
+  font-weight: normal;
+  display: inline-block;
+  width:remSize(28);
+  height:remSize(28);
+  padding-left:remSize(13);
+  float: right;
+}
+.title.close:after{
+  content: '\e635';
+  font-family: projectIconfont;
+  font-size: 0.5rem !important;
+  font-weight: normal;
+  display: inline-block;
+  width:remSize(28);
+  height:remSize(28);
+  padding-left:remSize(13);
+  float: right;
+}
+////箭头
+//.dutyButton{
+//  width:remSize(60);
+//  .p1 {
+//    color: #fff;
+//    //background: #3ab398;
+//    position: relative;
+//    &:after {
+//      content: "";
+//      position: absolute;
+//      width: remSize(0);
+//      height: remSize(0);
+//      border: remSize(30) solid transparent;
+//      border-top-color: #3ab398;
+//      left: 50%;
+//      margin-left: -0.567rem;
+//      bottom: -3.2rem;
+//    }
+//  }
+//--------lix
+
+//------------yih
+//title more
+.title{
+  display: block;
+  line-height: remSize(15);
+  position: relative;
+}
+.title.more:after{
+  content: '\e600';
+  font-family: projectIconfont;
+  float: right;
+  font-size: remSize(30) !important;
+  font-weight: normal;
+  line-height: 1.2;
+
+}
+.title.more.text-more{
+  height: 1.2rem;
+  line-height: 1.16rem;
+}
+
+.display-inline{
+  display: inline-block;
+}
+.full-block{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+}
+.display-block{
+  display: block;
+}
+
+//---------yih
+.dataNull{
+
+  img{
+    width:remSize(340);
+    margin-top:remSize(80);
+  }
+}
+
+.font-weight-bolder {
+  font-weight: bolder;
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+@each $name, $c in $baseColorMap {
+  .font-color-#{$name} {
+    color: $c !important;
+  }
+  .border-color-#{$name} {
+    border-color: $c !important;
+  }
+  .background-color-#{$name} {
+    background-color: $c !important;
+  }
+}
+
+//全局字体颜色
+@each $name, $c in $fontColorMap {
+  .font-color-global-#{$name} {
+    color: $c !important;
+  }
+}
+
+//全局边框色
+@each $name, $c in $borderColorMap {
+  .border-color-global-#{$name} {
+    border-color: $c !important;
+  }
+}
+
+//全局背景色
+@each $name, $c in $backgroundColorMap {
+  .background-color-global-#{$name} {
+    background-color: $c !important;
+  }
+}
+
+//边框位置
+.border-line-top {
+  border-top: 1px solid;
+}
+
+.border-line-left {
+  border-left: 1px solid;
+}
+
+.border-line-right {
+  border-right: 1px solid;
+}
+
+.border-line-bottom {
+  border-bottom: 1px solid;
+}
+
+.border-line {
+  border: 1px solid;
+}
+
+//字号
+@each $name, $size in $hMap {
+  .#{$name}, #{$name} {
+    font-size: $size !important;
+    font-weight: normal;
+    line-height: 1.2;
+  }
+}
+
+//iconfont
+.projectIconfont {
+  font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif, projectIconfont;
+}
+
+.commonIconfont {
+  font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif, commonIconfont;
+}
+
+//iconfont size
+@each $iconName, $iconSize in $iconSizeMap {
+  .iconfont-#{$iconName} {
+    height: $iconSize;
+    width: $iconSize;
+    line-height: $iconSize;
+    font-size: $iconSize*0.7;
+
+  }
+  .iconfont-height-#{$iconName} {
+    height: $iconSize;
+    line-height: $iconSize;
+    font-size: $iconSize*0.7;
+  }
+  .iconfont-width-#{$iconName} {
+    width: $iconSize;
+  }
+}
+
+//img size
+@each $name2, $imgSize in $imgSizeMap {
+  @each $name1, $sqSize in $square {
+    .img-width-#{$name1}-#{$name2}, .img-#{$name1}-#{$name2} {
+      width: $sqSize * $imgSize;
+      display: block;
+      font-size: 0;
+    }
+    .img-height-#{$name1}-#{$name2}, .img-#{$name1}-#{$name2} {
+      height: $imgSize;
+      line-height: $imgSize;
+      display: block;
+      font-size: 0;
+    }
+  }
+}
+
+//margin size
+@each $name, $size in $spaceSizeMap {
+  .margin-#{$name} {
+    margin: $size;
+  }
+  .margin-top-#{$name} {
+    margin-top: $size;
+  }
+  .margin-bottom-#{$name} {
+    margin-bottom: $size;
+  }
+  .margin-left-#{$name} {
+    margin-left: $size;
+  }
+  .margin-right-#{$name} {
+    margin-right: $size;
+  }
+  .margin-width-#{$name} {
+    margin-right: $size;
+    margin-left: $size;
+  }
+  .margin-height-#{$name} {
+    margin-top: $size;
+    margin-bottom: $size;
+  }
+  .margin-re-width-#{$name} {
+    margin-right: $size*-1;
+    margin-left: $size*-1;
+  }
+  .margin-re-height-#{$name} {
+    margin-top: $size*-1;
+    margin-bottom: $size*-1;
+  }
+  .margin-re-bottom-#{$name} {
+    margin-bottom: $size*-1;
+  }
+  .margin-re-left-#{$name} {
+    margin-left: $size*-1;
+  }
+  .margin-re-right-#{$name} {
+    margin-right: $size*-1;
+  }
+  .margin-re-top-#{$name} {
+    margin-top: $size*-1;
+  }
+}
+
+.margin-0 {
+  margin: 0 !important;
+}
+
+.padding-0 {
+  padding: 0 !important;
+}
+
+//padding size
+@each $name, $size in $spaceSizeMap {
+  .padding-#{$name} {
+    padding: $size;
+  }
+  .padding-top-#{$name} {
+    padding-top: $size;
+  }
+  .padding-bottom-#{$name} {
+    padding-bottom: $size;
+  }
+  .padding-left-#{$name} {
+    padding-left: $size;
+  }
+  .padding-right-#{$name} {
+    padding-right: $size;
+  }
+  .padding-width-#{$name} {
+    padding-right: $size;
+    padding-left: $size;
+  }
+  .padding-height-#{$name} {
+    padding-top: $size;
+    padding-bottom: $size;
+  }
+}
+
+.margin-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+//radius size
+@each $name, $size in $radiusSizeMap {
+  .radius-#{$name} {
+    border-radius: $size;
+  }
+}
+
+//tag size
+@each $name, $size in $tagSize {
+  .tag-#{$name} {
+    font-size: 1em * $size;
+    padding: (1-$size)/$size/4 * 1em (1-$size)/$size/2 * 1em;
+    line-height: 1em;
+    position: relative;
+    top: (1-$size)/$size/4 * -1em;
+    @extend .radius-sm;
+  }
+}
+
+//overflow style
+.overflow-line-1 {
+  overflow-x: hidden;
+  overflow-y: visible;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.overflow-line-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+.overflow-line-3 {
+  overflow: hidden;
+  text-overflow: -o-ellipsis-lastline;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+//text-align
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+//align inline
+.align-inline-2 {
+  width: 50%;
+}
+
+.align-inline-3 {
+  width: 33%;
+}
+
+.align-inline-4 {
+  width: 25%;
+}
+
+.align-inline-5 {
+  width: 20%;
+}
+
+.align-inline-2, .align-inline-3, .align-inline-4, .align-inline-5 {
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+//float
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.clear-float {
+  &:after {
+    content: ' ';
+    display: block;
+    clear: both;
+    height: 0;
+    width: 0;
+  }
+}
+
+.margin-b-1 {
+  margin-bottom: 1.2rem;
+}
+
+.padding-t-10{
+  padding-top: remSize(25);
+}
+
+.padding-t-b-10{
+  padding-top: remSize(10);
+  padding-bottom: remSize(10);
+}
+
+.padding-all{
+  padding-bottom: 0.064rem;
+  padding-top: 0.064rem;
+  padding-right: 0.27733rem;
+  padding-left: 0.27733rem;
+}
+
+.display-table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.padding-l-2{
+  padding-left: 0.2rem;
+}

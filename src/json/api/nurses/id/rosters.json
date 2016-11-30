@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "rosterSchedules": [
+    {
+      "rosterId": 1,
+      "rosterName" : "早班",
+      "rosterStartTime":"6:30",
+      "rosterEndTime": "8:30",
+      "date" : "2016-09-10",
+      "executorId" : 1,
+      "rosterScheduleId" : 2
+    }, {
+      "rosterId": 2,
+      "rosterName" : "中班",
+      "rosterStartTime":"9:30",
+      "rosterEndTime": "12:30",
+      "date" : "2016-09-13",
+      "executorId" : 1,
+      "rosterScheduleId" : 12
+    }
+  ]
+}

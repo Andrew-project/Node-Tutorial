@@ -1,0 +1,46 @@
+.userCenter {
+  top: 2.13333rem;
+  > a:nth-of-type(1):after {
+    margin-top: 0.9rem;
+  }
+  .skip-a {
+    a {
+      .title.more:after {
+        margin-top: 0.2rem;
+      }
+      i {
+        font-size: remSize(50);
+        line-height: remSize(50);
+        width: remSize(50);
+        height: remSize(50);
+      }
+      p {
+        span {
+          height: 1.152rem;
+          line-height: 1.152rem;
+        }
+      }
+    }
+  }
+  .user-info {
+    i {
+      height: 0.768rem;
+      width: 0.768rem;
+      line-height: 0.768rem;
+    }
+  }
+  .overflow-text-l {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 6rem;
+    float: left;
+    white-space: nowrap;
+  }
+  .overflow-text-r {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 4rem;
+    float: right;
+    white-space: nowrap;
+  }
+}
