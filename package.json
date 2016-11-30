@@ -4,7 +4,7 @@
   "author": "gaoqz",
   "private": true,
   "scripts": {
-    "start": "run dev",
+    "start": "pm2 start ./node_test/index.js",
     "pro": "pm2 kill && pm2 start ./bin/www",
     "dev": "rm -rf pro && rm -rf test && gulp & pm2 kill && pm2 start ./bin/www",
     "test": "pm2 kill && pm2 start ./bin/www"
