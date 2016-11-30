@@ -1,6 +1,7 @@
 node_modules
 logs
 pro
+test
 .idea
 main.css
 main.min.css

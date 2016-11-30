@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AACE,qCAAgB;EACd,QAAQ,EAAE,KAAK;EACf,KAAK,EAAE,CAAC;EACR,GAAG,EAAE,CAAC;EACN,OAAO,EAAE,OAAO;EAChB,MAAM,EAAE,YAAY;EACpB,WAAW,EAAE,YAAY",
-"sources": ["blackListController.scss"],
-"names": [],
-"file": "blackListController.css"
-}

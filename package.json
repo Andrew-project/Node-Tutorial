@@ -13,13 +13,13 @@
     "src",
     "bin"
   ],
-  "ignore_watch" : [
+  "ignore_watch": [
     "node_modules",
     "logs",
     "views"
   ],
-  "error_file" : "./logs/app-err.log",
-  "out_file"   : "./logs/app-out.log",
+  "error_file": "./logs/app-err.log",
+  "out_file": "./logs/app-out.log",
   "dependencies": {
     "body-parser": "~1.15.2",
     "cookie-parser": "~1.4.3",
@@ -28,7 +28,9 @@
     "express": "~4.14.0",
     "file-stream-rotator": "0.0.7",
     "fs": "0.0.1-security",
+    "gulp-sass": "^2.3.2",
     "morgan": "~1.7.0",
+    "node-sass": "^3.13.0",
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
@@ -50,10 +52,11 @@
     "gulp-replace": "^0.5.4",
     "gulp-rev-append": "^0.1.6",
     "gulp-sass": "^2.3.2",
-    "gulp-uglify": "^1.5.4",
     "gulp-strip-css-comments": "^1.2.0",
+    "gulp-uglify": "^1.5.4",
     "imagemin-pngcrush": "^5.0.0",
-    "jshint": "^2.9.2"
+    "jshint": "^2.9.2",
+    "node-sass": "^3.13.0"
   },
   "os": [
     "darwin",

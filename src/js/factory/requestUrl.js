@@ -8,9 +8,9 @@
  */
 app.factory('$$requestUrl', function ($$env, $$log,$$shence) {
     var base = '';
-    var debugBase = 'json/';
+    var devBase = 'json/';
     // var devBase = 'http://api.zhushou.test.youhujia.com/';
-    var devBase = 'http://api.zhushou.test.youhujia.com/';
+    var debugBase = 'http://api.zhushou.test.youhujia.com/';
     var proBase = 'http://api.zhushou.youhujia.com/';
     var urlList = {
 
