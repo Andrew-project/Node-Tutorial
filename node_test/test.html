@@ -22,7 +22,7 @@
 <script src="./jquery-1.12.3.js"></script>
 <script>
     function sub() {
-        var url = "http://localhost:8888/api/nurses/signup/phone";
+        var url = "http://localhost:8888/src/api/nurses/signup/phone";
         $.ajax({
             url: url,
             method: "post",
@@ -42,7 +42,7 @@
     }
 
     function get() {
-        var url = "http://localhost:8888/api/nurses/1/info";
+        var url = "http://localhost:8888/src/api/nurses/1/info";
         $.ajax({
             url: url,
             method: 'get',
@@ -61,7 +61,7 @@
     }
 
     function captcha() {
-        var url = "http://localhost:8888/api/nurses/signup/phone-captcha";
+        var url = "http://localhost:8888/src/api/nurses/signup/phone-captcha";
         $.ajax({
             url: url,
             method: 'post',

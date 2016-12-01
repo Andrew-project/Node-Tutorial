@@ -1,4 +1,4 @@
-method: GET
-url: /info?name=lsh&password=1111
-请求对象: {"host":"localhost:8888","connection":"keep-alive","accept":"application/json, text/javascript, */*; q=0.01","origin":"http://localhost:63342","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.98 Safari/537.36","referer":"http://localhost:63342/nodeJs/test.html?_ijt=c9ta192rkpf9m2qnha12sfbo93","accept-encoding":"gzip, deflate, sdch, br","accept-language":"zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4"}
+method: POST
+url: /src/api/nurses/signup/phone-captcha
+请求对象: {"host":"localhost:8888","connection":"keep-alive","content-length":"11","accept":"application/json, text/javascript, */*; q=0.01","origin":"http://localhost:63342","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.98 Safari/537.36","content-type":"application/x-www-form-urlencoded; charset=UTF-8","referer":"http://localhost:63342/nodeJs/node_test/test.html?_ijt=9rhlgbj3o7dj6b2ft539f80f60","accept-encoding":"gzip, deflate, br","accept-language":"zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4"}
 VISOION:1.1
