@@ -66,61 +66,59 @@ app.all('/src/*', function (req, res, next) {
     out.write("请求对象: " + JSON.stringify(req.headers) + '\r\n');
     out.end("VISOION:" + req.httpVersion);
 
-    console.log(req)
+    // if (methods.indexOf(req.method) == -1) {
+    //     res.send(errorList[2]);
+    // } else {
+    var pathName = url.parse(req.url).pathname;
+    pathName = pathName.replace("/src", "");
+    var jsonData = {};
+    try {
+        jsonData = JSON.parse(resData);
+    } catch (e) {
+        res.send(JSON.stringify("requestUrl.json-> " + e.toString()));
+    }
 
-        // if (methods.indexOf(req.method) == -1) {
-        //     res.send(errorList[2]);
-        // } else {
-            var pathName = url.parse(req.url).pathname;
-            pathName = pathName.replace("/src", "");
-            var jsonData = {};
-            try {
-                jsonData = JSON.parse(resData);
-            } catch (e) {
-                res.send(JSON.stringify("requestUrl.json-> " + e.toString()));
-            }
+    if (jsonData["success"] != undefined) {
+        res.send(jsonData);
+    } else {
+        for (var key in jsonData) {
+            var re = eval(jsonData[key]);
+            if (re.test(pathName)) {
+                var mdPath = './md/' + key + '.md';
+                fs.readFile(mdPath, 'utf8', function (err, data) {
+                    if (err) {
+                        res.send(errorList[3]);
+                    } else {
+                        var simplyData = data.replace(/[\r\n]/g,"");
+                        var noteIdxArr = getIdxArr(simplyData, "<", ">");
+                        var noteArr = [];
+                        var mdData = simplyData;
 
-            if (jsonData["success"] != undefined) {
-                res.send(jsonData);
-            } else {
-                for (var key in jsonData) {
-                    var re = eval(jsonData[key]);
-                    if (re.test(pathName)) {
-                        var mdPath = './md/' + key + '.md';
-                        fs.readFile(mdPath, 'utf8', function (err, data) {
-                            if (err) {
-                                res.send(errorList[3]);
-                            } else {
-                                var simplyData = data.replace(/[\r\n]/g,"");
-                                var noteIdxArr = getIdxArr(simplyData, "<", ">");
-                                var noteArr = [];
-                                var mdData = simplyData;
-
-                                for (var i=0; i< noteIdxArr.length; i++) {
-                                    noteArr.push(mdData.slice(noteIdxArr[i].left, noteIdxArr[i].right + 1))
-                                    mdData = simplyData;
-                                }
-                                for (var m=0; m < noteArr.length; m++) {
-                                    var noteStr = noteArr[m];
-                                    noteStr = new RegExp(noteStr, 'g');
-                                    simplyData = simplyData.replace(noteStr, "");
-                                }
-                                var sendData = '';
-                                try {
-                                    sendData = JSON.parse(simplyData)["testCase"]["default"]["response"];
-                                } catch(err) {
-                                    sendData = JSON.stringify(key + " -> " + err.toString());
-                                }
-                                res.send(sendData);
-                            }
-                        });
-                        return;
+                        for (var i=0; i< noteIdxArr.length; i++) {
+                            noteArr.push(mdData.slice(noteIdxArr[i].left, noteIdxArr[i].right + 1))
+                            mdData = simplyData;
+                        }
+                        for (var m=0; m < noteArr.length; m++) {
+                            var noteStr = noteArr[m];
+                            noteStr = new RegExp(noteStr, 'g');
+                            simplyData = simplyData.replace(noteStr, "");
+                        }
+                        var sendData = '';
+                        try {
+                            sendData = JSON.parse(simplyData)["testCase"]["default"]["response"];
+                        } catch(err) {
+                            sendData = JSON.stringify(key + " -> " + err.toString());
+                        }
+                        res.send(sendData);
                     }
-                }
-                res.send(JSON.stringify(errorList[1]));
-            // }
+                });
+                return;
+            }
         }
-        next();
+        res.send(JSON.stringify(errorList[1]));
+    }
+// }
+    next();
 });
 
 function readFile(path) {
