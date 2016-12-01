@@ -2,8 +2,8 @@
  * Created by gaoqz on 16/11/28.
  */
 
-// 引入 gulp
-var gulp = require('gulp');
+var gulp = require('gulp'); // 引入 gulp
+var browserSync = require('browser-sync').create(); //引入browserSync
 
 // 引入组件
 var htmlmin = require('gulp-htmlmin'), //html压缩
@@ -11,7 +11,6 @@ var htmlmin = require('gulp-htmlmin'), //html压缩
     pngcrush = require('imagemin-pngcrush'),
     sass = require('gulp-sass'),
     minifycss = require('gulp-minify-css'),//css压缩
-    // stripCssComments = require('gulp-strip-css-comments'),
     jshint = require('gulp-jshint'),//js检测
     uglify = require('gulp-uglify'),//js压缩
     concat = require('gulp-concat'),//文件合并
@@ -24,6 +23,19 @@ var htmlmin = require('gulp-htmlmin'), //html压缩
     notify = require('gulp-notify');//提示信息
 var replace = require('gulp-replace');
 var plumber = require('gulp-plumber');
+
+
+// 浏览器重载
+// gulp.task('browser-sync', function() {
+//     browserSync.init({
+//         proxy: "0.0.0.0:3000"
+//     });
+//
+//     gulp.watch("src/templates/**/*.html", ['html-watch']);
+//     gulp.watch("src/js/**/*.js", ['js-watch']);
+// });
+gulp.task('js-watch', ['js'], browserSync.reload);
+gulp.task('html-watch', ['html'], browserSync.reload);
 
 // 压缩html
 gulp.task('html', function () {
@@ -68,17 +80,6 @@ gulp.task('img', function () {
 });
 
 // 编译sass
-// gulp.task('sass', function () {
-//     return gulp.src('./src/css/*.scss')
-//         .pipe(plumber())
-//         .pipe(sass())
-//         .pipe(stripCssComments()) // 去掉css注释
-//         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-//         // css格式化、美化（因为有f2ehint，故在此不再做语法等的检查与修复)
-//         .pipe(gulp.dest('./src/css'))
-//         .pipe(notify({message: 'sass task ok'}));
-// });
-
 // gulp.task('sass', function () {
 //     return gulp.src('./src/css/YHZS.scss')
 //         .pipe(plumber())
@@ -169,8 +170,6 @@ gulp.task('js', function () {
         .pipe(ngmin({dynamic: false}))
         .pipe(gulp.dest('src/js'))
         .pipe(rename({suffix: '.min'}))
-        // .pipe(replace("setEnvirement('debug')", "setEnvirement('dev')"))
-        // .pipe(uglify())
         .pipe(replace('n.showAll();', ''))
         .pipe(replace("setEnvirement('dev')", "setEnvirement('debug')"))
         .pipe(gulp.dest('test/js'))
@@ -194,10 +193,10 @@ gulp.task('proMainJs', ['js'], function () {
 // 默认任务
 gulp.task('default', function () {
     // gulp.run('img', 'sass', 'css', 'lint', 'js', 'html');
-    gulp.run('img', 'css', 'lint', 'js', 'html', 'lib', 'iconfont', 'testMainJs', 'proMainJs');
+    gulp.run('img', 'css', 'lint', 'js', 'html', 'lib', 'iconfont', 'testMainJs', 'proMainJs', 'js-watch', 'html-watch');
 
     // 监听html文件变化
-    // gulp.watch(['src/**/*.html'], ['html']);
+    gulp.watch(['src/**/*.html'], ['html-watch']);
 
     //Watch .scss files
     // gulp.watch(['src/css/*.scss', 'src/css/**/*.scss', 'src/css/**/**/*.scss'], ['sass']);
@@ -206,7 +205,7 @@ gulp.task('default', function () {
     gulp.watch(['src/css/**/*.css', '!src/css/main.css', '!src/css/main.min.css'], ['css']);
 
     // Watch .js files
-    gulp.watch(['src/js/**/*.js', '!src/js/all.js', '!src/js/all.min.js'], ['lint', 'js']);
+    gulp.watch(['src/js/**/*.js', '!src/js/all.js', '!src/js/all.min.js'], ['lint', 'js', 'js-watch']);
 
     // Watch image files
     // gulp.watch('src/images/*', ['img']);
