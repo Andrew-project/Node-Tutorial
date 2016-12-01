@@ -7,7 +7,6 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 var app = express();
-var domain = require('domain');
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
@@ -58,7 +57,6 @@ app.all('/src/*', function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
     res.header("Content-Type", 'application/json; charset=utf-8');
-
 
     var out = fs.createWriteStream("./request.log");
     out.write("method: " + req.method + '\r\n');
