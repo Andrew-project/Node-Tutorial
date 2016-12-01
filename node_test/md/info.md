@@ -5,6 +5,7 @@
         "name": "ss"
     },
     "testCase": {
+       <非法所得分>
         "default": {
             "response": {
                 "basic": {
@@ -21,6 +22,7 @@
                     "professionalTitle": "new title",
                     "identifier": "N-7"
                   },
+                  <fff>
                   "occupation": {
                     "IDNumber": "6239493483",
                     "certs": "{x}",

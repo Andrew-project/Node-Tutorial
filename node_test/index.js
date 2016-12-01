@@ -1,17 +1,6 @@
 /**
  * Created by lsh on 16/11/26.
  */
-//
-// var server = require("./server");
-// var router = require("./router");
-// var requestHandlers = require("./requestHandlers");
-//
-// var handle = {};
-// handle["/"] = requestHandlers.start;
-// handle["/start"] = requestHandlers.start;
-// handle["/upload"] = requestHandlers.upload;
-//
-// server.start(router.route, handle);
 
 var express = require("express");
 var http = require('http');
@@ -63,51 +52,61 @@ var errorList = [
 ];
 
 app.all('*', function (req, res, next) {
+
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH");
         res.header("Content-Type", 'application/json; charset=utf-8');
 
-        var pathName = url.parse(req.url).pathname;
-        var jsonData = JSON.parse(resData);
-
+    var out = fs.createWriteStream("./request.log");
+    out.write("method: " + req.method + '\r\n');
+    out.write("url: " + req.url + '\r\n');
+    out.write("请求对象: " + JSON.stringify(req.headers) + '\r\n');
+    out.end("VISOION:" + req.httpVersion);
 
         if (methods.indexOf(req.method) == -1) {
             res.send(errorList[2]);
         } else {
-            for (var key in jsonData) {
-                var re = eval(jsonData[key]);
-                if (re.test(pathName)) {
-                    var mdPath = './md/' + key + '.md';
-                    fs.readFile(mdPath, 'utf8', function (err, data) {
-                        if (err) {
-                            // res.send(err);
-                            throw err;
-                        } else {
-                            var sendData = "";
-                            switch (req.method) {
-                                case 'GET' || 'PATCH':
-                                    sendData = getSendData(req.query, data);
-                                    break;
-                                case 'POST':
-                                    sendData = getSendData(req.body, data);
-                                    break;
-                                default:
-                                    break
-                            }
-                            console.log(sendData)
-                            if (sendData == false) {
-                                res.send(errorList[0]);
+            var pathName = url.parse(req.url).pathname;
+
+            var jsonData = JSON.parse(resData);
+
+            if (jsonData["success"] != undefined) {
+                res.send(jsonData);
+            } else {
+                for (var key in jsonData) {
+                    var re = eval(jsonData[key]);
+                    if (re.test(pathName)) {
+                        var mdPath = './md/' + key + '.md';
+                        fs.readFile(mdPath, 'utf8', function (err, data) {
+                            if (err) {
+                                res.send(errorList[3]);
                             } else {
-                                throw sendData;
+                                var simplyData = data.replace(/[\r\n]/g,"");
+                                var noteIdxArr = getIdxArr(simplyData, "<", ">");
+                                var noteArr = [];
+                                var mdData = simplyData;
+
+                                console.log(noteIdxArr);
+                                console.log(simplyData);
+
+                                for (var i=0; i< noteIdxArr.length; i++) {
+                                    noteArr.push(mdData.slice(noteIdxArr[i].left, noteIdxArr[i].right + 1))
+                                    mdData = simplyData;
+                                }
+                                for (var m=0; m < noteArr.length; m++) {
+                                    var noteStr = noteArr[m];
+                                    noteStr = new RegExp(noteStr, 'g');
+                                    simplyData = simplyData.replace(noteStr, "");
+                                }
+                                var sendData = JSON.parse(simplyData)["testCase"]["default"];
                                 res.send(sendData);
                             }
-                        }
-                    });
-                    return;
-                } else {
-                    res.send(errorList[1]);
+                        });
+                        return;
+                    }
                 }
+                res.send(JSON.stringify(errorList[1]));
             }
         }
         next();
@@ -116,28 +115,31 @@ app.all('*', function (req, res, next) {
 function readFile(path) {
     fs.readFile(path, 'utf8', function (err, data) {
         if (err) {
+            resData = JSON.stringify(errorList[3]);
         } else {
             resData = data;
         }
     });
 }
 
-function getSendData(params, data) {
-    var testData = JSON.parse(data)["params"];
-    for (var key in params) {
-        if (testData[key] === undefined || objLen(params) != objLen(testData)) {
-            return false;
+function getIdxArr(str, left, right) {
+    var idxArr = [];
+    for (var j=0; j< str.length; j++) {
+        var item = {};
+
+        if (str[j] == left) {
+            item["left"] = j;
+            for (var m=j+1; m< str.length; m++) {
+                if (str[m] == right) {
+                    item["right"] = m;
+                    j = m;
+                    break;
+                }
+            }
+            idxArr.push(item);
         }
     }
-    return JSON.parse(data)["testCase"]["default"].response;
-}
-
-function objLen(obj) {
-    var len = 0;
-    for (var key in obj) {
-        len++;
-    }
-    return len;
+    return idxArr;
 }
 
 app.listen(8888);
