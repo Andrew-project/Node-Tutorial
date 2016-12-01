@@ -205,6 +205,9 @@ app.factory('$$requestUrl', function ($$env, $$log,$$shence) {
                 case 0:
                     base = debugBase;
                     break;
+                case 3:
+                    base = debugBase;
+                    break;
                 default:
                     base = proBase;
             }

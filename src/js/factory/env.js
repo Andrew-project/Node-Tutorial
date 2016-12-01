@@ -27,7 +27,7 @@ app.factory('$$env', function () {
                     _envirementIndex = 1;
                     break;
                 case 'debug':
-                    _envirementIndex = 0;
+                    _envirementIndex = 3;
                     break;
             }
             // $$log.debug('$$env.setEnvirement'+envirement);

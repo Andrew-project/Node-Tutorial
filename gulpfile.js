@@ -25,17 +25,16 @@ var replace = require('gulp-replace');
 var plumber = require('gulp-plumber');
 
 
-// 浏览器重载
-// gulp.task('browser-sync', function() {
-//     browserSync.init({
-//         proxy: "0.0.0.0:3000"
-//     });
-//
-//     gulp.watch("src/templates/**/*.html", ['html-watch']);
-//     gulp.watch("src/js/**/*.js", ['js-watch']);
+// 浏览器刷新
+// gulp.task('js-watch', ['js'], function () {
+//     return gulp.src('src/js/**/*.js')
+//         .pipe(browserSync.stream());
 // });
-gulp.task('js-watch', ['js'], browserSync.reload);
-gulp.task('html-watch', ['html'], browserSync.reload);
+//
+// gulp.task('html-watch', ['html'], function () {
+//     return gulp.src('src/templates/**/*.html')
+//         .pipe(browserSync.stream());
+// });
 
 // 压缩html
 gulp.task('html', function () {
@@ -58,6 +57,7 @@ gulp.task('html', function () {
         .pipe(htmlmin(htmlOptions))
         .pipe(gulp.dest('./test'))
         .pipe(gulp.dest('./pro'))
+        // .pipe(browserSync.stream())
         .pipe(notify({message: 'html task ok'}));
 });
 
@@ -175,6 +175,7 @@ gulp.task('js', function () {
         .pipe(gulp.dest('test/js'))
         .pipe(replace("setEnvirement('debug')", "setEnvirement('pro')"))
         .pipe(gulp.dest('pro/js'))
+        // .pipe(browserSync.stream())
         .pipe(notify({message: 'js task ok'}));
 });
 
@@ -193,10 +194,13 @@ gulp.task('proMainJs', ['js'], function () {
 // 默认任务
 gulp.task('default', function () {
     // gulp.run('img', 'sass', 'css', 'lint', 'js', 'html');
-    gulp.run('img', 'css', 'lint', 'js', 'html', 'lib', 'iconfont', 'testMainJs', 'proMainJs', 'js-watch', 'html-watch');
+    gulp.run('img', 'css', 'lint', 'js', 'html', 'lib', 'iconfont', 'testMainJs', 'proMainJs');
 
     // 监听html文件变化
-    gulp.watch(['src/**/*.html'], ['html-watch']);
+    // gulp.watch(['src/**/*.html'], ['html-watch']);
+    gulp.watch(['src/**/*.html']).on("change", function() {
+        browserSync.reload;
+    });
 
     //Watch .scss files
     // gulp.watch(['src/css/*.scss', 'src/css/**/*.scss', 'src/css/**/**/*.scss'], ['sass']);
@@ -205,7 +209,7 @@ gulp.task('default', function () {
     gulp.watch(['src/css/**/*.css', '!src/css/main.css', '!src/css/main.min.css'], ['css']);
 
     // Watch .js files
-    gulp.watch(['src/js/**/*.js', '!src/js/all.js', '!src/js/all.min.js'], ['lint', 'js', 'js-watch']);
+    gulp.watch(['src/js/**/*.js', '!src/js/all.js', '!src/js/all.min.js'], ['lint', 'js']);
 
     // Watch image files
     // gulp.watch('src/images/*', ['img']);

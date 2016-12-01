@@ -4,10 +4,10 @@
   "author": "gaoqz",
   "private": true,
   "scripts": {
-    "start": "pm2 start ./node_test/index.js --name nodeJs",
-    "pro": "pm2 kill && pm2 start ./bin/www --name nodeJs",
-    "dev": "rm -rf pro && rm -rf test && gulp & pm2 kill && pm2 start ./bin/www --name nodeJs",
-    "test": "pm2 kill && pm2 start ./bin/www --name nodeJs"
+    "start": "pm2 start ./node_test/index.js",
+    "pro": "pm2 kill && pm2 start ./bin/www --name pro",
+    "dev": "rm -rf pro && rm -rf test && gulp & pm2 kill && pm2 start ./bin/www --name dev",
+    "test": "pm2 kill && pm2 start ./bin/www --name test"
   },
   "watch": [
     "src",
@@ -18,6 +18,10 @@
     "logs",
     "views"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lishaoh/nodeJs.git"
+  },
   "error_file": "./logs/app-err.log",
   "out_file": "./logs/app-out.log",
   "dependencies": {
