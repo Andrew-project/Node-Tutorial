@@ -2,4 +2,4 @@
   "phone-captcha": "/^\\/api\\/nurses\\/signup\\/phone-captcha$/",
   "login": "/^\\/api\\/nurses\\/signup\\/phone$/",
   "info": "/^\\/api\\/nurses\\/[1-9]{1,}\\/info$/"
-}`
+}
