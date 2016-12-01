@@ -7,12 +7,13 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 var app = express();
+var domain = require('domain');
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 
 var resData = '';
-var methods = ["PUT", "POST", "GET", "DELETE", "PATCH"];
+// var methods = ["PUT", "POST", "GET", "DELETE", "OPTIONS"];
 
 readFile('./requestUrl.json');
 
@@ -51,12 +52,13 @@ var errorList = [
     }
 ];
 
-app.all('*', function (req, res, next) {
+app.all('/src/*', function (req, res, next) {
 
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "X-Requested-With");
-        res.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH");
-        res.header("Content-Type", 'application/json; charset=utf-8');
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
+    res.header("Content-Type", 'application/json; charset=utf-8');
+
 
     var out = fs.createWriteStream("./request.log");
     out.write("method: " + req.method + '\r\n');
@@ -64,12 +66,19 @@ app.all('*', function (req, res, next) {
     out.write("请求对象: " + JSON.stringify(req.headers) + '\r\n');
     out.end("VISOION:" + req.httpVersion);
 
-        if (methods.indexOf(req.method) == -1) {
-            res.send(errorList[2]);
-        } else {
-            var pathName = url.parse(req.url).pathname;
+    console.log(req)
 
-            var jsonData = JSON.parse(resData);
+        // if (methods.indexOf(req.method) == -1) {
+        //     res.send(errorList[2]);
+        // } else {
+            var pathName = url.parse(req.url).pathname;
+            pathName = pathName.replace("/src", "");
+            var jsonData = {};
+            try {
+                jsonData = JSON.parse(resData);
+            } catch (e) {
+                res.send(JSON.stringify("requestUrl.json-> " + e.toString()));
+            }
 
             if (jsonData["success"] != undefined) {
                 res.send(jsonData);
@@ -87,9 +96,6 @@ app.all('*', function (req, res, next) {
                                 var noteArr = [];
                                 var mdData = simplyData;
 
-                                console.log(noteIdxArr);
-                                console.log(simplyData);
-
                                 for (var i=0; i< noteIdxArr.length; i++) {
                                     noteArr.push(mdData.slice(noteIdxArr[i].left, noteIdxArr[i].right + 1))
                                     mdData = simplyData;
@@ -99,7 +105,12 @@ app.all('*', function (req, res, next) {
                                     noteStr = new RegExp(noteStr, 'g');
                                     simplyData = simplyData.replace(noteStr, "");
                                 }
-                                var sendData = JSON.parse(simplyData)["testCase"]["default"];
+                                var sendData = '';
+                                try {
+                                    sendData = JSON.parse(simplyData)["testCase"]["default"]["response"];
+                                } catch(err) {
+                                    sendData = JSON.stringify(key + " -> " + err.toString());
+                                }
                                 res.send(sendData);
                             }
                         });
@@ -107,7 +118,7 @@ app.all('*', function (req, res, next) {
                     }
                 }
                 res.send(JSON.stringify(errorList[1]));
-            }
+            // }
         }
         next();
 });
