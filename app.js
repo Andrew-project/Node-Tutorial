@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 var fileStreamRotator = require('file-stream-rotator');
 
+var url = require('url');
+
+
 var app = express();
 
 var logDir = path.join(__dirname, 'logs');
@@ -60,6 +63,136 @@ if (TARGET == 'test') {
   app.use(logger('common', {stream: accessLogStream})); //文件输出日志
 
   app.use(express.static(path.join(__dirname, 'test')));
+}
+
+if (TARGET == 'dev') {
+  var resData = '';
+
+  readFile('./node_test/requestUrl.json');
+
+  var errorList = [
+    {
+      "success": {
+        "result": false,
+        "code": 400,
+        "msg": "param missing",
+        "displayMsg": "缺少参数"
+      }
+    },
+    {
+      "success": {
+        "result": false,
+        "code": 404,
+        "msg": "not found",
+        "displayMsg": "NOT FOUND"
+      }
+    },
+    {
+      "success": {
+        "result": false,
+        "code": 405,
+        "msg": "method error",
+        "displayMsg": "请求方法错误"
+      }
+    },
+    {
+      "success": {
+        "result": false,
+        "code": 500,
+        "msg": "Internal Error",
+        "displayMsg": "服务器错误"
+      }
+    }
+  ];
+
+  app.all('/src/api/*', function (req, res, next) {
+    var out = fs.createWriteStream("./logs/request.log");
+    out.write("method: " + req.method + '\r\n');
+    out.write("url: " + req.url + '\r\n');
+    out.write("请求对象: " + JSON.stringify(req.headers) + '\r\n');
+    out.end("VISOION:" + req.httpVersion);
+
+    var pathName = url.parse(req.url).pathname;
+    pathName = pathName.replace("/src", "");
+
+    var jsonData = {};
+    try {
+      jsonData = JSON.parse(resData);
+    } catch (e) {
+      res.send(JSON.stringify("requestUrl.json-> " + e.toString()));
+    }
+
+    if (jsonData["success"] != undefined) {
+      res.send(jsonData);
+    } else {
+      for (var key in jsonData) {
+        var re = eval(jsonData[key]);
+        if (re.test(pathName)) {
+          var mdPath = './node_test/md/' + key + '.md';
+          fs.readFile(mdPath, 'utf8', function (err, data) {
+            if (err) {
+              res.send(errorList[3]);
+            } else {
+              var simplyData = data.replace(/[\r\n]/g,"");
+              var noteIdxArr = getIdxArr(simplyData, "<", ">");
+              var noteArr = [];
+              var mdData = simplyData;
+
+              for (var i=0; i< noteIdxArr.length; i++) {
+                noteArr.push(mdData.slice(noteIdxArr[i].left, noteIdxArr[i].right + 1))
+                mdData = simplyData;
+              }
+              for (var m=0; m < noteArr.length; m++) {
+                var noteStr = noteArr[m];
+                noteStr = new RegExp(noteStr, 'g');
+                simplyData = simplyData.replace(noteStr, "");
+              }
+              var sendData = '';
+              try {
+                sendData = JSON.parse(simplyData)["testCase"]["default"]["response"];
+              } catch(err) {
+                sendData = JSON.stringify(key + " -> " + err.toString());
+              }
+              res.send(sendData);
+            }
+          });
+          return;
+        }
+      }
+      res.send(JSON.stringify(errorList[1]));
+    }
+    next();
+  });
+
+  function readFile(path) {
+    fs.readFile(path, 'utf8', function (err, data) {
+      if (err) {
+        resData = JSON.stringify(errorList[3]);
+      } else {
+        resData = data;
+      }
+    });
+  }
+
+  function getIdxArr(str, left, right) {
+    var idxArr = [];
+    for (var j=0; j< str.length; j++) {
+      var item = {};
+
+      if (str[j] == left) {
+        item["left"] = j;
+        for (var m=j+1; m< str.length; m++) {
+          if (str[m] == right) {
+            item["right"] = m;
+            j = m;
+            break;
+          }
+        }
+        idxArr.push(item);
+      }
+    }
+    return idxArr;
+  }
 }
 
 if (TARGET == 'dev') {

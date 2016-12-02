@@ -6,7 +6,7 @@ var express = require("express");
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
-var app = express();
+var app = require("../app");
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
@@ -53,10 +53,12 @@ var errorList = [
 
 app.all('/src/*', function (req, res, next) {
 
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
-    res.header("Content-Type", 'application/json; charset=utf-8');
+    console.log("-------")
+
+    // res.header("Access-Control-Allow-Origin", "*");
+    // res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    // res.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
+    // res.header("Content-Type", 'application/json; charset=utf-8');
 
     var out = fs.createWriteStream("./request.log");
     out.write("method: " + req.method + '\r\n');
@@ -149,4 +151,4 @@ function getIdxArr(str, left, right) {
     return idxArr;
 }
 
-app.listen(8888);
+app.listen(3000);
