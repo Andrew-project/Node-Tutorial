@@ -68,7 +68,7 @@ if (TARGET == 'test') {
 if (TARGET == 'dev') {
   var resData = '';
 
-  readFile('./node_test/requestUrl.json');
+  readFile('./node_dev/requestUrl.json');
 
   var errorList = [
     {
@@ -128,7 +128,7 @@ if (TARGET == 'dev') {
       for (var key in jsonData) {
         var re = eval(jsonData[key]);
         if (re.test(pathName)) {
-          var mdPath = './node_test/md/' + key + '.md';
+          var mdPath = './node_dev/md/' + key + '.md';
           fs.readFile(mdPath, 'utf8', function (err, data) {
             if (err) {
               res.send(errorList[3]);
