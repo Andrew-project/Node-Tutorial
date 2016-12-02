@@ -72,32 +72,32 @@ if (TARGET == 'dev') {
 
   var errorList = [
     {
-      "success": {
-        "result": false,
+      "result": {
+        "success": false,
         "code": 400,
         "msg": "param missing",
         "displayMsg": "缺少参数"
       }
     },
     {
-      "success": {
-        "result": false,
+      "result": {
+        "success": false,
         "code": 404,
         "msg": "not found",
         "displayMsg": "NOT FOUND"
       }
     },
     {
-      "success": {
-        "result": false,
+      "result": {
+        "success": false,
         "code": 405,
         "msg": "method error",
         "displayMsg": "请求方法错误"
       }
     },
     {
-      "success": {
-        "result": false,
+      "result": {
+        "success": false,
         "code": 500,
         "msg": "Internal Error",
         "displayMsg": "服务器错误"
@@ -105,6 +105,10 @@ if (TARGET == 'dev') {
     }
   ];
 
+  var result = {
+    "success": false,
+    "displayMsg": "error"
+  };
   app.all('/src/api/*', function (req, res, next) {
     var out = fs.createWriteStream("./logs/request.log");
     out.write("method: " + req.method + '\r\n');
@@ -119,7 +123,8 @@ if (TARGET == 'dev') {
     try {
       jsonData = JSON.parse(resData);
     } catch (e) {
-      res.send(JSON.stringify("requestUrl.json-> " + e.toString()));
+      result.displayMsg = JSON.stringify("requestUrl.json -> " + e.toString());
+      res.send(result);
     }
 
     if (jsonData["success"] != undefined) {
@@ -149,9 +154,19 @@ if (TARGET == 'dev') {
               }
               var sendData = '';
               try {
-                sendData = JSON.parse(simplyData)["testCase"]["default"]["response"];
+                var testData = JSON.parse(simplyData)["testCase"];
+                for (var i=0; i<testData.length; i++ ) {
+                  if (testData[i].name == 'default') {
+                    sendData = testData[i].response[req.method];
+                    break;
+                  } else {
+                    result.displayMsg = "test标识无法识别";
+                    sendData = result;
+                  }
+                }
               } catch(err) {
-                sendData = JSON.stringify(key + " -> " + err.toString());
+                result.displayMsg = JSON.stringify(key + " -> " + err.toString());
+                sendData = result;
               }
               res.send(sendData);
             }

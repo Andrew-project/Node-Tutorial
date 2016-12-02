@@ -5,8 +5,12 @@
         "phone": "string",
         "captcha": "1111"
     },
-    "testCase": {
-        "default": {
+    "testCase": [
+          {
+            "name": "default",
+            "params": {
+
+            },
             "response": {
                 "result": {
                     "success": true
@@ -29,7 +33,11 @@
                }
            }
         },
-        "test": {
+        {
+            "name": "testCase1",
+            "params": {
+
+            },
             "response": {
                 "result": {
                     "success": false,
@@ -37,5 +45,5 @@
                 }
             }
         }
-    }
+    ]
 }

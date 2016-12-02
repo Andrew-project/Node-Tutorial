@@ -5,15 +5,23 @@
         "phone": "string",
         "name": 1
     },
-    "testCase": {
-        "default": {
+    "testCase": [
+        {
+            "name": "default",
+            "params": {
+
+            },
             "response": {
                 "result": {
                     "success": true
                 }
             }
         },
-        "test1": {
+        {
+            "name": "testCase1",
+            "params": {
+
+            },
             "response": {
                 "result": {
                     "success": false,
@@ -21,5 +29,5 @@
                 }
             }
         }
-    }
+    ]
 }
