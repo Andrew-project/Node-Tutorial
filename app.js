@@ -8,8 +8,6 @@ var fs = require('fs');
 var fileStreamRotator = require('file-stream-rotator');
 
 var url = require('url');
-
-
 var app = express();
 
 var logDir = path.join(__dirname, 'logs');
@@ -32,13 +30,13 @@ if (TARGET == 'pro') {
   });
 
   app.use(logger('combined')); //终端输出日志
-  var accessLogStream = fileStreamRotator.getStream({
-    date_format: 'YYYYMMDD',
-    filename: path.join(logDir, 'access-' + 'pro' + '-%DATE%.log'),
-    frequency: 'daily',
-    verbose: true
-  }); // create a rotating write stream
-  app.use(logger('common', {stream: accessLogStream})); //文件输出日志
+  // var accessLogStream = fileStreamRotator.getStream({
+  //   date_format: 'YYYYMMDD',
+  //   filename: path.join(logDir, 'access-' + 'pro' + '-%DATE%.log'),
+  //   frequency: 'daily',
+  //   verbose: true
+  // }); // create a rotating write stream
+  // app.use(logger('common', {stream: accessLogStream})); //文件输出日志
 
   app.use(express.static(path.join(__dirname, 'pro')));
 }
@@ -54,13 +52,13 @@ if (TARGET == 'test') {
   });
 
   app.use(logger('combined')); //终端输出日志
-  var accessLogStream = fileStreamRotator.getStream({
-    date_format: 'YYYYMMDD',
-    filename: path.join(logDir, 'access-' + 'test' + '-%DATE%.log'),
-    frequency: 'daily',
-    verbose: true
-  }); // create a rotating write stream
-  app.use(logger('common', {stream: accessLogStream})); //文件输出日志
+  // var accessLogStream = fileStreamRotator.getStream({
+  //   date_format: 'YYYYMMDD',
+  //   filename: path.join(logDir, 'access-' + 'test' + '-%DATE%.log'),
+  //   frequency: 'daily',
+  //   verbose: true
+  // }); // create a rotating write stream
+  // app.use(logger('common', {stream: accessLogStream})); //文件输出日志
 
   app.use(express.static(path.join(__dirname, 'test')));
 }
@@ -220,6 +218,13 @@ if (TARGET == 'dev') {
   app.use("/*", function(req, res, next) {
     res.sendfile("src/index.html");
   });
+  // app.use("/*", function (req, res) {
+  //   if(req.path.indexOf('/api')>=0){
+  //     res.send("server text");
+  //   }else{
+  //     res.sendfile('src/index.html');
+  //   }
+  // });
 
   app.use(logger('combined'));
   app.use(express.static(path.join(__dirname, 'src')));

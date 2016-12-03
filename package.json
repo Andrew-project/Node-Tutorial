@@ -5,9 +5,9 @@
   "private": true,
   "scripts": {
     "start": "pm2 start ./node_test/index.js",
-    "pro": "pm2 kill && pm2 start ./bin/www --name pro & lite-server",
-    "dev": "rm -rf pro && rm -rf test && gulp & pm2 kill && pm2 start ./bin/www --name dev & lite-server",
-    "test": "pm2 kill && pm2 start ./bin/www --name test & lite-server"
+    "pro": "pm2 kill && pm2 start ./bin/www --name pro",
+    "dev": "rm -rf pro && rm -rf test && gulp & pm2 kill && pm2 start ./bin/www --name dev",
+    "test": "pm2 kill && pm2 start ./bin/www --name test"
   },
   "watch": [
     "src"

@@ -4,7 +4,7 @@
  */
 app.config(['$stateProvider', '$urlMatcherFactoryProvider', '$urlRouterProvider', '$httpProvider', '$locationProvider', '$sceProvider', function ($stateProvider, $urlMatcherFactoryProvider, $urlRouterProvider, $httpProvider, $locationProvider, $sceProvider) {
     //禁用html5 mode
-    $locationProvider.html5Mode(false);
+    $locationProvider.html5Mode(true);
     //启用http拦截器
     $httpProvider.interceptors.push('$$timestampMarker');
     //启用$sec

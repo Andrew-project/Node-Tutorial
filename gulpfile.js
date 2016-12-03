@@ -27,27 +27,38 @@ var reload = browserSync.reload;
 
 // 压缩html
 gulp.task('html', function () {
-    var htmlOptions = {
-        removeComments: true,//清除HTML注释
-        collapseWhitespace: true,//压缩HTML
-        collapseBooleanAttributes: true,//省略布尔属性的值 <input checked="true"/> ==> <input />
-        removeEmptyAttributes: true,//删除所有空格作属性值 <input id="" /> ==> <input />
-        removeScriptTypeAttributes: true,//删除<script>的type="text/javascript"
-        removeStyleLinkTypeAttributes: true,//删除<style>和<link>的type="text/css"
-        minifyJS: true,//压缩页面JS
-        minifyCSS: true//压缩页面CSS
-    };
-
     return gulp.src('src/**/*.html')
         .pipe(plumber())
         .pipe(rev())
         .pipe(replace('main.css', 'main.min.css'))
         .pipe(replace('all.js', 'all.min.js'))
-        .pipe(htmlmin(htmlOptions))
+        // .pipe(htmlmin(htmlOptions))
+        .pipe(replace('<base href="/src/">', '<base href="/test/">'))
         .pipe(gulp.dest('./test'))
+        .pipe(replace('<base href="/test/">', '<base href="/pro/">'))
         .pipe(gulp.dest('./pro'))
         .pipe(notify({message: 'html task ok'}))
         .pipe(reload({stream: true}));
+});
+var htmlOptions = {
+    removeComments: true,//清除HTML注释
+    collapseWhitespace: true,//压缩HTML
+    collapseBooleanAttributes: true,//省略布尔属性的值 <input checked="true"/> ==> <input />
+    removeEmptyAttributes: true,//删除所有空格作属性值 <input id="" /> ==> <input />
+    removeScriptTypeAttributes: true,//删除<script>的type="text/javascript"
+    removeStyleLinkTypeAttributes: true,//删除<style>和<link>的type="text/css"
+    minifyJS: true,//压缩页面JS
+    minifyCSS: true//压缩页面CSS
+};
+gulp.task('testMainIndex', ['html'], function () {
+    return gulp.src('test/**/*.html')
+        .pipe(htmlmin(htmlOptions))
+        .pipe(gulp.dest('./test'))
+});
+gulp.task('proMainIndex', ['html'], function () {
+    return gulp.src('pro/**/*.html')
+        .pipe(htmlmin(htmlOptions))
+        .pipe(gulp.dest('./pro'))
 });
 
 // 压缩图片
@@ -129,7 +140,7 @@ gulp.task('lint', function () {
 // 引用js资源打包
 gulp.task('lib', function () {
     return gulp.src(['src/**/lib/*.js'])
-        .pipe(plumber())
+        // .pipe(plumber())
         .pipe(uglify())
         .pipe(gulp.dest('pro'))
         .pipe(gulp.dest('test'))
@@ -184,9 +195,9 @@ gulp.task('proMainJs', ['js'], function () {
 var TARGET = process.env.npm_lifecycle_event;
 
 gulp.task('browser-sync', function () {
-    browserSync.init({
-        proxy: "localhost:3000"
-    });
+    // browserSync.init({
+    //     proxy: "localhost:3000"
+    // });
     gulp.watch(['src/**/*.html']).on('change', reload);
     gulp.watch(['src/css/**/*.css', '!src/css/main.css', '!src/css/main.min.css']).on('change', reload);
     gulp.watch(['src/js/**/*.js', '!src/js/all.js', '!src/js/all.min.js']).on('change', reload);
@@ -195,7 +206,7 @@ gulp.task('browser-sync', function () {
 // 默认任务
 gulp.task('default', function () {
     // gulp.run('img', 'sass', 'css', 'lint', 'js', 'html');
-    gulp.run('img', 'css', 'lint', 'js', 'html', 'lib', 'iconfont', 'testMainJs', 'proMainJs', 'browser-sync');
+    gulp.run('img', 'css', 'lint', 'js', 'html', 'lib', 'iconfont', 'testMainJs', 'proMainJs', 'testMainIndex', 'proMainIndex', 'browser-sync');
 
     // Watch .html files
     // gulp.watch(['src/**/*.html'], ['html']);
