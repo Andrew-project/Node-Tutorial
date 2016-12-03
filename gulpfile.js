@@ -181,6 +181,7 @@ gulp.task('js', function () {
 });
 
 gulp.task('testMainJs', ['js'], function () {
+
     return gulp.src(["test/js/*.min.js"])
         .pipe(uglify())
         .pipe(gulp.dest('test/js'))

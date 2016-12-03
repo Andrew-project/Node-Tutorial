@@ -63,6 +63,11 @@ if (TARGET == 'test') {
   app.use(express.static(path.join(__dirname, 'test')));
 }
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+
 if (TARGET == 'dev') {
   var resData = '';
 
@@ -103,14 +108,17 @@ if (TARGET == 'dev') {
     }
   ];
 
-  var result = {
-    "success": false,
-    "displayMsg": "error"
+  var resultErr = {
+    "result": {
+      "success": false,
+      "displayMsg": "error"
+    }
   };
   app.all('/src/api/*', function (req, res, next) {
     var out = fs.createWriteStream("./logs/request.log");
     out.write("method: " + req.method + '\r\n');
     out.write("url: " + req.url + '\r\n');
+    out.write("body: " + JSON.stringify(req.body) + '\r\n');
     out.write("请求对象: " + JSON.stringify(req.headers) + '\r\n');
     out.end("VISOION:" + req.httpVersion);
 
@@ -121,8 +129,8 @@ if (TARGET == 'dev') {
     try {
       jsonData = JSON.parse(resData);
     } catch (e) {
-      result.displayMsg = JSON.stringify("requestUrl.json -> " + e.toString());
-      res.send(result);
+      resultErr.result.displayMsg = JSON.stringify("requestUrl.json -> " + e.toString());
+      res.send(resultErr);
     }
 
     if (jsonData["success"] != undefined) {
@@ -158,13 +166,13 @@ if (TARGET == 'dev') {
                     sendData = testData[i].response[req.method];
                     break;
                   } else {
-                    result.displayMsg = "test标识无法识别";
-                    sendData = result;
+                    resultErr.result.displayMsg = "test标识无法识别";
+                    sendData = resultErr;
                   }
                 }
               } catch(err) {
-                result.displayMsg = JSON.stringify(key + " -> " + err.toString());
-                sendData = result;
+                resultErr.result.displayMsg = JSON.stringify(key + " -> " + err.toString());
+                sendData = resultErr;
               }
               res.send(sendData);
             }
@@ -236,9 +244,9 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(cookieParser());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
