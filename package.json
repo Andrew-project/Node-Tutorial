@@ -5,13 +5,12 @@
   "private": true,
   "scripts": {
     "start": "pm2 start ./node_test/index.js",
-    "pro": "pm2 kill && pm2 start ./bin/www --name pro",
-    "dev": "rm -rf pro && rm -rf test && gulp & pm2 kill && pm2 start ./bin/www --name dev",
-    "test": "pm2 kill && pm2 start ./bin/www --name test"
+    "pro": "pm2 kill && pm2 start ./bin/www --name pro & lite-server",
+    "dev": "rm -rf pro && rm -rf test && gulp & pm2 kill && pm2 start ./bin/www --name dev & lite-server",
+    "test": "pm2 kill && pm2 start ./bin/www --name test & lite-server"
   },
   "watch": [
-    "src",
-    "bin"
+    "src"
   ],
   "ignore_watch": [
     "node_modules",
@@ -61,6 +60,7 @@
     "gulp-uglify": "^1.5.4",
     "imagemin-pngcrush": "^5.0.0",
     "jshint": "^2.9.2",
+    "lite-server": "^2.2.2",
     "node-sass": "^3.13.0"
   },
   "os": [

@@ -23,18 +23,7 @@ var htmlmin = require('gulp-htmlmin'), //html压缩
     notify = require('gulp-notify');//提示信息
 var replace = require('gulp-replace');
 var plumber = require('gulp-plumber');
-
-
-// 浏览器刷新
-// gulp.task('js-watch', ['js'], function () {
-//     return gulp.src('src/js/**/*.js')
-//         .pipe(browserSync.stream());
-// });
-//
-// gulp.task('html-watch', ['html'], function () {
-//     return gulp.src('src/templates/**/*.html')
-//         .pipe(browserSync.stream());
-// });
+var reload = browserSync.reload;
 
 // 压缩html
 gulp.task('html', function () {
@@ -57,8 +46,8 @@ gulp.task('html', function () {
         .pipe(htmlmin(htmlOptions))
         .pipe(gulp.dest('./test'))
         .pipe(gulp.dest('./pro'))
-        // .pipe(browserSync.stream())
-        .pipe(notify({message: 'html task ok'}));
+        .pipe(notify({message: 'html task ok'}))
+        .pipe(reload({stream: true}));
 });
 
 // 压缩图片
@@ -116,15 +105,16 @@ gulp.task('css', function () {
         .pipe(minifycss(cssOption))
         .pipe(gulp.dest('test/css'))
         .pipe(gulp.dest('pro/css'))
-        .pipe(notify({message: 'css task ok'}));
+        .pipe(notify({message: 'css task ok'}))
+        .pipe(reload({stream: true}));
 });
 
 // iconfont
 gulp.task('iconfont', function () {
-    return gulp.src(['src/iconfont/*'])
-        .pipe(plumber())
-        .pipe(gulp.dest('test/css'))
-        .pipe(gulp.dest('pro/css'))
+    return gulp.src(['src/iconfont/**/*'])
+        // .pipe(plumber())
+        .pipe(gulp.dest('test/iconfont'))
+        .pipe(gulp.dest('pro/iconfont'))
         .pipe(notify({message: 'iconfont task ok'}));
 });
 
@@ -175,8 +165,8 @@ gulp.task('js', function () {
         .pipe(gulp.dest('test/js'))
         .pipe(replace("setEnvirement('debug')", "setEnvirement('pro')"))
         .pipe(gulp.dest('pro/js'))
-        // .pipe(browserSync.stream())
-        .pipe(notify({message: 'js task ok'}));
+        .pipe(notify({message: 'js task ok'}))
+        .pipe(reload({stream: true}));
 });
 
 gulp.task('testMainJs', ['js'], function () {
@@ -191,18 +181,26 @@ gulp.task('proMainJs', ['js'], function () {
         .pipe(gulp.dest('pro/js'))
 });
 
+var TARGET = process.env.npm_lifecycle_event;
+
+gulp.task('browser-sync', function () {
+    browserSync.init({
+        proxy: "localhost:3000"
+    });
+    gulp.watch(['src/**/*.html']).on('change', reload);
+    gulp.watch(['src/css/**/*.css', '!src/css/main.css', '!src/css/main.min.css']).on('change', reload);
+    gulp.watch(['src/js/**/*.js', '!src/js/all.js', '!src/js/all.min.js']).on('change', reload);
+});
+
 // 默认任务
 gulp.task('default', function () {
     // gulp.run('img', 'sass', 'css', 'lint', 'js', 'html');
-    gulp.run('img', 'css', 'lint', 'js', 'html', 'lib', 'iconfont', 'testMainJs', 'proMainJs');
+    gulp.run('img', 'css', 'lint', 'js', 'html', 'lib', 'iconfont', 'testMainJs', 'proMainJs', 'browser-sync');
 
-    // 监听html文件变化
-    // gulp.watch(['src/**/*.html'], ['html-watch']);
-    gulp.watch(['src/**/*.html']).on("change", function() {
-        browserSync.reload;
-    });
+    // Watch .html files
+    // gulp.watch(['src/**/*.html'], ['html']);
 
-    //Watch .scss files
+    // Watch .scss files
     // gulp.watch(['src/css/*.scss', 'src/css/**/*.scss', 'src/css/**/**/*.scss'], ['sass']);
 
     // Watch .css files

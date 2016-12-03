@@ -6,11 +6,11 @@ var basicInfoObject = {
     'name': "",
     "organizationId": "",
     "organizationName": "",
-    "departmentId":"",
-    "departmentName":"",
-    "professionalTitle":"",
-    'avatarUrl':"",
-    'phone':""
+    "departmentId": "",
+    "departmentName": "",
+    "professionalTitle": "",
+    'avatarUrl': "",
+    'phone': ""
 };
 var basicInfo = {
     "hospital": "",
@@ -24,17 +24,17 @@ app.directive('basicInfoController', function () {
         scope: {
             data: '=data'
         },
-        controller: function ($$env,$scope, $element, $attrs, $$log, $state, $$toast, $http, $$requestUrl, $$loading, $rootScope, $$iconfont) {
-            if(basicInfoObject.name.length === 0 || basicInfoObject.professionalTitle.length === 0){
+        controller: function ($$env, $scope, $element, $attrs, $$log, $state, $$toast, $http, $$requestUrl, $$loading, $rootScope, $$iconfont) {
+            if (basicInfoObject.name.length === 0 || basicInfoObject.professionalTitle.length === 0) {
                 $scope.name = "";
                 $scope.professionalTitle = "";
                 $scope.hospitalName = "";
                 $scope.departmentName = "";
                 $scope.avatarUrl = "";
-            }else{
+            } else {
                 $scope.name = basicInfoObject.name;
                 $scope.professionalTitle = basicInfoObject.professionalTitle;
-                $('#id-1-img').attr('src' , basicInfoObject.avatarUrl);
+                $('#id-1-img').attr('src', basicInfoObject.avatarUrl);
             }
 
             //跳页面选择值
@@ -58,11 +58,11 @@ app.directive('basicInfoController', function () {
             getValueArr('departmentObj');
 
             $scope.goChoiceHospital = function () {
-                    basicInfoObject.name = $scope.name;
-                    basicInfoObject.professionalTitle = $scope.professionalTitle;
-                    basicInfoObject.avatarUrl = $('#id-1-img').attr('src');
-                    basicInfo.hospital = true;
-                    $state.go('choiceHospital');
+                basicInfoObject.name = $scope.name;
+                basicInfoObject.professionalTitle = $scope.professionalTitle;
+                basicInfoObject.avatarUrl = $('#id-1-img').attr('src');
+                basicInfo.hospital = true;
+                $state.go('choiceHospital');
             };
 
             //跳转选择科室页面
@@ -86,33 +86,37 @@ app.directive('basicInfoController', function () {
                             .toString(16)
                             .substring(1);
                     }
+
                     return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
                         s4() + '-' + s4() + s4() + s4();
                 }
+
                 var file = document.getElementById('id-1-file').files[0];
                 var localUrl = document.getElementById('id-1-file').files[0].name;
-                function getFileName(o){
-                    var pos=o.lastIndexOf(".");
+
+                function getFileName(o) {
+                    var pos = o.lastIndexOf(".");
                     // var last = pos.lastIndexOf(".");
-                    return o.substring(pos+1);
+                    return o.substring(pos + 1);
                 }
-                var postfix =  getFileName(localUrl);
-                var storeAs = 'avatar/' + guid() + '.'+postfix;
+
+                var postfix = getFileName(localUrl);
+                var storeAs = 'avatar/' + guid() + '.' + postfix;
                 $$log.debug('$$env');
                 $$log.debug($$env.getEnvirement());
                 var bucket = '';
-                var urlStr ='';
-                if($$env.getEnvirement() == 1){
+                var urlStr = '';
+                if ($$env.getEnvirement() == 1) {
                     $$log.debug('dev 1');
                     bucket = 'yhjstatic-dev';
                     urlStr = 'http://yhjstatic-dev.oss-cn-shanghai.aliyuncs.com/'
-                }else if($$env.getEnvirement() == 2){
+                } else if ($$env.getEnvirement() == 2) {
                     $$log.debug('pro 2');
                     bucket = 'yhjstatic';
                     urlStr = 'http://yhjstatic.oss-cn-shanghai.aliyuncs.com/';
                 }
-                $$log.debug('bucket'+bucket);
-                $$log.debug('ulrStr'+urlStr);
+                $$log.debug('bucket' + bucket);
+                $$log.debug('ulrStr' + urlStr);
 
                 var client = new OSS.Wrapper({
                     region: 'oss-cn-shanghai',
@@ -122,12 +126,12 @@ app.directive('basicInfoController', function () {
                 });
                 $$loading.show();
                 client.multipartUpload(storeAs, file).then(function (result) {
-                        var url = urlStr + result.name+'?x-oss-process=image/resize,h_500';
-                        $$log.debug('返回的图片路径为：'+url);
-                        $scope.headImgUrl =url;
-                        document.getElementById('id-1-img').src = url;
-                        $scope.avatarUrl =  document.getElementById('id-1-img').src;
-                        $$loading.hide();
+                    var url = urlStr + result.name + '?x-oss-process=image/resize,h_500';
+                    $$log.debug('返回的图片路径为：' + url);
+                    $scope.headImgUrl = url;
+                    document.getElementById('id-1-img').src = url;
+                    $scope.avatarUrl = document.getElementById('id-1-img').src;
+                    $$loading.hide();
                 }).catch(function (err) {
                     $$loading.hide();
                     $$toast.show('上传失败！请重新上传');
@@ -142,14 +146,12 @@ app.directive('basicInfoController', function () {
             });
 
             $scope.nextTwoUser = function () {
-
                 $scope.avatarUrl = $('#id-1-img').attr('src');
-                $$log.debug('$scope.avatarUrl'+$scope.avatarUrl);
-
+                $$log.debug('$scope.avatarUrl' + $scope.avatarUrl);
                 var isHospitalNameNull = ($scope.hospitalName == '' || typeof $scope.hospitalName == 'undefined');
                 var isDepartmentNameNull = ($scope.departmentName == '' || typeof $scope.departmentName == 'undefined');
-                $$log.debug('departmentName'+isHospitalNameNull);
-                $$log.debug('isDepartmentNameNull'+isDepartmentNameNull);
+                $$log.debug('departmentName' + isHospitalNameNull);
+                $$log.debug('isDepartmentNameNull' + isDepartmentNameNull);
 
                 if ($scope.name == '' || $scope.professionalTitle == '' || isHospitalNameNull || isDepartmentNameNull) {
                     $$toast.show('请检查信息再提交');
@@ -163,17 +165,17 @@ app.directive('basicInfoController', function () {
                         "departmentId": $scope.departmentId,
                         "departmentName": $scope.departmentName,
                         "professionalTitle": $scope.professionalTitle,
-                        'avatarUrl':$scope.avatarUrl,
-                        'phone':globalNursePhone.toString()
+                        'avatarUrl': $scope.avatarUrl,
+                        'phone': globalNursePhone.toString()
                     };
                     $http({
                         method: 'PATCH',
                         url: $$requestUrl.getUrl("createBasicInfo", {"nurseId": localStorage.globalNurseId}),
                         data: {
-                            'basic':basicInfoObject
+                            'basic': basicInfoObject
                         }
                     }).success(function (response) {
-                        if(response.result.success === true){
+                        if (response.result.success === true) {
                             $state.go('professionInfo');
                             $$log.debug('creatBasicInfo');
                             $$log.info(response);
@@ -182,7 +184,7 @@ app.directive('basicInfoController', function () {
                             localStorage.hospital = $scope.hospitalName;
                             localStorage.hospitalId = $scope.hospitalId;
 
-                        }else{
+                        } else {
                             $$toast.show(response.result.displayMsg.toString() ? response.result.displayMsg.toString() : '服务器扔过来一个错误');
                         }
                     });
