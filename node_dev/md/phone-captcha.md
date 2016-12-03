@@ -12,8 +12,10 @@
 
             },
             "response": {
-                "result": {
-                    "success": true
+                "POST": {
+                    "result": {
+                        "success": true
+                    }
                 }
             }
         },
@@ -23,9 +25,11 @@
 
             },
             "response": {
-                "result": {
-                    "success": false,
-                    "displayMsg": "error"
+                "POST": {
+                    "result": {
+                        "success": false,
+                        "displayMsg": "error"
+                    }
                 }
             }
         }

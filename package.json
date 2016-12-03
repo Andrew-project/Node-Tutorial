@@ -6,7 +6,7 @@
   "scripts": {
     "start": "pm2 start ./node_test/index.js",
     "pro": "pm2 kill && pm2 start ./bin/www --name pro & lite-server",
-    "dev": "rm -rf pro && rm -rf test && gulp & pm2 kill && pm2 start ./bin/www --name dev & lite-server",
+    "dev": "rm -rf pro && rm -rf test && gulp & pm2 kill && pm2 start ./bin/www --name dev",
     "test": "pm2 kill && pm2 start ./bin/www --name test & lite-server"
   },
   "watch": [
@@ -32,6 +32,7 @@
     "file-stream-rotator": "0.0.7",
     "fs": "0.0.1-security",
     "gulp-sass": "^2.3.2",
+    "lite-server": "^2.2.2",
     "morgan": "~1.7.0",
     "node-sass": "^3.13.0",
     "serve-favicon": "~2.3.0"

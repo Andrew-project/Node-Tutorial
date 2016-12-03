@@ -170,6 +170,7 @@ gulp.task('js', function () {
 });
 
 gulp.task('testMainJs', ['js'], function () {
+
     return gulp.src(["test/js/*.min.js"])
         .pipe(uglify())
         .pipe(gulp.dest('test/js'))
@@ -184,9 +185,9 @@ gulp.task('proMainJs', ['js'], function () {
 var TARGET = process.env.npm_lifecycle_event;
 
 gulp.task('browser-sync', function () {
-    browserSync.init({
-        proxy: "localhost:3000"
-    });
+    // browserSync.init({
+    //     proxy: "localhost:3000"
+    // });
     gulp.watch(['src/**/*.html']).on('change', reload);
     gulp.watch(['src/css/**/*.css', '!src/css/main.css', '!src/css/main.min.css']).on('change', reload);
     gulp.watch(['src/js/**/*.js', '!src/js/all.js', '!src/js/all.min.js']).on('change', reload);
