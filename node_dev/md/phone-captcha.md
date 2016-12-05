@@ -1,37 +1,20 @@
-{
-    "title": "验证码",
-    "url": "/api/nurses/signup/phone-captcha",
-    "params": {
-        "phone": "string",
-        "name": 1
-    },
-    "testCase": [
-        {
-            "name": "default",
-            "params": {
+"title": "验证码",
+"url": "/api/nurses/signup/phone-captcha",
+"method": "POST",
+"params": {
+    "phone": "string",
+    "name": "lsh"
+},
+"testCase": [
+    {
+        "name": "default",
+        "params": {
 
-            },
-            "response": {
-                "POST": {
-                    "result": {
-                        "success": true
-                    }
-                }
-            }
         },
-        {
-            "name": "testCase1",
-            "params": {
-
-            },
-            "response": {
-                "POST": {
-                    "result": {
-                        "success": false,
-                        "displayMsg": "error"
-                    }
-                }
+        "response": {
+            "result": {
+                "success": true
             }
         }
-    ]
-}
+    }
+]

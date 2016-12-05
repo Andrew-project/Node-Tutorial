@@ -12,8 +12,6 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 
-var resData = readFile('./node_dev/requestUrl.json');
-
 var errorList = [
     {
         "result": {
@@ -55,94 +53,94 @@ var resultErr = {
         "displayMsg": "error"
     }
 };
-router.all('/*', function (req, res, next) {
-    var out = fs.createWriteStream("./logs/request.log");
-    out.write("method: " +resData + '\r\n');
-    out.write("url: " + req.url + '\r\n');
-    out.write("body: " + JSON.stringify(req.body) + '\r\n');
-    out.write("请求对象: " + JSON.stringify(req.headers) + '\r\n');
-    out.end("VISOION:" + req.httpVersion);
+//
+// getPromise('./node_dev/config.md').then(function (data) {
+//     matchPath(data);
+// });
+//
+// function getPromise(path) {
+//     var promise = new Promise(function(resolve, reject){
+//             fs.readFile(path, 'utf8', function(err, data) {
+//             if (err) {
+//                 reject(err);
+//             } else {
+//                 resolve(data)
+//             }
+//         })
+//     });
+//     return promise;
+// }
 
-    var pathName = req.url;
+// fs.readFile('./node_dev/config.md', 'utf8', function (err, data) {
+//     if (err) {
+//
+//     } else {
+//         matchPath(data);
+//     }
+// });
+var pathData = fs.readFileSync('./node_dev/config.md', 'utf8');
+var config = eval(pathData);
 
-    var jsonData = {};
-    try {
-        jsonData = JSON.parse(resData);
-    } catch (e) {
-        resultErr.result.displayMsg = JSON.stringify("requestUrl.json -> " + e.toString());
-        res.send(resultErr);
-    }
-
-    if (jsonData["success"] != undefined) {
-        res.send(jsonData);
-    } else {
-        for (var key in jsonData) {
-            var re = eval(jsonData[key]);
-            if (re.test(pathName)) {
-                var mdPath = './node_dev/md/' + key + '.md';
-                fs.readFile(mdPath, 'utf8', function (err, data) {
-                    if (err) {
-                        res.send(errorList[3]);
-                    } else {
-                        var simplyData = data.replace(/[\r\n]/g,"");
-                        var noteIdxArr = getIdxArr(simplyData, "<", ">");
-                        var noteArr = [];
-                        var mdData = simplyData;
-
-                        for (var i=0; i< noteIdxArr.length; i++) {
-                            noteArr.push(mdData.slice(noteIdxArr[i].left, noteIdxArr[i].right + 1))
-                            mdData = simplyData;
-                        }
-                        for (var m=0; m < noteArr.length; m++) {
-                            var noteStr = noteArr[m];
-                            noteStr = new RegExp(noteStr, 'g');
-                            simplyData = simplyData.replace(noteStr, "");
-                        }
-                        var sendData = '';
-                        try {
-                            var testData = JSON.parse(simplyData)["testCase"];
-                            for (var i=0; i<testData.length; i++ ) {
-                                if (testData[i].name == 'default') {
-                                    sendData = testData[i].response[req.method];
-                                    break;
-                                } else {
-                                    resultErr.result.displayMsg = "test标识无法识别";
-                                    sendData = resultErr;
-                                }
-                            }
-                        } catch(err) {
-                            resultErr.result.displayMsg = JSON.stringify(key + " -> " + err.toString());
-                            sendData = resultErr;
-                        }
-                        res.send(sendData);
-                    }
-                });
-                return;
-            }
+router.all("/*", function (req, res) {
+    for (var i = 0; i < config.length; i++) {
+        if (IsOkOfUrl(config[i].url, req.url)) {
+            res.send(fun(config[i].path, req));
         }
-        res.send(JSON.stringify(errorList[1]));
     }
-    // next();
+    res.send(errorList[1]);
 });
 
-function readFile(path) {
-    fs.readFile(path, 'utf8', function (err, data) {
-        if (err) {
-            resData = JSON.stringify(errorList[3]);
+function fun (path, req) {
+    var data = fs.readFileSync(path, 'utf8');
+    var simplyData = data.replace(/[\r\n]/g, "");
+    var noteIdxArr = getIdxArr(simplyData, "<", ">");
+    var noteArr = [];
+    var mdData = simplyData;
+
+    for (var i = 0; i < noteIdxArr.length; i++) {
+        noteArr.push(mdData.slice(noteIdxArr[i].left, noteIdxArr[i].right + 1))
+        mdData = simplyData;
+    }
+    for (var m = 0; m < noteArr.length; m++) {
+        var noteStr = noteArr[m];
+        noteStr = new RegExp(noteStr, 'g');
+        simplyData = simplyData.replace(noteStr, "");
+    }
+    simplyData = "{" + simplyData + "}";
+    var sendData = '';
+    try {
+        var testData = JSON.parse(simplyData);
+        if (testData["method"] == req.method) {
+            testData = testData["testCase"];
+            for (var i = 0; i < testData.length; i++) {
+                if (testData[i].name == 'default') {
+                    sendData = testData[i].response;
+                    break;
+                } else {
+                    resultErr.result.displayMsg = "请确定数据格式是否正确";
+                    sendData = resultErr;
+                }
+            }
         } else {
-            resData = data;
+            resultErr.result.displayMsg = "请检查" + path + "内method参数是否写错!";
+            sendData = resultErr;
         }
-    });
-}
+    } catch (err) {
+        resultErr.result.displayMsg = JSON.stringify(path + " -> " + err.toString());
+        sendData = resultErr;
+    }
+    return sendData;
+};
+
 
 function getIdxArr(str, left, right) {
     var idxArr = [];
-    for (var j=0; j< str.length; j++) {
+    for (var j = 0; j < str.length; j++) {
         var item = {};
 
         if (str[j] == left) {
             item["left"] = j;
-            for (var m=j+1; m< str.length; m++) {
+            for (var m = j + 1; m < str.length; m++) {
                 if (str[m] == right) {
                     item["right"] = m;
                     j = m;
@@ -153,6 +151,26 @@ function getIdxArr(str, left, right) {
         }
     }
     return idxArr;
+}
+
+function IsOkOfUrl(local_url, request_url) {
+    if (local_url == request_url) {
+        return true;
+    } else {
+        var arr = local_url.split("/");
+        arr.splice(0, 1);
+        var rx = '^';
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i].indexOf(":") != -1) {
+                rx = rx + "\\/" + "[1-9]+[0-9]{0,}";
+            } else {
+                rx = rx + "\\/" + arr[i];
+            }
+        }
+        rx = rx + "$";
+        rx = new RegExp(rx);
+        return rx.test(request_url);
+    }
 }
 
 module.exports = router;
