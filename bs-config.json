@@ -1,0 +1,6 @@
+{
+  "open": false,
+  "port": 3000,
+  "files": "./src",
+  "server": { "baseDir": "./src" }
+}

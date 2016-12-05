@@ -4,10 +4,12 @@
   "author": "gaoqz",
   "private": true,
   "scripts": {
-    "start": "pm2 start ./node_test/index.js",
-    "pro": "pm2 kill && pm2 start ./bin/www --name pro",
-    "dev": "rm -rf pro && rm -rf test && gulp & pm2 kill && pm2 start ./bin/www --name dev",
-    "test": "pm2 kill && pm2 start ./bin/www --name test"
+    "start": "run dev",
+    "pro": "pm2 start ./bin/www --name pro",
+    "dev": "rm -rf pro && rm -rf test && gulp & pm2 start ./bin/www --name dev",
+    "test": "pm2 start ./bin/www --name test",
+    "lite-server": "lite-server -c bs-config.json",
+    "browser-sync": "pm2 start browser-sync"
   },
   "watch": [
     "src"
@@ -27,6 +29,7 @@
     "body-parser": "~1.15.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
+    "del": "^2.2.2",
     "ejs": "~2.5.2",
     "express": "~4.14.0",
     "file-stream-rotator": "0.0.7",
@@ -39,6 +42,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.18.2",
+    "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-clean-css": "^2.0.10",

@@ -1,22 +1,23 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
+// var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var fs = require('fs');
-var fileStreamRotator = require('file-stream-rotator');
 
-var url = require('url');
+// var fs = require('fs');
+// var fileStreamRotator = require('file-stream-rotator');
+// var url = require('url');
+// var logDir = path.join(__dirname, 'logs');
+// fs.existsSync(logDir) || fs.mkdirSync(logDir); // ensure log directory exists
+
 var app = express();
-
-var logDir = path.join(__dirname, 'logs');
-fs.existsSync(logDir) || fs.mkdirSync(logDir); // ensure log directory exists
 
 // 缓存
 option = {maxAge: '1d'};
 
 //切换配置环境
+// pro --> pro 正式环境， test --> test 测试环境， dev --> src 本地环境
 const TARGET = process.env.npm_lifecycle_event;
 
 if (TARGET == 'pro') {
@@ -69,20 +70,12 @@ if (TARGET == 'dev') {
   app.use("/src/js", express.static(__dirname + "/src/js", option));
   app.use("/src/img", express.static(__dirname + "/src/img", option));
   app.use("/src/css", express.static(__dirname + "/src/css", option));
-  // app.use("/src/json", express.static(__dirname + "/src/json", option));
   app.use("/src/templates", express.static(__dirname + "/src/templates", option));
 
   app.use('/src/json', router);
   app.use("/*", function(req, res, next) {
     res.sendfile("src/index.html");
   });
-  // app.use("/*", function (req, res) {
-  //   if(req.path.indexOf('/api')>=0){
-  //     res.send("server text");
-  //   }else{
-  //     res.sendfile('src/index.html');
-  //   }
-  // });
 
   app.use(logger('combined'));
   app.use(express.static(path.join(__dirname, 'src')));
@@ -92,11 +85,6 @@ if (TARGET == 'dev') {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
