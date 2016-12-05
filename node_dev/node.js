@@ -83,7 +83,7 @@ var config = eval(pathData);
 
 router.all("/*", function (req, res) {
     for (var i = 0; i < config.length; i++) {
-        if (IsOkOfUrl(config[i].url, req.url)) {
+        if (IsOkOfUrl(config[i].url, req.url) && config[i].method == req.method) {
             res.send(fun(config[i].path, req));
         }
     }
