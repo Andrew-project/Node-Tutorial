@@ -1,0 +1,37 @@
+<div class="nurseTagManageController patientTagManageController margin-bottom-xxl">
+    <!--暂无数据-->
+    <div  ng-show=" data.tag.length == 0 ||  (data.tag == undefined ) " class="text-center dataNull">
+        <img class="margin-top-xl" src="img/dataNull.png" alt="">
+        <p class="h3 font-color-base text-center margin-top-md">暂无数据</p>
+    </div>
+
+    <div ng-hide="data.tag.length == 0 ||  (data.tag == undefined )">
+        <a  ng-show="data.tag.length != 0 && !isSearch" ng-click="onIsSearchStatus(true)" class="background-color-white h3 padding-height-sm text-center display-block margin-bottom-md border-radius-6 projectIconfont margin-width-md margin-height-md">&#xe660;&nbsp;输入关键字查找</a>
+
+        <div ng-show="isSearch" class="margin-width-md clear-float margin-height-md">
+            <div class="float-left position-warp">
+                <input ng-model="searchKey" type="text" class=" searchInput del-after float-left background-color-white h3 border-radius-6 padding-height-sm  width-540 padding-left-sm padding-right-70" placeholder="输入关键字查找">
+                <span ng-show="searchKey.toString().length > 0"  ng-click="onClearInput()" class="del-input-after padding-width-sm"></span>
+            </div>
+            <span class="float-right h2 cancel-text margin-re-right-md padding-right-md" ng-click="onIsSearchStatus(false)">取消</span>
+        </div>
+
+
+        <div class="border-line-bottom border-color-global-base clear-float padding-width-md background-color-white" ng-repeat="tag in data.tag | orFilter :searchKey" ng-if="tag.tagType < 2 && tag.isShow">
+            <h3 class="padding-height-lg float-left" ng-bind="tag.tagName">标签名</h3>
+            <div class="float-right">
+                <div class="padding-height-md  float-left" ng-click="onAlterTag(tag)">
+                    <span class="radius-sm radius-right-none font-color-white float-left text-center h4 background-color-blue padding-height-xs padding-width-sm">修改</span>
+                </div>
+                <div class="padding-height-md float-left" ng-click="onDelTag(tag)">
+                    <span class="radius-sm radius-left-none font-color-white float-left text-center h4 background-color-red padding-height-xs padding-width-sm">删除</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <a class="fix-warp display-block background-color-white text-center h2 padding-height-md border-color-global-base border-line-top" ng-click="onAddTag()">新增标签</a>
+</div>
+

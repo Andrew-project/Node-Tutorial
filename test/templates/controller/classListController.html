@@ -1,0 +1,13 @@
+<div class="classListController">
+    <div class="background-color-white border-line-bottom border-color-global-base">
+        <a ng-click="listClass($index)" ng-repeat="roster in data.roster">
+            <div class=" border-color-global-base {{$index!=0?'border-line-top':''}}  padding-right-md margin-left-md h3 title more padding-height-lg divPartent">
+                <span  class="margin-right-md inline-block" ng-bind="roster.title" ng-init="roster.sel=(orderObject.dutyId.indexOf(roster.rosterId)>=0)"></span>
+            </div>
+        </a>
+    </div>
+    <div class=" text-center dataNull" ng-show="data.roster.length < 0">
+        <img class="margin-top-xl" src="img/dataNull.png" alt="">
+        <p class="h3 font-color-base text-center margin-top-md">暂无数据</p >
+    </div>
+ </div>

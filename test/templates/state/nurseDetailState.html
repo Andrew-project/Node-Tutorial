@@ -1,0 +1,34 @@
+<div class="nurseDetailController">
+    <div class="nurseDetail">
+        <a class="h0 display-block padding-left-md background-color-white ">
+            <p class="border-line-bottom border-line-bottom border-color-global-base padding-top-md">
+                <i class="margin-right-md background-color-white text-center projectIconfont font-color-global-lightest background-color-white">&#xe659;</i>
+                <label class="h3 display-inline padding-bottom-md">真实姓名：<span class="h3" ng-bind="nurseInfo.name">张亦凡</span></label>
+            </p>
+        </a>
+
+        <a class="h0 display-block padding-left-md background-color-white">
+            <p class="border-line-bottom border-line-bottom border-color-global-base padding-top-md">
+                <i class="margin-right-md background-color-white text-center projectIconfont font-color-global-lightest background-color-white">&#xe630;</i>
+                <label class="h3 display-inline padding-bottom-md">身份职称：<span class="h3"  ng-bind="nurseInfo.professionalTitle">护士</span></label>
+            </p>
+        </a>
+
+        <a ui-sref="alterNurseTag({nurseId:{{nurseInfo.nurseId}}})" class="border-line-bottom border-color-global-base h0 display-block padding-left-md background-color-white">
+            <p class="border-color-global-base padding-top-md display-table-cell" style="width: 4.6rem;">
+                <i class="margin-right-md background-color-white text-center projectIconfont font-color-global-lightest background-color-white">&#xe65f;</i>
+                <span class="h3 display-inline padding-bottom-md">标签：</span>
+            </p>
+            <span style="width: 8rem;" class="padding-height-md display-table-cell">
+               <i class="h3" ng-bind="tagStr"></i>
+                <!--<span ng-repeat="tag in nurseInfo.tag track by $index"><i class="h3" ng-bind="tag.tagName"></i><i ng-show="$index < nurseInfo.tag.length-1">，</i></span>-->
+            </span>
+                <!--<span ng-show="nurseInfo.tag.length >= 3">...</span>-->
+            <text class="h4 border-color-global-base padding-left-md display-table-cell">修改<span class="projectIconfont font-color-global-lighter h4 contentCenter">&#xe600;</span></text>
+        </a>
+    </div>
+    <div class="text-center bottom-btn">
+        <a class="padding-height-md float-left font-color-white h3 background-color-yellow" ng-show="ownNurseId != nurseInfo.nurseId" ng-click="gotoChat(nurseInfo)">发起沟通</a>
+        <a class="padding-height-md float-left font-color-white h3 background-color-pink {{ownNurseId == nurseInfo.nurseId? 'a-width': ''}}" ng-click="goToSort(nurseInfo)">为TA排班</a>
+    </div>
+</div>

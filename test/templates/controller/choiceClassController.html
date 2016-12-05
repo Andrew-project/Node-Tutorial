@@ -1,0 +1,23 @@
+<div class="choiceClassController">
+    <div class="background-color-white border-color-global-base border-line-bottom">
+        <div ng-show="isAdd == false" ng-repeat="roster in data.roster" class=" border-color-global-base {{$index!=0?'border-line-top':''}}  padding-right-md margin-left-md h3 padding-height-lg divPartent" ng-click="roster.sel=!roster.sel">
+            <span  class="margin-right-md inline-block" ng-bind="roster.title"></span>
+            <!--<span class="iconfon
+            t float-right h4 font-color-pink active-check check-style positionRight" ng-hide=""></span>-->
+            <span class="projectIconfont float-right h4 font-color-pink {{roster.sel==true?'active-check':'check-click'}} check-style positionRight"></span>
+        </div>
+
+        <a ng-click="chooseOrder(roster)" ng-show="isAdd == true" ng-repeat="roster in data.roster">
+            <div  class=" border-color-global-base {{$index!=0?'border-line-top':''}} padding-right-md margin-left-md h3 padding-height-lg divPartent">
+                <span  class="margin-right-md inline-block" ng-bind="roster.title"></span>
+            </div>
+        </a>
+    </div>
+    <a ng-click="confirmRoster()" ng-show="isAdd == false && data.roster.length > 0">
+        <div class="CommonButtonRed margin-top-xl">
+            完成
+        </div>
+    </a>
+    <a ui-sref="setOrder({operateType:'new'})" class="CommonButtonWrite margin-top-xl display-block {{(isAdd != false)?'margin-bottom-xl':''}}">新建班次</a>
+    <a  ng-show="isAdd == false && data.roster.length > 0" ui-sref="classList" class="margin-top-md margin-bottom-xl CommonButtonWrite display-block">编辑现有班次</a>
+</div>

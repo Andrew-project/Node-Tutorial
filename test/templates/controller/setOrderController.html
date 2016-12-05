@@ -1,0 +1,29 @@
+<div class="setOrderController triggerInputWarp">
+    <div class="background-color-white">
+    <div class="triggerInput border-color-global-base border-line-bottom padding-right-md margin-left-md h3">
+        <span class="margin-right-md spans inline-block">班次名称</span>
+        <input class="font-color-global-lighter h3 padding-height-lg minWidth" type="text" id="title" ng-model="title" placeholder="最多可输入3个字">
+    </div>
+        <div class="triggerInput border-color-global-base border-line-bottom padding-right-md margin-left-md h3">
+        <span class="margin-right-md spans inline-block">描述</span>
+        <input class="font-color-global-lighter h3 padding-height-lg minWidth" type="text" id="describe" ng-model="describe" placeholder="请输入描述">
+    </div>
+        <div class="triggerInput border-color-global-base border-line-bottom padding-right-md margin-left-md h3 padding-height-lg">
+        <span class="margin-right-md spans inline-block">开始时间</span>
+        <input class="font-color-global-lighter h3 minWidth maxHeight" type="text" id="from" value="{{getDTime(from)}}"  readonly ng-click="setStartTime()">
+    </div>
+        <div class="triggerInput border-color-global-base border-line-bottom padding-right-md margin-left-md h3 padding-height-lg">
+        <span class="margin-right-md spans inline-block">结束时间</span>
+        <input class="font-color-global-lighter h3 minWidth maxHeight" type="text" id="to" value="{{getDTime(to)}}" readonly ng-click="setEndTime()">
+    </div>
+        <a ng-click="getColor()">
+            <div class=" border-color-global-base border-line-bottom padding-width-md h3 padding-height-lg title more">
+                <p class="margin-right-md spans inline-block" >所用颜色</p>
+                <span class="iconfont-height-xxs iconfont-width-xxs {{colorClass ? colorClass :'green'}} inline-block radius-md"  style="position: relative;bottom: -2px;"></span>
+            </div>
+        </a>
+    </div>
+    <div class="CommonButtonRed margin-height-xl" ng-click="setOrder()">
+        完成
+    </div>
+</div>

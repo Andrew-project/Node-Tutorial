@@ -24,20 +24,9 @@ var htmlmin = require('gulp-htmlmin'), //html压缩
 var replace = require('gulp-replace');
 var plumber = require('gulp-plumber');
 var del = require('del'); // 删除
+var gulpFilter = require('gulp-filter'); //gulp过滤
 
-// 压缩html
-gulp.task('html', function () {
-    return gulp.src('src/**/*.html')
-        .pipe(plumber())
-        .pipe(rev())
-        .pipe(replace('main.css', 'main.min.css'))
-        .pipe(replace('all.js', 'all.min.js'))
-        .pipe(replace('<base href="/src/">', '<base href="/test/">'))
-        .pipe(gulp.dest('./test'))
-        .pipe(replace('<base href="/test/">', '<base href="/pro/">'))
-        .pipe(gulp.dest('./pro'))
-        .pipe(notify({message: 'html task ok'}));
-});
+// 压缩html配置
 var htmlOptions = {
     removeComments: true,//清除HTML注释
     collapseWhitespace: true,//压缩HTML
@@ -48,11 +37,29 @@ var htmlOptions = {
     minifyJS: true,//压缩页面JS
     minifyCSS: true//压缩页面CSS
 };
-gulp.task('testMainIndex', ['html'], function () {
-    return gulp.src('test/**/*.html')
-        .pipe(htmlmin(htmlOptions))
+
+// 输出html
+gulp.task('html', function () {
+    return gulp.src('src/**/*.html')
+        .pipe(plumber())
+        .pipe(rev())
+        .pipe(replace('main.css', 'main.min.css'))
+        .pipe(replace('all.js', 'all.min.js'))
+        .pipe(replace('<base href="/src/">', '<base href="/test/">'))
+        .pipe(replace('<base href="/src/">', '<base href="/test/">'))
         .pipe(gulp.dest('./test'))
+        .pipe(replace('<base href="/test/">', '<base href="/pro/">'))
+        .pipe(gulp.dest('./pro'))
+        .pipe(notify({message: 'html task ok'}));
 });
+
+// gulp.task('testMainIndex', ['html'], function () {
+//     return gulp.src('test/**/*.html')
+//         .pipe(htmlmin(htmlOptions))
+//         .pipe(gulp.dest('./test'))
+// });
+
+// pro环境压缩html
 gulp.task('proMainIndex', ['html'], function () {
     return gulp.src('pro/**/*.html')
         .pipe(htmlmin(htmlOptions))
@@ -84,6 +91,7 @@ gulp.task('sass', function () {
         .pipe(plumber())
         .pipe(sass())
         .pipe(gulp.dest('./src/css'))
+        .pipe(gulp.dest('./test/css'))
         .pipe(notify({message: 'sass task ok'}));
 });
 
@@ -111,17 +119,18 @@ gulp.task('css', function () {
         // }))
         .pipe(concat('main.css'))
         .pipe(gulp.dest('src/css'))
+        .pipe(gulp.dest('test/css'))
         .pipe(rename({suffix: '.min'}))
         .pipe(minifycss(cssOption))
-        .pipe(gulp.dest('test/css'))
         .pipe(gulp.dest('pro/css'))
         .pipe(notify({message: 'css task ok'}));
 });
 
-// iconfont
+// iconfont输出
 gulp.task('iconfont', function () {
     return gulp.src(['src/iconfont/**/*'])
-        // .pipe(plumber())
+        // .pipe(gulpFilter('!src/iconfont/**/demo.css'))
+        .pipe(plumber())
         .pipe(gulp.dest('test/iconfont'))
         .pipe(gulp.dest('pro/iconfont'))
         .pipe(notify({message: 'iconfont task ok'}));
@@ -151,7 +160,6 @@ gulp.task('js', function () {
         // mangle: {except: ['require', 'exports', 'module', '$']},
         compress: true//类型：Boolean 默认：true 是否完全压缩
         // preserveComments: 'all' //保留所有注释}//排除混淆关键字
-
     };
     return gulp.src(["src/js/external/**.js",
         "src/js/ng-config/app.js",
@@ -177,28 +185,32 @@ gulp.task('js', function () {
         .pipe(notify({message: 'js task ok'}));
 });
 
-gulp.task('testMainJs', ['js'], function () {
-
-    return gulp.src(["test/js/*.min.js"])
-        .pipe(uglify())
-        .pipe(gulp.dest('test/js'))
+// test环境输出所有js
+gulp.task('testJs', function () {
+    return gulp.src('src/**/*.js')
+        .pipe(plumber())
+        .pipe(rev())
+        .pipe(replace("setEnvirement('dev')", "setEnvirement('debug')"))
+        .pipe(gulp.dest('./test'))
+        .pipe(notify({message: 'testJs task ok'}));
 });
 
+// gulp.task('testMainJs', ['js'], function () {
+//     return gulp.src(["test/js/*.min.js"])
+//         .pipe(uglify())
+//         .pipe(gulp.dest('test/js'))
+// });
+
+// 压缩pro环境all.js
 gulp.task('proMainJs', ['js'], function () {
     return gulp.src(["pro/js/*.min.js"])
         .pipe(uglify())
         .pipe(gulp.dest('pro/js'))
 });
 
-// gulp.task('browser-sync', function () {
-//     gulp.watch(['src/**/*.html']).on('change', reload);
-//     gulp.watch(['src/css/**/*.css', '!src/css/main.css', '!src/css/main.min.css']).on('change', reload);
-//     gulp.watch(['src/js/**/*.js', '!src/js/all.js', '!src/js/all.min.js']).on('change', reload);
-// });
-
 // 默认任务
 gulp.task('default', function () {
-    gulp.run('img', 'css', 'lint', 'js', 'html', 'lib', 'iconfont', 'testMainJs', 'proMainJs', 'testMainIndex', 'proMainIndex', 'sass');
+    gulp.run('img', 'css', 'lint', 'js', 'html', 'lib', 'iconfont', 'proMainJs', 'proMainIndex', 'sass', 'testJs');
 
     // Watch .html files
     gulp.watch(['src/**/*.html'], ['html']);

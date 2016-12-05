@@ -1,0 +1,58 @@
+<div class="fullPageContainer chatController">
+    <div class="chatMsg text-center">
+        <ul class="padding-bottom-md">
+            <li class="msgBlock" ng-repeat="msg in msgArray track by $index" ng-show="msgArray.length>0">
+                <div class="timeStamp font-color-white radius-sm text-center padding-height-xs padding-width-sm margin-height-sm"
+                     ng-bind="msg.time" ng-if="showTime(msg)&&msg.msg">
+                </div>
+                <!--<div class="{{msg.fromAccount==myUserId?'my':'his'}}Msg margin-height-md clear-float msg" ng-if="msg.type=='text'">-->
+                <div class="{{msg.fromAccount==myUserId?'my':'his'}}Msg margin-height-md clear-float {{msg.type=='text'?'text':'ele'}}"
+                     ng-if="msg.msg">
+                    <div class="userHeader padding-width-md">
+                        <img class="radius-sm img-square-md" ng-src="{{msg.userHead}}">
+                    </div>
+                    <!--<div class="margin-md img-square-md h1 background-color-main radius-full font-color-white text-center" style="font-size: 1.5rem!important;">-->
+                    <!--{{msg.fromNickName.length>0?(msg.fromNickName.charAt(msg.fromNickName.length - 1)):'无'}}-->
+                    <!--</div>-->
+                    <div>
+                        <div class="h7 nickName margin-bottom-xs" ng-bind="msg.fromNickName||'暂无'"></div>
+                        <p class="padding-sm font-color-global-base radius-md h2" ng-bind="msg.msg"
+                           ng-if="msg.type=='text'"></p>
+                        <p class="padding-md font-color-global-base radius-md h2 inline-block" ng-if="msg.type!='text'">
+                            <span class="h1 display-block margin-bottom-sm" ng-bind="msg.msg[1]"></span>
+                            <span class="display-block clear-float">
+                                <span class="desc h3 inline-block float-left"
+                                      style="{{(msg.fromAccount==myUserId)?'padding-right:0.5rem':'padding-left:0.5rem'}}">
+                                    <span ng-bind="msg.msg[2]" class="overflow-line-3"></span>
+                                </span>
+                                <span class="img inline-block float-right">
+                                    <img ng-src="{{msg.msg[3]}}" class="img-square-md" alt="{{msg.msg[1]}}">
+                                </span>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <form
+            class="chatInput clear-float text-center padding-width-md border-line-top border-color-global-heavyer"
+            ng-submit="sendMsg()">
+        <span class="addOther projectIconfont font-color-global-lightest" ng-click="sendEle()">
+            &#xe669;
+        </span>
+        <span class="msgInput h0">
+            <textarea style="padding: 0.35rem;resize: none;width: 90%;" name="msgInput" rows="{{rows}}" ng-focus="rows=3"
+                      class="h2 padding-sm background-color-white border-line border-color-global-heavyer radius-sm"
+                      ng-model="msg" id="msg"></textarea>
+            <!--<input type="text" name="msgInput"-->
+            <!--class="h2 background-color-white border-line border-color-global-heavyer radius-sm"-->
+            <!--ng-model="msg" id="msg"/>-->
+        </span>
+        <span class="otherInput font-color-global-lighter" ng-click="sendMsg()">
+           发送
+        </span>
+    </form>
+    <a class="return" ng-click="gotoMsgTag()"></a>
+    <div class="titleArea" ng-click="updateGroupInfo()"></div>
+</div>

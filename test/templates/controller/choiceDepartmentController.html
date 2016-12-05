@@ -1,0 +1,12 @@
+<div class="choiceOfficeController padding-width-md padding-bottom-md">
+    <div ng-click="selDepartment(department)" ng-repeat="department in dataFilter" class="margin-re-width-md background-color-white padding-left-md h3">
+        <p class="{{$index ==0 ? '' :'border-color-global-base border-line-top'}} padding-height-lg ">
+            <span class="margin-right-md inline-block font-color-global-lighter" ng-bind="department.departmentName">骨科</span>
+        </p>
+    </div>
+
+
+    <!--<div class="CommonButtonWrite margin-height-xl font-color-global-lighter" ng-click="newDepartment()">-->
+        <!--没有自己的科室 ？手动添加-->
+    <!--</div>-->
+</div>

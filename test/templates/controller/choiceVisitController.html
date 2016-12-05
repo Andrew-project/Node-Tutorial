@@ -1,0 +1,9 @@
+<div class="choiceVisitController">
+    <div class="background-color-white border-line-bottom border-color-global-base">
+        <div class="border-color-global-base {{$index!=0?'border-line-top':''}} background-color-white margin-left-md padding-right-md h3 padding-height-lg" ng-repeat="follow in data.followUp" ng-click="followClick(follow)">
+            <span  ng-bind="follow.title"></span>
+        </div>
+    </div>
+    <div ng-show="data.followUp.length > 0" class="CommonButtonWrite margin-top-xl" ng-click="editTemplate()">编辑现有随访模板</div>
+    <div class="CommonButtonWrite {{!data.followUp.length > 0 ? 'margin-top-xl':'margin-top-md margin-bottom-xl'}}" ng-click="newUser()" >新建随访模板</div>
+</div>

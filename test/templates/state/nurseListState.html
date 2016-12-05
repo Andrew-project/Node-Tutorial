@@ -1,0 +1,158 @@
+<div class="nurseListController padding-bottom-xxl">
+    <div ng-show=" dataArr.all.length == 0 " class="text-center dataNull">
+        <img class="margin-top-xl" src="img/dataNull.png" alt="">
+        <p class="h3 font-color-base text-center margin-top-md">暂无数据</p>
+    </div>
+
+    <!--show-->
+    <div class="h0" ng-show="dataArr.all.length > 0 && operateType == 'show'" ng-click="openCloseAll()"
+         ng-init="open == true">
+        <div class="padding-left-md background-color-white">
+            <div class="padding-height-md padding-right-md border-color-global-base {{open == true? '': 'border-line-bottom'}}">
+                <h3 class="display-inline">所有同事</h3>
+                <p class="h0 float-right" class="padding-width-md">
+                    <span class="h4"><i ng-bind="dataArr.all.length"></i>人</span>
+                    <span class="projectIconfont font-color-global-lighter h4 padding-l-2" ng-hide="open">&#xe600;</span>
+                    <span class="projectIconfont font-color-global-lighter h4 padding-l-2" ng-show="open">&#xe632;</span>
+                </p>
+            </div>
+        </div>
+        <section ng-show="open == true && operateType == 'show'" ng-repeat="nurse in dataArr.all" class="background-color-global-shallowLighter clear-float result-list padding-left-md">
+            <a class="clear-float  display-block padding-height-sm  clear-float border-color-global-base {{$index == dataArr.all.length-1? '': 'border-line-bottom'}}"
+               ui-sref="nurseDetail({nurseId:nurse.nurseId })">
+                <div class="h0  border-color-global-base">
+                    <img class="img-width-square-xs img-height-square-xs margin-right-md float-left radius-md img-width-square-xs img-height-square-xs margin-right-md float-left radius-md"
+                         ng-src="{{nurse.avatarUrl}}" alt="">
+                    <div class="display-inline">
+                        <p class="h2 margin-bottom-sm {{nurse.tag == undefined ? 'padding-top-sm': ''}}" ng-bind="nurse.name">名字</p>
+                        <p>
+                            <span class="background-color-blue h7 font-color-white margin-right-sm radius-md padding-all"
+                                  ng-repeat="tag in nurse.tag track by $index" ng-bind="tag.tagName"
+                                  ng-show="$index < 3">标签</span>
+                            <span class="background-color-blue h7 font-color-white margin-right-sm radius-md padding-all"
+                                  ng-show="nurse.tag.length > 3">...</span>
+                        </p>
+                    </div>
+                    <p class="h2 float-right padding-right-md {{nurse.tag == undefined ? 'padding-top-sm': ''}}" ng-show="ownNurseId == nurse.nurseId">我</p>
+                </div>
+            </a>
+        </section>
+    </div>
+
+    <div ng-show="operateType == 'show'" class="h0" ng-init="nurse.open = false" ng-click="openClose(nurse)" ng-repeat="nurse in dataArr.nurse">
+        <div class="background-color-white padding-left-md">
+            <div class="border-color-global-base padding-right-md padding-height-md {{nurse.open == true || $index == dataArr.nurse.length-1? '': 'border-line-bottom'}}">
+                <h3 class="display-inline" ng-bind="nurse.tagName"></h3>
+                <p class="h0 float-right" class="padding-width-md">
+                    <span class="h4"><i ng-bind="nurse.member.length"></i>人</span>
+                    <span class="projectIconfont font-color-global-lighter h4 padding-l-2" ng-hide="nurse.open">&#xe600;</span>
+                    <span class="projectIconfont font-color-global-lighter h4 padding-l-2" ng-show="nurse.open">&#xe632;</span>
+                </p>
+            </div>
+        </div>
+        <section ng-show="operateType =='show' && nurse.open == true" class="padding-left-md background-color-global-shallowLighter">
+            <div class=" h0 border-color-global-base" ng-repeat="nurseInfo in nurse.member">
+                <div class="background-color-white h0">
+                    <section class="background-color-global-shallowLighter clear-float result-list">
+                        <a class="clear-float display-block padding-top-sm clear-float {{$index == nurse.member.length-1? '': 'border-color-global-base border-line-bottom'}}"
+                           ui-sref="nurseDetail({nurseId:nurseInfo.nurseId })">
+                            <div class="h0 padding-bottom-sm border-color-global-base">
+                                <img class="img-width-square-xs img-height-square-xs margin-right-md float-left radius-md img-width-square-xs img-height-square-xs margin-right-md
+                                            float-left radius-md" ng-src="{{nurseInfo.avatarUrl}}" alt="">
+                                <div class="display-inline">
+                                    <p class="h2 margin-bottom-sm {{nurseInfo.tag == undefined? 'padding-top-sm': ''}}" ng-bind="nurseInfo.name">名字</p>
+                                    <p>
+                                        <span class="background-color-blue h7 font-color-white margin-right-sm radius-md padding-all"
+                                              ng-repeat="tag in nurseInfo.tag track by $index" ng-bind="tag.tagName" ng-show="$index < 3">标签</span>
+                                        <span class="background-color-blue h7 font-color-white margin-right-sm radius-md padding-all"
+                                              ng-show="nurseInfo.tag.length > 3">...</span>
+                                    </p>
+                                </div>
+                                <p class="h2 float-right padding-right-md" ng-show="ownNurseId == nurseInfo.nurseId">我</p>
+                            </div>
+                        </a>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!--select-->
+    <div ng-show="operateType === 'selectOrder' || operateType === 'selectAttention'|| operateType === 'selectRunNurse'" class="nurseList margin-re-width-md padding-width-md">
+        <div class=" h0 padding-left-md background-color-white" ng-show="dataArr.all.length > 0">
+            <div class="background-color-white padding-height-md border-color-global-base {{open == true? '': 'border-line-bottom'}}" ng-click="openCloseAll()">
+                <h3 class="display-inline">所有同事</h3>
+                <p class="h0 float-right" class="padding-width-md">
+                    <span class="h4"><i ng-bind="dataArr.all.length"></i>人</span>
+                    <span class="projectIconfont font-color-global-lighter h4 padding-right-md padding-l-2" ng-hide="open">&#xe600;</span>
+                    <span class="projectIconfont font-color-global-lighter h4 padding-right-md padding-l-2" ng-show="open">&#xe632;</span>
+                </p>
+            </div>
+        </div>
+        <div ng-show="open == true">
+            <section ng-repeat="nurse in dataArr.all" ng-show="dataArr.all.length > 0" ng-click="checkSelf(nurse)" class=" background-color-global-shallowLighter padding-left-md">
+                <section class=" clear-float check-list background-color-global-shallowLighter">
+                    <div class="background-color-global-shallowLighter clear-float border-color-global-base {{$index == dataArr.all.length -1? '': 'border-line-bottom'}}">
+                        <div class="{{nurse.sel == true ? 'active-check ': 'check-click'}} check-style "></div>
+                        <a class="display-block padding-top-sm clear-float padding-left-md margin-left-md">
+                            <img class="radius-md  img-width-square-xs img-height-square-xs margin-right-md float-left radius-md" ng-src="{{nurse.avatarUrl}}" alt="">
+                            <div class="h0 border-line-bottom border-color-global-base padding-bottom-sm">
+                                <h2 class="margin-bottom-sm {{nurse.tag == undefined? 'padding-top-sm': ''}}" ng-bind="nurse.name">名字</h2>
+                                <p class="h2 float-right pos-right" ng-show="ownNurseId == nurse.nurseId">我</p>
+                                <div class="display-inline">
+                                    <span class="background-color-blue h7 font-color-white margin-right-sm radius-md"
+                                          ng-repeat="tag in nurse.tag track by $index" ng-bind="tag.tagName" ng-show="$index < 3">标签</span>
+                                    <span class="background-color-blue h7 font-color-white margin-right-sm radius-md" ng-show="nurse.tag.length > 3">...</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </section>
+            <div class="result-list padding-height-md padding-left-md" ng-click="allCheck()" ng-show="open == true && dataArr.all.length > 0">
+                <div class="check-style {{dataArr.all.sel ? 'active-check-all' : 'check-click'}} " style="margin-top:0; padding-top:0;"></div>
+                <p class="h3 margin-left-md padding-left-md btn-m-t">全选</p>
+            </div>
+        </div>
+        <div class=" h0" ng-init="nurse.open == false;" ng-repeat="nurse in dataArr.nurse" ng-show="dataArr.nurse.length > 0">
+            <div class="padding-left-md h0 background-color-white">
+                <div class="border-color-global-base padding-height-md {{nurse.open == true || $index == dataArr.nurse.length-1? '': 'border-line-bottom'}}" ng-click="openClose(nurse)">
+                    <h3 class="display-inline" ng-bind="nurse.tagName"></h3>
+                    <p class="h0 float-right" class="padding-width-md">
+                        <span class="h4"><i ng-bind="nurse.memberNum"></i>人</span>
+                        <span class="projectIconfont font-color-global-lighter h4 padding-right-md padding-l-2" ng-hide="nurse.open">&#xe600;</span>
+                        <span class="projectIconfont font-color-global-lighter h4 padding-right-md padding-l-2" ng-show="nurse.open">&#xe632;</span>
+                    </p>
+                </div>
+            </div>
+            <div ng-show="nurse.open">
+                <section ng-repeat="nurseInfo in nurse.member" ng-show="nurse.open" class=" padding-left-md background-color-global-shallowLighter">
+                    <section class=" clear-float check-list border-color-global-base {{$index == nurse.member.length-1? '': 'border-line-bottom'}}" ng-click="checkNurseSelf(nurseInfo, nurse)">
+                        <div class="background-color-global-shallowLighter clear-float">
+                            <div class="{{nurseInfo.sel == true ? 'active-check ': 'check-click'}} check-style "></div>
+                            <a class="display-block padding-top-sm clear-float padding-left-md margin-left-md">
+                                <img class="radius-md  img-width-square-xs img-height-square-xs margin-right-md float-left radius-md" ng-src="{{nurseInfo.avatarUrl}}" alt="">
+                                <div class="h0 border-line-bottom border-color-global-base padding-bottom-sm">
+                                    <h2 class="margin-bottom-sm {{nurseInfo.tag == undefined? 'padding-top-sm': ''}}" ng-bind="nurseInfo.name">名字</h2>
+                                    <p class="h2 float-right pos-right" ng-show="ownNurseId == nurseInfo.nurseId">我</p>
+                                    <div class="display-inline">
+                                        <span class="background-color-blue h7 font-color-white margin-right-sm radius-md" ng-repeat="tag in nurseInfo.tag track by $index" ng-bind="tag.tagName"
+                                              ng-show="$index < 3">标签</span>
+                                        <span class="background-color-blue h7 font-color-white margin-right-sm radius-md" ng-show="nurseInfo.tag.length > 3">...</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </section>
+                </section>
+                <div class="result-list padding-height-md padding-left-md" ng-click="allNurseCheck(nurse)">
+                    <div class="check-style {{nurse.sel ? 'active-check-all' : 'check-click'}} " style="margin-top:0; padding-top:0;"></div>
+                    <p class="h3 margin-left-md padding-left-md btn-m-t">全选</p>
+                </div>
+            </div>
+        </div>
+        <a ng-hide="dataArr.all.length == 0 " ng-click="setNurseArr()">
+            <p class="CommonButtonFix margin-top-xxl">确定</p>
+        </a>
+    </div>
+</div>

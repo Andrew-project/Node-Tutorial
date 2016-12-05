@@ -1,0 +1,43 @@
+<div class="blackListController" ng-init="isEdit = false">
+    <div class="text-center dataNull" ng-show="patientBlackList.length < 1">
+        <img class="margin-top-xl" src="img/dataNull.png" alt="">
+        <p class="h3 font-color-base text-center margin-top-md">科室黑名单为空</p>
+    </div>
+    <a class="h1 margin-right-md font-color-global-base edit-black-list" ng-click="onEditClick()" ng-show="patientBlackList.length > 0">编辑</a>
+    <div ng-repeat="user in patientBlackList track by $index">
+        <h4 class="margin-left-md" ng-bind="user.title"></h4>
+        <section ng-click="onCheckSelfClick(user,member)" class=" background-color-global-shallowLighter padding-left-md"
+                 ng-repeat="member in user.member" ng-init="member.sel = false">
+            <section class=" clear-float check-list background-color-global-shallowLighter">
+                <div class="background-color-global-shallowLighter clear-float border-color-global-base {{$index != 1? '': 'border-line-top'}}">
+                    <div ng-show="isEdit == true"
+                         class="{{member.sel == true ? 'active-check ': 'check-click'}} check-style"></div>
+                    <a class="display-block padding-top-sm clear-float {{isEdit == true ? 'padding-left-md margin-left-md':''}}">
+                        <img class="radius-md  img-width-square-xs img-height-square-xs margin-right-md float-left radius-md"
+                             ng-src="{{member.avatarUrl}}" alt="">
+                        <div class="h0 border-line-bottom border-color-global-base padding-bottom-sm">
+                            <div class="display-inline">
+                                <p class="h2 margin-bottom-sm {{member.tag == undefined? 'padding-top-sm': ''}}"
+                                   ng-bind="member.name">名字</p>
+                                <p>
+                                        <span class="background-color-blue h7 font-color-white margin-right-sm radius-md padding-all"
+                                              ng-repeat="tag in member.tag track by $index" ng-bind="tag.tagName"
+                                              ng-show="$index < 3">标签</span>
+                                    <span class="background-color-blue h7 font-color-white margin-right-sm radius-md padding-all"
+                                          ng-show="member.tag.length > 3">...</span>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </section>
+    </div>
+    <div class="text-center bottom-btn border-line-top border-color-global-base" ng-if="isEdit == true">
+        <a class="padding-height-md float-left font-color-white h3 background-color-pink"
+           ng-click="onRemovePatientClick(patientBlackList)">移出</a>
+        <a class="padding-height-md float-left font-color-global-lighter h3 background-color-white"
+           ng-click="onCancelRemoveClick(patientBlackList)">取消</a>
+
+    </div>
+</div>

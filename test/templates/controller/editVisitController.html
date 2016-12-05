@@ -1,0 +1,16 @@
+<div class="editVisitController">
+    <div class="background-color-white border-line-bottom border-color-global-base">
+    <!--<a class="display-block" ui-serf="setTemplate({operateType:follow.templateId})" ng-repeat="follow in data.followUps" >-->
+    <a ng-click="goSetTemplate(follow)" class="display-block" ng-repeat="follow in data.followUp" >
+        <div class="border-color-global-base {{$index!=0?'border-line-top':''}} margin-left-md padding-right-md h3 padding-height-lg title more" >
+            <span ng-bind="follow.title"></span>
+            <!--<span class="iconfont float-right font-color-global-lighter h4">&#xe649;</span>-->
+        </div>
+    </a>
+    </div>
+    <div class="text-center dataNull" ng-show="data.followUp.length < 0">
+        <img class="margin-top-xl" src="img/dataNull.png" alt="">
+        <p class="h3 font-color-base text-center margin-top-md">暂无数据</p>
+    </div>
+    <a ng-click="newTemplate()"><p ng-show="isAdd == true" class="margin-height-xl CommonButtonWrite">新建随访模板</p></a>
+</div>

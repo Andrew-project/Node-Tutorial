@@ -1,0 +1,61 @@
+<div class="contentListController padding-width-md padding-bottom-xl">
+    <div ng-show="dataArr['cms-a'].articleGroup.length == 0 && dataArr['cms-t'].toolGroup.length ==0" class=" text-center dataNull">
+        <img class="margin-top-xl" src="img/dataNull.png" alt="">
+        <p class="h3 font-color-base text-center margin-top-md">暂无数据</p>
+    </div>
+    <section ng-show="dataArr['cms-a'].articleGroup.length > 0">
+        <h2 class="padding-height-md" ng-bind="dataArr['cms-a'].name"></h2>
+        <section  ng-repeat="content in dataArr['cms-a'].articleGroup"  ng-init="content.haveCheck = false;content.mark='art';">
+            <div class="padding-left-md margin-re-width-md background-color-white h0">
+                <div class="check-style margin-height-md display-inline margin-right-md {{content.sel == 2 ? 'active-check' : content.sel == 1 ? 'not-choose-all':'check-click'}} " style="float:left;" ng-click="allCheck(content)"></div>
+                <a class="{{$index == 0 ? '' : 'border-line-top border-color-global-base'}}  h0 padding-height-md margin-left-lg padding-left-md display-block" ng-click="openClose(content)">
+                    <i class="float-left commonIconfont font-color-{{content.iconColor ? colorTransform(content.iconColor) : 'green'}} background-color-white
+" ng-bind="iconfont(content.icon)"></i>
+                    <h3 class="display-inline margin-left-md" ng-bind="(content.name.length > 15? (content.name.substring(0, 15)+'...'): content.name)"></h3>
+                        <span class="text-center float-right projectIconfont font-color-global-lighter h4 padding-right-md" ng-hide="content.open">&#xe600;</span>
+                        <span class="text-center float-right projectIconfont font-color-global-lighter h4 padding-right-md" ng-show="content.open">&#xe632;</span>
+                </a>
+
+            </div>
+            <section class="margin-re-width-md" ng-show="content.open == true">
+                <div class=" h0" ng-repeat="article in content.article" ng-click="checkPush(content, article)">
+                    <div class="margin-top-md check-style float-left {{article.sel == true ? 'active-check check-style': 'check-click'}} margin-right-md"></div>
+                    <p class="padding-top-md {{$index == 0 ?'':'border-line-top border-color-global-deepHeavyer'}} padding-bottom-md padding-right-md h3 " ng-bind="(article.name.length > 18? (article.name.substring(0, 18)+'...'): article.name)"></p>
+                </div>
+
+            </section>
+        </section>
+        <div ng-hide="dataArr['cms-a'].articleGroup.length == 0" class="margin-height-md" ng-click="allCheckArticle()">
+            <div class="check-style {{dataArr['cms-a'].sel == true ? 'active-check-all' : 'check-click'}}"></div>
+            <p class="h3 margin-left-md padding-left-md select-m-top">全选</p>
+        </div>
+    </section>
+
+    <section ng-show="dataArr['cms-t'].toolGroup.length > 0">
+        <h2 class="padding-height-md" ng-bind="dataArr['cms-t'].name"></h2>
+        <section  ng-repeat="content in dataArr['cms-t'].toolGroup"  ng-init="content.haveCheck = false;content.mark='tool' ">
+            <div class="padding-left-md margin-re-width-md background-color-white h0 ">
+                <div class="check-style margin-height-md display-inline {{content.sel == 2 ? 'active-check' : content.sel == 1 ? 'not-choose-all':'check-click'}} margin-right-md" style="float:left;" ng-click="allCheck(content)"></div>
+                <a class="h0 padding-height-md margin-left-lg padding-left-md display-block {{$index == 0 ? '' : 'border-line-top border-color-global-base'}}" ng-click="openClose(content)">
+                    <i class="float-left commonIconfont font-color-{{content.iconColor? colorTransform(content.iconColor): 'green'}} background-color-white" ng-bind="iconfont(content.icon)"></i>
+                    <h3 class="display-inline margin-left-md" ng-bind="(content.name.length > 15? (content.name.substring(0, 15)+'...'): content.name)"></h3>
+                    <span class="text-center float-right projectIconfont font-color-global-lighter h4 padding-right-md" ng-hide="content.open">&#xe600;</span>
+                    <span class="text-center float-right projectIconfont font-color-global-lighter h4 padding-right-md" ng-show="content.open">&#xe632;</span>
+                </a>
+            </div>
+            <section class="margin-re-width-md" ng-show="content.open == true">
+                <div class="h0"  ng-repeat="tool in content.tool" ng-click="checkPush(content , tool)">
+                    <div class="check-style margin-top-md float-left {{tool.sel == true ? 'active-check check-style': 'check-click'}} margin-right-md"></div>
+                    <p class="padding-bottom-md padding-top-md padding-right-md h3 {{$index == 0 ?'':'border-line-top border-color-global-deepHeavyer'}}" ng-bind="(tool.name.length > 18? (tool.name.substring(0, 18)+'...'): tool.name)"></p>
+                </div>
+
+            </section>
+        </section>
+        <div ng-hide="dataArr['cms-t'].toolGroup.length == 0" class="margin-height-md" ng-click="allCheckTools()">
+            <div class=" check-style {{dataArr['cms-t'].sel == true ? 'active-check-all' : 'check-click'}} "></div>
+            <p class="h3 margin-left-md padding-left-md select-m-top">全选</p>
+        </div>
+    </section>
+
+    <a ng-hide="dataArr['cms-a'].articleGroup.length == 0 && dataArr['cms-t'].toolGroup.length == 0" class="display-block CommonButtonFix " ng-click="submitPush()">完成选择</a>
+</div>

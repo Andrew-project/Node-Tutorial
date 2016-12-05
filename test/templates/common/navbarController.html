@@ -1,0 +1,22 @@
+<header class="navbarController" ng-show="navbarShow">
+    <div class="navbarContent">
+
+        <div class="returnBtn projectIconfont text-left projectIconfont iconfont-md" ng-show="returnBtnShow" ng-click="returnBtnClick()">&#xe628;</div>
+        <div class="titleContent text-center h1" ng-bind="navbarTitle">标题标题标题标题</div>
+
+        <!--加入-->
+        <a ng-click="goMessageTag()" ng-show="rightBtnShow && textBtn" class="customBtn projectIconfont h1 text-right" ng-bind="textBtn"></a>
+
+        <!--二维码-->
+        <!--&#xe648;-->
+        <a ng-show="rightBtnShow && iconNum" class="customBtn text-right projectIconfont iconfont-md">&#xe648;</a>
+
+        <!--加号-->
+        <!--&#xe650;-->
+        <a ng-show="rightBtnShow && addTagBtn" class="customBtn projectIconfont iconfont-md text-right">&#xe650;</a>
+
+        <!--to dongsj-->
+        <!--<a ng-show="rightBtnShow && iconNum" class="customBtn text-right iconfont iconfont-md">{{iconNum}}</a>-->
+
+    </div>
+</header>

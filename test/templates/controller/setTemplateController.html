@@ -1,0 +1,37 @@
+
+<div class="setTemplateController">
+    <div class="background-color-white">
+        <div class="border-color-global-base border-line-bottom padding-right-md margin-left-md h3 padding-height-lg">
+            <span class="setTemplateSpan inline-block">随访计划名称</span>
+            <input type="text" class="font-color-global-lighter h3" ng-model="dataArrFilter[0].title" placeholder="请输入名称">
+        </div>
+    </div>
+        <div ng-repeat="event in dataArrFilter[0].event" class="background-color-white margin-bottom-sm">
+            <div class="border-color-global-base border-line-bottom padding-right-md margin-left-md h3 padding-height-lg ">
+                <label class="setTemplateSpan inline-block" for="event{{$index+1}}">第<i>{{$index+1}}</i>随访时间</label>
+                <input type="number" class="font-color-global-lighter h3 input border-line-bottom border-color-green text-center" id="event{{$index+1}}" ng-model="event.days"
+                       name="event{{$index+1}}"><span class="font-color-global-lighter">天</span>
+            </div>
+            <div class="border-color-global-base border-line-bottom padding-right-md margin-left-md h3 padding-height-lg clear-float">
+                <label class="float-left inline-block setTemplateSpan contentspan">随访目的</label>
+                <textarea ng-model="event.purpose" id="textValue" placeholder="请输入随访目的"  class="font-color-global-lighter float-left widthRead h4 contentspan textarea" rows="3"></textarea>
+                <!--<div class="content border-line-bottom border-color-darkGreen font-color-global-lighter float-left widthRead h4 contentspan" placeholder="请在此处输入随访目的..." ng-bind="event.purpose" contenteditable="true" style="word-break: break-all"></div>-->
+                <!--<input type="text" class="font-color-global-lighter float-left widthRead h4 contentspan textarea" ng-model="event.purpose">-->
+                <!--<p class="font-color-global-lighter float-left widthRead h4 contentspan textarea" ng-bind="event.purpose"></p>-->
+            </div>
+            <div class="contentCenterTable clear-float border-color-global-base border-line-bottom {{event.length > 0?'padding-height-sm':'padding-height-lg'}}">
+                <div ng-click="selPush(event)" class="padding-right-md margin-left-md h3">
+                    <span class="setTemplateSpan contentCenter">推送给患者</span>
+                    <span class="font-color-global-lighter ps contentCenter" >
+                        <p class="font-color-global-lighter contentspan" ng-repeat="article in event.article">{{article.title}}</p>
+                        <p class="font-color-global-lighter contentspan" ng-repeat="tool in event.tool">{{tool.title}}</p>
+                    </span>
+                    <span class="projectIconfont font-color-global-lighter contentCenter">&#xe600;</span>
+                </div>
+          </div>
+        </div>
+        <div class="CommonButtonWrite margin-top-xl" ng-click="addFollowUpRecord()">
+            <span class="projectIconfont h4">&#xe650;</span>增加随访记录
+        </div>
+        <div class="CommonButtonRed margin-height-xl" ng-click="saveFollowUpRecord()">完成</div>
+</div>

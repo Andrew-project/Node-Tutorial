@@ -1,0 +1,46 @@
+<div class="startVisitController triggerInputWarp">
+    <div class="background-color-white">
+        <a ui-sref="allPatientList({operateType:'selectFollowObj'})">
+            <div class="border-color-global-base border-line-bottom margin-left-md padding-right-md h3 padding-height-lg title more">
+                <span class="margin-right-md spans inline-block">随访对象</span>
+                <input type='text' name='name' class="font-color-global-lighter h3 minWidth" ng-model="followObj"
+                       readonly>
+            </div>
+        </a>
+        <a>
+            <div class="triggerInput border-color-global-base border-line-bottom margin-left-md padding-right-md h3 padding-height-lg">
+                <span class="margin-right-md spans inline-block">出院日期</span>
+                <input placeholder="请选择出院日期" class="font-color-global-lighter h3 minWidth maxHeight" type="date"
+                       id="admission_time" ng-model="admissionTime" readonly ng-change="onAdmissionTimeChange()"
+                       ng-click="onPickDateClick()">
+                <!--<span class="iconfont float-right font-color-global-lighter">&#xe649;</span>-->
+            </div>
+        </a>
+        <a ui-sref="choiceVisit({operateType:'show'})">
+            <div class=" border-color-global-base border-line-bottom margin-left-md padding-right-md h3 padding-height-lg title more">
+                <span class="margin-right-md spans inline-block">随访模板</span>
+                <input type='text' name='name' class="font-color-global-lighter h3 minWidth"
+                       ng-model="followTemplateObj" readonly>
+            </div>
+        </a>
+        <a ui-sref="choiceDay">
+            <div class=" border-color-global-base border-line-bottom margin-left-md padding-right-md h3 padding-height-lg title more">
+                <span class="margin-right-md spans inline-block">提醒</span>
+                <input type="text" id="identifyCode" name="identifyCode" ng-model="remind"
+                       class="h3 font-color-global-lighter minWidth" readonly>
+            </div>
+        </a>
+        <a ui-sref="nurseList({operateType:'selectRunNurse'})">
+            <div class=" border-color-global-base border-line-bottom padding-width-md h3 padding-height-lg title more">
+                <span class="margin-right-md spans inline-block">执行护士</span>
+                <input type='text' name='name' class="font-color-global-lighter h3 minWidth" ng-model="runNurseObj"
+                       readonly>
+            </div>
+        </a>
+    </div>
+    <a ng-click="onSaveFollowUpClick()">
+        <div class="CommonButtonRed margin-height-xl">
+            完成
+        </div>
+    </a>
+</div>

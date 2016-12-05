@@ -5,9 +5,9 @@
   "private": true,
   "scripts": {
     "start": "run dev",
-    "pro": "pm2 start ./bin/www --name pro",
-    "dev": "rm -rf pro && rm -rf test && gulp & pm2 start ./bin/www --name dev",
-    "test": "pm2 start ./bin/www --name test",
+    "pro": "pm2 kill && pm2 start ./bin/www --name pro",
+    "dev": "rm -rf pro && gulp & pm2 kill && pm2 start ./bin/www --name dev",
+    "test": "rm -rf pro && gulp & pm2 kill && pm2 start ./bin/www --name test",
     "lite-server": "lite-server -c bs-config.json",
     "browser-sync": "pm2 start browser-sync"
   },
@@ -34,6 +34,7 @@
     "express": "~4.14.0",
     "file-stream-rotator": "0.0.7",
     "fs": "0.0.1-security",
+    "gulp-filter": "^4.0.0",
     "gulp-sass": "^2.3.2",
     "lite-server": "^2.2.2",
     "morgan": "~1.7.0",

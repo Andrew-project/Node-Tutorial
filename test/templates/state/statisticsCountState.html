@@ -1,0 +1,24 @@
+<div class="statisticsCountController">
+    <div class="background-color-white">
+        <div class="statistic-title padding-md border-color-global-base border-line-bottom">
+            <span ng-bind="type == 'plan'? '康复计划阅读情况': '康复工具使用情况'"></span>
+        </div>
+        <ul>
+            <li class="padding-width-md clear-float" ng-repeat="content in data.content">
+                <div class="h1 margin-height-md padding-top-xs iconfont-height-lg iconfont-width-lg float-left position-relative">
+                    <div class="iconfont-height-lg iconfont-width-md projectIconfont text-center position-left-right {{$index==0?'font-color-red':''}}{{$index==1?'font-color-orange':''}}{{$index==2?'font-color-yellow':''}}{{$index>2?'font-color-white':''}}">
+                        &#xe61a;</div>
+                    <div class="iconfont-height-lg iconfont-width-md counter text-center position-left-right h1 {{$index<=2?'font-color-white':'font-color-global-base'}}"
+                         ng-bind="$index+1"></div>
+                </div>
+                <div class="info float-right padding-height-md {{$index!=0?'border-line-top':''}} border-color-global-base with-iconfont-md-sm">
+                    <h3 class="font-color-global-lighter" ng-bind="content.name"></h3>
+                    <h4 class="font-color-global-lightest margin-top-xs">
+                        <span><span ng-bind="type == 'plan'? '阅读': '使用'"></span>{{content.sumTimes||'0'}}次</span>
+                        <span class="margin-left-md">{{content.uniqueTimes||'0'}}人<span ng-bind="type == 'plan'? '已阅读': '已使用'"></span></span>
+                    </h4>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

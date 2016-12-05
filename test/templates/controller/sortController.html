@@ -1,0 +1,27 @@
+<div class="sortController triggerInputWarp">
+    <div class="background-color-white border-color-global-base border-line-bottom">
+    <a ui-sref="nurseList({operateType:'selectOrder'})">
+        <div class="border-color-global-base border-line-bottom padding-right-md margin-left-md h3 padding-height-lg title more">
+            <span class="margin-right-md spans inline-block">排班对象</span>
+            <input type='text' name='name' class="font-color-global-lighter h3 minWidth" ng-model="name" readonly>
+        </div>
+    </a>
+    <a>
+        <div class="triggerInput border-color-global-base border-line-bottom padding-right-md margin-left-md h3 padding-height-lg">
+            <span class="margin-right-md spans inline-block">日期</span>
+            <input class="font-color-global-lighter h3 minWidth maxHeight" type="date" id="admission_time" ng-model="admissionTime" readonly ng-change="setAdmissionTime()" ng-click="setDate()">
+        </div>
+    </a>
+    <a ui-sref="choiceClass({operateType:'select'})">
+        <div class="padding-right-md margin-left-md h3 border-color-global-base padding-height-lg title more">
+            <span class="margin-right-md spans inline-block">选择班次</span>
+            <input type="text" class="font-color-global-lighter h3 minWidth" ng-model="class" id="class" readonly>
+        </div>
+    </a>
+    </div>
+    <a ng-click="submitSchedules()">
+        <div class="CommonButtonRed margin-height-xl">
+            完成
+        </div>
+    </a>
+</div>
