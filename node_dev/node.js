@@ -53,11 +53,7 @@ var resultErr = {
         "displayMsg": "error"
     }
 };
-//
-// getPromise('./node_dev/config.md').then(function (data) {
-//     matchPath(data);
-// });
-//
+
 // function getPromise(path) {
 //     var promise = new Promise(function(resolve, reject){
 //             fs.readFile(path, 'utf8', function(err, data) {
@@ -70,25 +66,25 @@ var resultErr = {
 //     });
 //     return promise;
 // }
-
-// fs.readFile('./node_dev/config.md', 'utf8', function (err, data) {
-//     if (err) {
 //
-//     } else {
-//         matchPath(data);
-//     }
+//
+// getPromise('./node_dev/config.md').then(function (data) {
+//     matchPath(data);
 // });
-var pathData = fs.readFileSync('./node_dev/config.md', 'utf8');
-var config = eval(pathData);
+
+var configData = fs.readFileSync('./node_dev/config.md', 'utf8');
+var config = eval(configData);
 
 router.all("/*", function (req, res) {
     for (var i = 0; i < config.length; i++) {
         if (IsOkOfUrl(config[i].url, req.url) && config[i].method == req.method) {
             res.send(fun(config[i].path, req));
+            break;
         }
     }
     res.send(errorList[1]);
 });
+
 
 function fun (path, req) {
     var data = fs.readFileSync(path, 'utf8');
