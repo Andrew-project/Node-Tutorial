@@ -26,7 +26,7 @@ var errorList = [
             "success": false,
             "code": 404,
             "msg": "not found",
-            "displayMsg": "NOT FOUND"
+            "displayMsg": "请检查请求URL与config文件是否一致"
         }
     },
     {
